@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/NavBar.css?v=<?php echo time(); ?>">
+        <script>
+            function myFunction() {
+              var x = document.getElementById("myTopnav");
+              if (x.className === "topnav") {
+                x.className += " responsive";
+              } else {
+                x.className = "topnav";
+              }
+            }
+            </script>
+    </head>
+    <body>
+        <div class="topnav" id="myTopnav">
+            <a class="active menu" href="home.php">Lessons</a>
+            <a class="menu" href="loopedJobs.php">Pinned Lessons</a>
+            <a class="menu" href="profile_user.php">Tasks</a>
+            <a class="menu" href="UserConnections.php">Forum</a>
+            <a class="Forum" href="Forum.php">Forum</a>
+            <a class="menu" href="search.php">Search</a>
+            <a class="logout" href="logout.php">Logout</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <img src="images/hamburger.png">
+              </a>
+        </div>
+    </body>
+</html>
