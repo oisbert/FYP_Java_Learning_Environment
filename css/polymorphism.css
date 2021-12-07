@@ -1,0 +1,30 @@
+body {
+  background-color: #5cdb96;
+}
+
+textarea {
+    resize: none;
+    margin-left: 20%;
+  }
+
+input[type="submit"]{
+    background-color: #05386b;
+    color: #fff;
+  
+    border-radius: 5px;
+    margin-right: 10%;
+}
+
+.excution{
+  background-color: white;
+  margin-right: 700px;
+  display: inline-block;
+}
+
+.lesson-area {
+  background-color: #8ee4af;
+  font-size: small;
+}
+
+
+
