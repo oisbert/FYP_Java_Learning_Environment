@@ -13,17 +13,6 @@
    </head>
    <link rel="stylesheet" type="text/css" href="css/polymorphism.css?v=<?php echo time(); ?>">
    <body>
-      <div class = "excution">
-         <?php
-            if (file_exists("Hello.java")){
-                $file = "Hello.java";
-                $current = file_get_contents($file);
-                echo shell_exec("javac Hello.java && java Hello");
-                echo shell_exec("javac Hello.java > log.txt 2>&1");
-                echo nl2br(file_get_contents( "log.txt" ));
-            } 
-            ?>
-      </div>
       <?php 
          include ("validateLoggedIn.php");
          function getLessonData($uID) {
@@ -32,39 +21,42 @@
             if ($conn -> connect_error) {
                 die("Connection failed:" .$conn -> connect_error);
             }
-
+         
             $sql = "select * from lessons where lessonID =\"{$uID}%\";";
             $result = $conn -> query($sql);
             $conn->close();
-
+         
             return $result->fetch_assoc();
-        }
+         }
          ?>
-               <form action="processCode.php" method="post">
-                  <textarea id = "compiler" rows="20" cols="55" name="comment" >
-                  <?php
-            echo $current;
-            ?>
-      </textarea>
-      <input type="submit" value="Compile">
-      </form>
       <h1>
-      Lesson Plan
+      Edit the Lesson plan
       <h1>
       <div class ="lesson-area">
-      <?php
-          $sql = "SELECT descriptions
-            FROM lessons 
-            WHERE lessonID = 1;";
-        $result =  $conn->query($sql);
-
-        if($row = $result->fetch_assoc()) {
-            print "<p class='userDetails text-left'>{$row['descriptions']}</p>";
-        } else {
-            print "<p class='text-left'>No Current Employer.</p>";
-        }
-        ?>
+      <form method="post" >  
+      <textarea name="description" type="text" rows="20" cols="55">
+      </textarea>
+         <input type="submit" name="submit" value="Submit">  
+      </form>
       </div>
+   
    </body>
+   <?php
+         if (isset($_POST["submit"])) {
+            $description = $_POST["description"];
+
+            $sql = "UPDATE lessons SET descriptions = '$description' WHERE lessonID=1";
+            
+            if ($conn->query($sql) === TRUE) {
+               echo "Record updated successfully";
+            } else {
+               echo "Error updating record: " . $conn->error;
+            }
+         }
+            $conn->close();
+         
+      ?>
 </html>
+
+
 
