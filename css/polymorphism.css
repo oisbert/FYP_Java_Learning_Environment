@@ -10,15 +10,21 @@ textarea {
 input[type="submit"]{
     background-color: #05386b;
     color: #fff;
-  
+    float:right;
+    margin-right: 40%;
     border-radius: 5px;
-    margin-right: 10%;
+    margin-top: 1%;
 }
 
 .excution{
-  background-color: white;
-  margin-right: 700px;
+  margin-right: 300px;
   display: inline-block;
+  float:right;
+}
+
+.excutionOutput{
+  background-color: white;
+  border-style: ridge;
 }
 
 .lesson-area {

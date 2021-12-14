@@ -5,7 +5,7 @@
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 
-        <title>Loop : Register</title>
+        <title>User : Register</title>
 
         <script>
 

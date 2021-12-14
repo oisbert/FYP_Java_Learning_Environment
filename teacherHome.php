@@ -9,7 +9,7 @@
 </head>
 <body>
     <?php
-
+    include ("validateLoggedIn.php");
     include("headerTeacher.html");
 
     ?>

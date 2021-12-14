@@ -14,6 +14,8 @@
    <link rel="stylesheet" type="text/css" href="css/polymorphism.css?v=<?php echo time(); ?>">
    <body>
       <div class = "excution">
+         <H1> Output </H1>
+         <div class = excutionOutput>
          <?php
             if (file_exists("Hello.java")){
                 $file = "Hello.java";
@@ -23,9 +25,10 @@
                 echo nl2br(file_get_contents( "log.txt" ));
             } 
             ?>
+            </div>
       </div>
       <?php 
-         include ("validateLoggedIn.php");
+         //include ("validateLoggedIn.php");
          function getLessonData($uID) {
             include ("serverConfig.php");
             $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);

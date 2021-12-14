@@ -10,7 +10,7 @@
 <body>
 
     <?php 
-    //include ("validateLoggedIn.php");
+    include ("validateLoggedIn.php");
     include ("header.html");
     ?>
 

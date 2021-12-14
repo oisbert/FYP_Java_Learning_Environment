@@ -86,9 +86,9 @@
       
         else if(emailMatches($email, $sqlEmail) && password_verify($password, $sqlPass)) {
             $_SESSION['teacher'] = $teacherID;
-            $_SESSION['loggedin'] = true;
             $_SESSION['teachername'] = $row['teachername'];
-            header( "Location: lesson.php" );
+            $_SESSION['loggedin'] = true;
+            header( "Location: teacherHome.php" );
         }
         else {
             echo "<script> showLoginError('Incorrect email or password.') </script>";

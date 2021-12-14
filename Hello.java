@@ -1,4 +1,4 @@
-                                                                                                                                                                    public class Hello{		
+                                                                                                                                                                                                                                                              public class Hello{		
         public static void main(String[] args){				
                 Shape s=new Shape();		
                 Shape s1= new Rectangle();		
@@ -17,4 +17,4 @@
                    System.out.println("Rectanglearea");		
                 }  
            }
-                                                                                                                                     
+                                                                                                                                                                   
