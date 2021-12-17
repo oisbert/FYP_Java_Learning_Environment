@@ -19,7 +19,7 @@
         $bResult = $conn -> query($bannedSql);
     }
     else if(isset($_SESSION['teacher'])) {
-        $teacherID = $_SESSION['teacherID'];
+        $teacherID = $_SESSION['teacher'];
         $bannedSql = "SELECT * FROM bannedteacher
                       WHERE teacherID = {$teacherID};";
         $bResult = $conn -> query($bannedSql);

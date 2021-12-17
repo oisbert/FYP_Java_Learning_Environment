@@ -28,7 +28,7 @@
             </div>
       </div>
       <?php 
-         //include ("validateLoggedIn.php");
+         include ("validateLoggedIn.php");
          function getLessonData($uID) {
             include ("serverConfig.php");
             $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
