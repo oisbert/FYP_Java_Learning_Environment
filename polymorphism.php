@@ -5,11 +5,8 @@
          Embedding an online compiler 
          into a website
       </title>
-      <script language="javascript" type="text/javascript" src="/static/js/codemirror-5.62.0/lib/codemirror.js"></script>
-      <link rel="stylesheet" type="text/css" href="/static/js/codemirror-5.62.0/lib/codemirror.css">
       </link>
-      <script language="java" type="text/javascript" src="/codemirror-5.62.0/addon/edit/matchbrackets.js"></script>
-      <script language="java" type="text/javascript" src="/static/js/codemirror-5.62.0/mode/perl/perl.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
    </head>
    <link rel="stylesheet" type="text/css" href="css/polymorphism.css?v=<?php echo time(); ?>">
    <body>
@@ -67,7 +64,24 @@
             print "<p class='text-left'>No Current Employer.</p>";
         }
         ?>
+        
       </div>
+      <div class = 'button-wrapper'>
+	   <div class="buttons-holder">
+		   <a href="#" class="button play"  role="button">Play</a>
+		   <a href="#" class="button pause" role="button">Pause</a>
+		   <a href="#" class="button restart" role="button">Restart</a>
+	   </div><!--/.buttons-holder -->
+      </div>
+
+      <div class = "animation-frame">
+         <img class = "bucket" src = "./images/bucket.png"></div>
+         <div class = "square"></div>
+         <div class = "circle"></div>
+      </div>
+
+      <script src="js/polymorphism.js"></script>
+      
    </body>
 </html>
 
