@@ -53,13 +53,13 @@
       <h1>
       <div class ="lesson-area">
       <?php
-          $sql = "SELECT descriptions
+          $sql = "SELECT description
             FROM lessons 
             WHERE lessonID = 1;";
         $result =  $conn->query($sql);
 
         if($row = $result->fetch_assoc()) {
-            print "<p class='userDetails text-left'>{$row['descriptions']}</p>";
+            print "<p class='userDetails text-left'>{$row['description']}</p>";
         } else {
             print "<p class='text-left'>No Current Employer.</p>";
         }

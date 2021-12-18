@@ -18,6 +18,7 @@
         <ul> Select a lesson plan to edit
         <li><a href="polymorphismEdit.php">Object/classes</a></li>
         <li><a href="polymorphismEdit.php">Polymorphism</a></li>
+        <li><a href="addTask.php">AddTask</a></li>
     </ul>
     <p><a href="#top">This link goes to the top</a></p>
 </body>
