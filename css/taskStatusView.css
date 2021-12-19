@@ -1,0 +1,18 @@
+body {
+    background-color: beige;
+}
+
+.StatusTable {
+    text-align: center;
+    border-spacing: 5px;
+    margin-left:auto;
+    margin-right:auto;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 60%;
+    box-shadow: 20px 20px 50px rgba(0,0,0,0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    border-collapse: separate;
+}
