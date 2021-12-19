@@ -1,0 +1,25 @@
+body {
+    background-color: #5cdb96;
+}
+
+.Tasks {
+    background-color: rgba(191, 191, 191,0.5);
+    padding-top: 1%;
+    width: 80%;
+    line-height: 50%;
+    margin-left: 10%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+    box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
+    border-radius: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.Details {
+    text-align: center;
+    margin-left: 40%;
+}
