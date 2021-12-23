@@ -45,7 +45,7 @@
          if (isset($_POST["submit"])) {
             $description = $_POST["description"];
 
-            $sql = "UPDATE lessons SET descriptions = '$description' WHERE lessonID=1";
+            $sql = "UPDATE lessons SET description = '$description' WHERE lessonID=1";
             
             if ($conn->query($sql) === TRUE) {
                echo "Record updated successfully";

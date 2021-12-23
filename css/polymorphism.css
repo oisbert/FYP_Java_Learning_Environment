@@ -1,25 +1,25 @@
+@import url(https://fonts.googleapis.com/css?family=Walter+Turncoat);
+
 body {
   background-color: #5cdb96;
-  background-image: url("C:/wamp64/www/FYP/images/bucket.png");
 }
 
-textarea {
-    resize: none;
-    margin-left: 20%;
-  }
+
+
 
 input[type="submit"]{
-    background-color: #05386b;
+    background-color: #c20505;
+    height: 30px;
     color: #fff;
     float:right;
     margin-right: 40%;
-    border-radius: 5px;
-    margin-top: 1%;
+    font-family: sans-serif;
 }
 
 .excution{
-  margin-right: 300px;
+  margin-right: 25%;
   display: inline-block;
+  font-family: sans-serif;
   float:right;
 }
 
@@ -28,9 +28,26 @@ input[type="submit"]{
   border-style: ridge;
 }
 
-.lesson-area {
-  background-color: #8ee4af;
+.example-poly{
   font-size: small;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.lesson-area {
+  margin-top: 10%;
+  margin-right: 10%;
+  margin-left: 10%;
+  background: -webkit-linear-gradient(90deg, #485563 10%, #29323c 90%);
+  background: -moz-linear-gradient(90deg, #485563 10%, #29323c 90%);
+  background: -ms-linear-gradient(90deg, #485563 10%, #29323c 90%);
+  background: -o-linear-gradient(90deg, #485563 10%, #29323c 90%);
+  background: linear-gradient(90deg, #485563 10%, #29323c 90%);
+  font-family: "Walter Turncoat", cursive;
+  color: #E8E8E8;
+  border-style: solid;
+  border-color: burlywood;
+  border-width: 10px;
+
+  overflow: hidden
 }
 
 .buttons-holder {
@@ -53,32 +70,40 @@ input[type="submit"]{
 	transition: all 0.5s;
 }
 
-.animation-frame {
-  align-items: stretch;
-  margin-left: 40%;
-  position: absolute;
+#section-1-code {
+  border: 1px solid black;
+  margin-bottom: 5px;
+  height: 200px;
+  width: 300px;
 }
 
-.bucket {
-  margin-left: 40%;
-  height: 20px;
-  width:20px;
+.compiler{
+  margin-left: 20%;
+  background-color: #323232;
+  margin-right: 20%;
+  border-radius: 30px;
+
 }
+
+.example-poly {
+  background-color: #8ee4af;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 10px;
+}
+
+.section-1 {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  margin-left: 2%;
+}
+
+
 
 .square {
-  align-items: center;
-  margin-top: 5%;
-  margin-left: 40%;
-  height: 20px;
-  width:20px;
-  background-color: #555;
-}
-
-.circle {
-  margin-left: 30%;
-  height: 20px;
-  width:20px;
-  background-color: #555;
+  height: 100px;
+  width:100px;
+  background-color: rgb(133, 5, 5);
 }
 
 

@@ -5,7 +5,7 @@
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 
-        <title>Loop : Loop Job</title>
+        <title>Complete function</title>
         
     </head>
     <body>
@@ -26,7 +26,7 @@
             VALUES ('{$currentUser}', '{$taskID}', 'Completed')";
 
             if ($conn->query($sql) === TRUE) {
-                header( "Location: forum.php" );
+                header( "Location: taskPage.php" );
 
             } 
             else {

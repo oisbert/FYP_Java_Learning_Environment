@@ -6,12 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/taskPageTeacher?v=<?php echo time(); ?>">
-    <title>Tasks Teacher</title>
+    <title>Tasks </title>
 </head>
 
 <script type="text/javascript">
     function taskCompleted(taskID) {
             window.location.href= 'taskStatusComplete.php?taskID=' + taskID;
+        }
+
+    function requestForHelp(taskID) {
+            window.location.href= 'needHelp.php?taskID=' + taskID;
+        }
+
+    function disableButton(btn) {
+            document.getElementById("btn1").disabled = true;
+            alert("Button has been disabled.");
         }
 
 </script>
@@ -39,26 +48,27 @@
             if(mysqli_num_rows($result) != 0) {
                 while($row = $result->fetch_assoc())
                 {   
-
-                    $ButtonSQL = "select * from taskstatus where userID = {$_SESSION['user']};";
-                    $ButtonSQLResult = $conn -> query($ButtonSQL);
-                    $ButtonSQL = $ButtonSQLResult->fetch_assoc();
                     print "<div class='Tasks'>
                                     <p class='Details text-left'><b>Title: </b>{$row['taskTitle']}</p>
                                     <p class='Details text-left'><b>Description: </b>{$row['taskDescription']}</p>
-                                    <button class='completeButton' onClick='taskCompleted({$row['taskID']})'></button>";
+                                    <button type ='button' class='btn btn-success' onClick='taskCompleted({$row['taskID']})'>Complete</button>
+                                    <button type ='button' id = 'btn1' class='btn btn-warning' onClick='requestForHelp({$row['taskID']})'>Need Help</button>";
                                     print "</div><BR>";
 
+                    $ButtonSQL = "select * from taskstatus where userID = {$_SESSION['user']} AND taskID = {$row['taskID']};";
+                    $ButtonSQLResult = $conn -> query($ButtonSQL);
+                    $ButtonSQL = $ButtonSQLResult->fetch_assoc();
                     if($ButtonSQL) {
-                        print "lol";
+                        print "<button type ='button' class='btn btn-danger' disabled '>Complete</button>";
+                    } else {
+                        print "<button type ='button' class='btn btn-success' onClick='taskCompleted({$row['taskID']})'>Complete</button>";
                     }
-                    else{
-                        "<button class='completeButton' onClick='taskCompleted({$row['taskID']})'></button>";
-                    }
+                                    
             }
         }
         ?>
 
     </div>
 </body>
+</script>
 </html>
