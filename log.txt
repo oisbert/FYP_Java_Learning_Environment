@@ -1,0 +1,4 @@
+Polymorphism.java:16: error: ';' expected
+        System.out.println("24")
+                                ^
+1 error

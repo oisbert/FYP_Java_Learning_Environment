@@ -1,0 +1,46 @@
+.selection{
+    margin-left: 40%;
+    margin-right: 20%;
+    margin-top: 20%;
+    background-color: rgba(191, 191, 191,0.7);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 40px;
+    padding-bottom: 20%;
+    border-radius: 20px;
+    box-shadow: 1rem 1rem .5rem 
+}
+
+.selection ul  {
+    float: left;
+    font-size: x-large;
+    cursor: pointer;
+    list-style-type: none;
+    display: block;
+    transition: all .3s ease-in-out;
+  }
+
+li a {
+    color: black;
+
+}
+
+ul li:nth-of-type(1) {
+	animation: slide-up 1s;
+}
+
+ul li:nth-of-type(2) {
+	animation: slide-up 1.5s;
+}
+
+ul li:nth-of-type(3) {
+	animation: slide-up 2s;
+}
+
+@keyframes slide-up {
+	0% {
+		opacity: 0;
+		transform: translateY(5rem);
+	}
+}
+
