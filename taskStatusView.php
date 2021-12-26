@@ -9,7 +9,7 @@
 
     </head>
     <body>
-        <?php //include ("headerTemplate.html"); ?>
+        <?php include ("headerTeacher.html"); ?>
         <h1 class='page-heading'>Task Status</h1>
         <hr>
         <div class="page-box">
@@ -48,7 +48,7 @@
                         }
                     } else {
                         print "<TR>";
-                        print "<TD colspan='3'>No Looped Jobs</TD>";
+                        print "<TD colspan='3'>No Task information avalible</TD>";
                         print "</TR>";
                     }
                     $conn->close();

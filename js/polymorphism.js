@@ -1,7 +1,7 @@
-let animation = anime({
-  targets: 'div',
+ anime({
+  targets: '.#square',
   // Properties 
-  translateX: 100,
+  translateX: 1000,
   borderRadius: 50,
   // Property Parameters
   duration: 2000,

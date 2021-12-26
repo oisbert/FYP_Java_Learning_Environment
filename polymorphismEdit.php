@@ -11,10 +11,11 @@
       <script language="java" type="text/javascript" src="/codemirror-5.62.0/addon/edit/matchbrackets.js"></script>
       <script language="java" type="text/javascript" src="/static/js/codemirror-5.62.0/mode/perl/perl.js"></script>
    </head>
-   <link rel="stylesheet" type="text/css" href="css/polymorphism.css?v=<?php echo time(); ?>">
+   <link rel="stylesheet" type="text/css" href="css/lessonEdit.css?v=<?php echo time(); ?>">
    <body>
       <?php 
          include ("validateLoggedIn.php");
+         include("headerTeacher.html");
          function getLessonData($uID) {
             include ("serverConfig.php");
             $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
@@ -30,11 +31,11 @@
          }
          ?>
       <h1>
-      Edit the Lesson plan
+      Edit chalkboard lesson for polymorphism
       <h1>
       <div class ="lesson-area">
       <form method="post" >  
-      <textarea name="description" type="text" rows="20" cols="55">
+      <textarea name="description" type="text" rows="30" cols="70">
       </textarea>
          <input type="submit" name="submit" value="Submit">  
       </form>
@@ -48,9 +49,9 @@
             $sql = "UPDATE lessons SET description = '$description' WHERE lessonID=1";
             
             if ($conn->query($sql) === TRUE) {
-               echo "Record updated successfully";
+               echo "Chalkboard updated successfully";
             } else {
-               echo "Error updating record: " . $conn->error;
+               echo "Error updating Chalkboard: " . $conn->error;
             }
          }
             $conn->close();

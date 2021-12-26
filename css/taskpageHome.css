@@ -1,9 +1,11 @@
 .grid-container {
-    display: grid;
+    display: inline-flex;
     grid-template-columns: auto auto auto;
     padding: 5%;
     grid-column-gap: 4%;
-    grid-row-gap:4%
+    grid-row-gap:4%;
+    margin: auto;
+    width: 50%;
   }
   
   .grid-item {
@@ -14,13 +16,9 @@
     background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.8);
     border-radius: 20%;
-    height: 350px;
+    height: 100px;
     width: 300px;
     padding: 2%;
     font-size: 30px;
     text-align: center;
-  }
-
-  .grid-item .title{
-    margin-top: 50%;
   }

@@ -6,7 +6,7 @@
 
         <meta content="width=device-width, initial-scale=1" name="viewport" />
 
-        <title>Loop : Login</title>
+        <title>Login</title>
 
         <script> 
             function showLoginError(variable) {
@@ -19,6 +19,7 @@
 
     </head>
     <body>
+    <div class="bg-image"></div>
         <div class="wrapper">
             <div class="banner">
                     <div class="login">
@@ -72,7 +73,7 @@
         $userID = $row["userID"];
         $sqlEmail = $row["email"];
         $sqlPass = $row["password"];
-        $isAdmin = $row["Admin"];
+        $isAdmin = $row["admin"];
 
         $bannedSql = "SELECT * FROM banneduser 
                       WHERE userID = {$userID};";
@@ -86,7 +87,14 @@
         if(mysqli_num_rows($bResult) !== 0 ) {
             echo "<script> showLoginError('This user is banned') </script>";
         }
-        if(emailMatches($email, $sqlEmail)  && password_verify($password, $sqlPass)) {
+        else if($isAdmin == 1 && emailMatches($email, $sqlEmail) && password_verify($password, $sqlPass)) {
+            $_SESSION['user'] = $userID;
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['loggedin'] = true;
+            $_SESSION['admin'] = true;
+            header( "Location: admin.php" );
+        }
+        else if(emailMatches($email, $sqlEmail)  && password_verify($password, $sqlPass)) {
             $_SESSION['user'] = $userID;
             $_SESSION['username'] = $row['username'];
             $_SESSION['loggedin'] = true;

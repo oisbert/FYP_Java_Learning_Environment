@@ -1,0 +1,35 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 5%;
+    grid-column-gap: 0.2%;
+    grid-row-gap:4%
+  }
+  
+.grid-item {
+    background: #43c6ac; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2f302f, #4d4d4d); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2f302f, #4d4d4d);
+    box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 6px solid rgba(255, 145, 0, 0.973);
+    border-radius: 20%;
+    height: 350px;
+    width: 300px;
+    padding: 2%;
+    font-size: 30px;
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.grid-item .title{
+    margin-top: 50%;
+    color: azure;
+    font-family: "Walter Turncoat", cursive;
+}
+
+.Page-Note{
+    margin-top: 6%;
+    margin-left: 25%;
+}

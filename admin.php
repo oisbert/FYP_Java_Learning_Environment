@@ -6,22 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/taskPageTeacher?v=<?php echo time(); ?>">
-    <title>Tasks Teacher</title>
+    <title>Tasks </title>
 </head>
 
-<script>
-    function deleteVacancy(variable) {
-            if (confirm("Are you sure you want to delete this Task?") == true) {
-            window.location.href= 'deleteTask.php?id=' + variable;
-            };
-        }
+<script type="text/javascript">
+    function teacherAccess(variable) {
+        if (confirm("Are you sure you want to Add this User?") == true) {
+                window.location.href= 'teacherAccess.php?id=' + variable;
+                };
+    }
 
 </script>
 
 
 <body>
     <?php 
-        include ("validateLoggedIn.php");
+        //include ("validateLoggedIn.php");
         include ("headerTeacher.html");
     ?>
 
@@ -33,23 +33,27 @@
                 die("Connection failed:" .$conn -> connect_error);
             }
 
-            $sql = "select taskTitle, taskDescription, taskID, teacherID
-                        from tasks ";
-            
+            $sql = "select teacherID, teachername, email, access
+            from teacher ";
+
             $result = $conn -> query($sql);
 
-            if(mysqli_num_rows($result) != 0) {
+            if(mysqli_num_rows($result) != 0 ) {
                 while($row = $result->fetch_assoc())
                 {   
-                    print "<div class='Tasks'>
-                                    <p class='Details text-left'><b>Title: </b>{$row['taskTitle']}</p>
-                                    <p class='Details text-left'><b>Description: </b>{$row['taskDescription']}</p>
-                                    <button type='button' class='btn btn-danger' style='margin-bottom:1%; float:right;' onClick='deleteVacancy({$row['taskID']})'>Delete</button>";             
+                    if($row["access"] == 0)
+                    print "<div class='list-teachers'>
+                                    <p class='Details text-left'><b>Name: </b>{$row['teachername']}</p>
+                                    <p class='Details text-left'><b>Email: </b>{$row['email']}</p>
+                                    <button type ='button' class='btn btn-success' onClick='teacherAccess({$row['teacherID']})'>Complete</button>";
                                     print "</div><BR>";
+
+                                    
             }
         }
         ?>
-        <div class="AddNewTask" onClick="location.href='addTask.php'"><h1>Add task<h1></div>
+
     </div>
 </body>
+</script>
 </html>

@@ -1,3 +1,19 @@
-body {
-    background-color: #5cdb96;
+.lesson-area {
+    margin-left: 5%;
+    margin-right: 10%;
+}
+
+.lesson-area textarea{
+    margin-left: 25%;
+    font-size: medium;
+}
+
+input[type="submit"]{
+    background-color: #551b1b;
+    height: 30px;
+    color: #fff;
+    float:right;
+    margin-right: 20%;
+    font-size: medium;
+    font-family: sans-serif;
 }

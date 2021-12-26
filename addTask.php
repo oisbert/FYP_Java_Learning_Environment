@@ -1,7 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="css/addVacancy.css?v=<?php echo time(); ?>">
+        <link rel="stylesheet" type="text/css" href="css/addTask.css?v=<?php echo time(); ?>">
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 
         <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -12,6 +12,7 @@
         
         <?php 
             include ("validateLoggedIn.php");
+            include ("headerTeacher.html")
         ?>
 
         <h1 class="page-heading">Add Task</h1>
@@ -21,8 +22,8 @@
                 <form method="post" action="addTask.php">
                     <h3>Task title:</h3>
                     <input class="text-input" type='text' placeholder='Enter Task Title' name='taskTitle' required></input>
-                    <h3>Task Description:</h3>
-                    <textarea id='description' name='taskDescription' class='description-textarea' required></textarea><br>
+                    <h3 id = 'desc'>Task Description:</h3>
+                    <textarea id='description' name='taskDescription' class='description-textarea' rows= 20 cols=70 required></textarea><br>
                     <br>
                     <br>
                     <input class="button" type="submit" name="submit" value="Submit Task"/>

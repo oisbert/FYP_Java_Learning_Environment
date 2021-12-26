@@ -22,10 +22,13 @@
         $teacherID = $_SESSION['teacher'];
         $bannedSql = "SELECT * FROM bannedteacher
                       WHERE teacherID = {$teacherID};";
+        $Access = "SELECT access FROM teacher
+                      WHERE access = 0;";
+        $AccessResult = $conn -> query($Access);
         $bResult = $conn -> query($bannedSql);
     }
     
-    if(mysqli_num_rows($bResult) !== 0 ) {
+    if(mysqli_num_rows($bResult) !== 0 && mysqli_num_rows($AccessResult) == 0) {
         header( "Location: login.php" );
     }
 

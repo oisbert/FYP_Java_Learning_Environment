@@ -7,6 +7,19 @@
     background-repeat: no-repeat;
 }
 
+.bg-image{
+    height: 100%;
+    width: 100%;
+    background-image: url('../images/loginback.jpg');
+      /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+  
+    background-size: cover;
+    background-position: fixed;
+    background-repeat: no-repeat; 
+}
+
 .banner {
     width: 50%;
     height: 80%;
@@ -16,7 +29,7 @@
     overflow: auto;
     border-radius: 5px;
     box-shadow: 20px 20px 50px 500px rgba(0, 0, 0, 0.2);
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(87, 87, 87, 0.452);
     display: grid;
     justify-content: center;
     align-items: center;

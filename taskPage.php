@@ -22,6 +22,12 @@
             document.getElementById("btn1").disabled = true;
             alert("Button has been disabled.");
         }
+    
+    function cancelRequest(taskID) {
+        if (confirm("Are you sure you want remove your task status") == true){
+        window.location.href= 'cancelRequest.php?taskID=' + taskID;
+        }
+    }
 
 </script>
 
@@ -29,7 +35,7 @@
 <body>
     <?php 
         include ("validateLoggedIn.php");
-        include ("headerTeacher.html");
+        include ("header.html");
     ?>
 
     <div class = "page-main">
@@ -49,20 +55,32 @@
                 while($row = $result->fetch_assoc())
                 {   
                     print "<div class='Tasks'>
-                                    <p class='Details text-left'><b>Title: </b>{$row['taskTitle']}</p>
-                                    <p class='Details text-left'><b>Description: </b>{$row['taskDescription']}</p>
-                                    <button type ='button' class='btn btn-success' onClick='taskCompleted({$row['taskID']})'>Complete</button>
-                                    <button type ='button' id = 'btn1' class='btn btn-warning' onClick='requestForHelp({$row['taskID']})'>Need Help</button>";
-                                    print "</div><BR>";
+                                    <p class='DetailsTitle text-left'>{$row['taskTitle']}</p>
+                                    <p class='DetailsDesc text-left'><b>Description: </b>{$row['taskDescription']}</p>";
 
                     $ButtonSQL = "select * from taskstatus where userID = {$_SESSION['user']} AND taskID = {$row['taskID']};";
                     $ButtonSQLResult = $conn -> query($ButtonSQL);
                     $ButtonSQL = $ButtonSQLResult->fetch_assoc();
+
                     if($ButtonSQL) {
-                        print "<button type ='button' class='btn btn-danger' disabled '>Complete</button>";
+                        print "<button type ='button' id = 'completebtn' class='btn btn-success' disabled '>Complete</button> ";
                     } else {
-                        print "<button type ='button' class='btn btn-success' onClick='taskCompleted({$row['taskID']})'>Complete</button>";
+                        print "<button type ='button' id = 'completebtn' class='btn btn-success' onClick='taskCompleted({$row['taskID']})'>Complete</button>";
                     }
+
+                    if($ButtonSQL) {
+                        print "<button type ='button' id = 'needHelpbtn' class='btn btn-warning' disabled '>Need Help</button> ";
+                    } else {
+                        print "<button type ='button' id = 'needHelpbtn' class='btn btn-warning' onClick='requestForHelp({$row['taskID']})'>Need Help</button>";
+                    }
+
+                    if($ButtonSQL) {
+                        print "<button type ='button' id = 'cancelbtn' class='btn btn-danger' onClick='cancelRequest({$row['taskID']})'>Cancel</button>";
+                    } else {
+                        print "<button type ='button' id = 'cancelbtn' class='btn btn-danger' disabled '>Cancel</button> ";
+                    }
+               
+                    print "</div><BR>";
                                     
             }
         }

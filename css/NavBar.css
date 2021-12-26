@@ -1,5 +1,7 @@
 body {
-    background-color: #5cdb96;
+    background-color: #e5e5f7;
+    background-image: radial-gradient(#52e05b 0.9px, #e5e5f7 0.9px);
+    background-size: 18px 18px;
 }
 
 .topnav {
@@ -24,14 +26,14 @@ body {
 
 /* Change the color of links on hover */
 .topnav a:hover {
-    background-color: rgb(231, 184, 184);
+    background-color: rgba(15, 180, 0, 0.733);
     color: black;
     border-radius: 3%;
 }
 
 /* Add a color to the active/current link */
 .topnav a.active {
-    background-color: #5ac2eb;
+    background-color: #52e05b;
     color: white;
 }
 

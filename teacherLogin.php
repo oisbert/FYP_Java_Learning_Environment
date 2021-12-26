@@ -65,7 +65,7 @@
 
         setcookie("email", $email, time()+250);
         
-        $sql = "select * from teacher where email=\"{$email}\";"; //get the companys details
+        $sql = "select * from teacher where email=\"{$email}\";"; 
         $result = $conn -> query($sql);
         $row = $result->fetch_assoc();
         $teacherID = $row["teacherID"];
@@ -77,18 +77,27 @@
         $bResult = $conn -> query($bannedSql);
         $bRow = $bResult->fetch_assoc();
 
+        $Access = "SELECT access FROM teacher
+                      WHERE access = 0;";
+        $AccessResult = $conn -> query($Access);
+        $aRow = $AccessResult->fetch_assoc();
+
         function emailMatches ($inputEmail, $DBEmail) {
             return strcasecmp($inputEmail, $DBEmail) == 0;
         }
         if(mysqli_num_rows($bResult) !== 0 ) {
             echo "<script> showLoginError('This teacher is banned.') </script>";
         }
+
+        else if(mysqli_num_rows($AccessResult) != 0){
+            echo "<script> showLoginError('This teacher is needs access contact admin.') </script>";
+        }
       
         else if(emailMatches($email, $sqlEmail) && password_verify($password, $sqlPass)) {
             $_SESSION['teacher'] = $teacherID;
             $_SESSION['teachername'] = $row['teachername'];
             $_SESSION['loggedin'] = true;
-            header( "Location: teacherHome.php" );
+            header( "Location: editChalkboardMenu.php" );
         }
         else {
             echo "<script> showLoginError('Incorrect email or password.') </script>";
