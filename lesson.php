@@ -28,6 +28,6 @@
   <div class="grid-item">9</div>  
 </div>
 
-<script src = "js/animationLesson"></script>
+<script src = "js/animationLesson.js"></script>
 </body>
 </html>

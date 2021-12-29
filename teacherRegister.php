@@ -94,7 +94,7 @@
                 $_SESSION['company'] = $teacherID;
                 $_SESSION['teachername'] = $teachername;
                 $_SESSION['loggedin'] = true;
-                header( "Location: lesson.php" );
+                header( "Location: teacherLogin.php" );
 
             } 
             else {

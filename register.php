@@ -50,7 +50,6 @@
                                 <button class="button" onClick="location.href='login.php'">Sign In</button>
                             </div>
                         </div>
-                    <a href="organizationRegister.php" style="color: white;">Are you an Organization? Click here</a>
                 </div>
             </div>
         </div>

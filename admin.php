@@ -16,12 +16,18 @@
                 };
     }
 
+    function teacherDelete(variable) {
+        if (confirm("Are you sure you want to Delete this User?") == true) {
+                window.location.href= 'removeTeacher.php?id=' + variable;
+                };
+    }
+
 </script>
 
 
 <body>
     <?php 
-        //include ("validateLoggedIn.php");
+        include ("validateLoggedIn.php");
         include ("headerTeacher.html");
     ?>
 
@@ -45,7 +51,8 @@
                     print "<div class='list-teachers'>
                                     <p class='Details text-left'><b>Name: </b>{$row['teachername']}</p>
                                     <p class='Details text-left'><b>Email: </b>{$row['email']}</p>
-                                    <button type ='button' class='btn btn-success' onClick='teacherAccess({$row['teacherID']})'>Complete</button>";
+                                    <button type ='button' class='btn btn-success' onClick='teacherAccess({$row['teacherID']})'>Allow</button>
+                                    <button type ='button' class='btn btn-danger' onClick='teacherDelete({$row['teacherID']})'>Remove</button>";
                                     print "</div><BR>";
 
                                     

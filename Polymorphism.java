@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 public class Polymorphism {
     public static void main(String[] args) {
         Square s = new Square();
@@ -13,7 +13,7 @@ public class Polymorphism {
 }
 class Square {
     public void getArea() {
-        System.out.println("24")
+        System.out.println("24");
     }
     public void getColour() {
         System.out.println("red");
@@ -27,4 +27,4 @@ class Circle extends Square {
     public void name() {
         System.out.println("circle");
     }
-}                                                                                                                                                                                                                                                                                                                                                                                          
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      

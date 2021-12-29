@@ -17,7 +17,7 @@
 
 
 <div class="grid-container">
-  <div class="grid-item" onClick="location.href='taskStatusView.php'"><div class = "title"><h1>View Tasks<h1></div></div>
+  <div class="grid-item" onClick="taskPageTeacher.php'"><div class = "title"><h1>View Tasks<h1></div></div>
   <div class="grid-item" onClick="location.href='taskPageTeacher.php'"><div class = "title"><h1>Add task<h1></div></div>
 </div>
 

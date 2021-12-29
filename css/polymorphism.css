@@ -20,12 +20,13 @@ input[type="submit"]{
   margin-right: 25%;
   display: inline-block;
   font-family: sans-serif;
+  color: #fff;
   float:right;
 }
 
 .excutionOutput{
-  background-color: white;
-  border-style: ridge;
+  background-color: #323232;
+ 
   margin-top: 40%;
   margin-right:10%;
 }
