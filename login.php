@@ -49,6 +49,14 @@
 </html>
 
 <?php
+    function num2alpha($n) {
+        $r = '';
+        for ($i = 1; $n >= 0 && $i < 10; $i++) {
+        $r = chr(0x41 + ($n % pow(26, $i) / pow(26, $i - 1))) . $r;
+        $n -= pow(26, $i);
+        }
+        return $r;
+    }
 
     if(isset($_POST['submit'])) {
 
@@ -98,6 +106,13 @@
             $_SESSION['user'] = $userID;
             $_SESSION['username'] = $row['username'];
             $_SESSION['loggedin'] = true;
+            $userIDtoLetters = num2alpha($userID);
+            $userPoly = fopen("{$userIDtoLetters}Polymorphism.java", "w+");
+            $current = file_get_contents("Polymorphism.java", "w");
+            $userPolyEdit = fopen("{$userIDtoLetters}Polymorphism.java", "w");
+            fwrite($userPolyEdit, $current);
+            fclose($userPolyEdit);
+            $classPoly = fopen("{$userIDtoLetters}Polymorphism.class", "w");
             header( "Location: lesson.php" );
         }
         else {

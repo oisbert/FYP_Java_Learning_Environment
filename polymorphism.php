@@ -12,23 +12,35 @@
    <body>
       <?php
       include ("header.html");
+      include ("validateLoggedIn.php");
+      include ("serverConfig.php");
+      $_SESSION['user'] = $userID;
+      function num2alpha($n) {
+         $r = '';
+         for ($i = 1; $n >= 0 && $i < 10; $i++) {
+         $r = chr(0x41 + ($n % pow(26, $i) / pow(26, $i - 1))) . $r;
+         $n -= pow(26, $i);
+         }
+         return $r;
+     }
+
+     $userIDtoLetters = num2alpha($userID);
       ?>
       <br>
       <div class = "excution" >
          <div class = excutionOutput >
             <?php
-               if (file_exists("Polymorphism.java")){
-                   $file = "Polymorphism.java";
+               if (file_exists("{$userIDtoLetters}Polymorphism.java")){
+                   $file = "{$userIDtoLetters}Polymorphism.java";
                    $current = file_get_contents($file);
-                   echo shell_exec("javac Polymorphism.java && java Polymorphism");
-                   echo shell_exec("javac Polymorphism.java > log.txt 2>&1");
+                   echo shell_exec("javac {$userIDtoLetters}Polymorphism.java && java {$userIDtoLetters}Polymorphism");
+                   echo shell_exec("javac {$userIDtoLetters}Polymorphism.java > log.txt 2>&1");
                    echo nl2br(file_get_contents( "log.txt" ));
                } 
                ?>
          </div>
       </div>
       <?php 
-         include ("validateLoggedIn.php");
          function getLessonData($uID) {
             include ("serverConfig.php");
             $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);

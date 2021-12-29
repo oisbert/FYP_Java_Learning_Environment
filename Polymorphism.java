@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                    
 public class Polymorphism {
     public static void main(String[] args) {
         Square s = new Square();
@@ -27,4 +27,4 @@ class Circle extends Square {
     public void name() {
         System.out.println("circle");
     }
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+}                                                                                           
