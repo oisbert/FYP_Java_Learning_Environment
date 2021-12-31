@@ -9,7 +9,11 @@
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
 </head>
 <body>
-
+<script type="text/javascript">
+    function GeneratePolyFiles() {
+            window.location.href= 'generatorPoly.php';
+        }
+</script>
     <?php 
     include ("validateLoggedIn.php");
     include ("header.html");
@@ -18,7 +22,7 @@
 
 <div class="grid-container">
   <div class="grid-item"><div class = "title"><h1>Objects/classes<h1></div></div>
-  <div class="grid-item" onClick="location.href='polymorphism.php'"><div class = "title"><h1>Polymorphism<h1></div></div>
+  <div class="grid-item" onClick="GeneratePolyFiles()"><div class = "title"><h1>Polymorphism<h1></div></div>
   <div class="grid-item">3</div>  
   <div class="grid-item">4</div>
   <div class="grid-item">5</div>
