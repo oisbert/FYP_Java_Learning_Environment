@@ -6,17 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/forumHome.css?v=<?php echo time(); ?>">
-    <title>Tasks Teacher</title>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+    <title>Forum</title>
+
 </head>
 
 <script>
-    function deleteVacancy(variable) {
-            if (confirm("Are you sure you want to delete this Task?") == true) {
-            window.location.href= 'deleteTask.php?id=' + variable;
-            };
-        }
 
-        function showSkills(modalNumber) {
+        function showComments(modalNumber) {
             var modal = document.getElementById("myModal" + modalNumber);
             modal.style.display = "block";
             
@@ -30,6 +27,10 @@
                     modal.style.display = "none";
                 }
             }
+        }
+
+        function addReply(PostID) {
+            window.location.href= 'addReply.php?PostID=' + PostID;
         }
 
 </script>
@@ -67,7 +68,7 @@
                                  ON a.PostID = b.PostID
                                  WHERE a.PostID = {$row['PostID']}";
 
-                    print "{$row['PostID']}";
+                    $valuePass =  "{$row['PostID']}";
 
                     
                     $replyResult = $conn -> query($replySql);
@@ -75,7 +76,6 @@
                     while($replyRow = $replyResult ->fetch_assoc()){
                         
                         if("{$row['PostID']}" == "{$replyRow['PostID']}"){
-                        print "true";
                         $reply = array('Desc' => $replyRow['description'], 'PostID' => $replyRow['PostID']);
                         $replyNeeded[] = $reply;
                    
@@ -88,11 +88,12 @@
                     
                     }
                     
-                    print "<div class='Tasks'>
+                    print "<div class='Posts'>
                                     <p class='Details text-left'><b>Title: </b>{$row['Title']}</p>
-                                    <p class='Details text-left'><b>description: </b>{$row['description']}</p>
-                                    <button class='showskills' onClick='showSkills({$counter})'>Show comments</button>";            
-                                    print "</div><BR>";
+                                    <p class='Details text-left'><b></b>{$row['description']}</p>
+                                    <button id = 'animatebutton' class='showcomments' onClick='showComments({$counter})'>Show comments</button> 
+                                    <button id = 'animatebutton' class= 'addreplybtn' type='button' onClick='addReply({$valuePass})'>add reply</button>";          
+                                    print "</div>";
                                   
                                     
                     print "<div id='myModal{$counter}' class='modal'>
@@ -117,8 +118,8 @@
                                                             $replyNeeded = [];
                                                         }
                                                         else echo "<tr><td colspan='3'>No Comments for this post</td></tr>";
-                                                        print "</table>
-                                                        <div class = test> <button type='button'>add reply</button> </div>
+                                                        print "</table> 
+                                                        
                                                         </div></div>";
                                                         $counter++;
                                                         
@@ -127,5 +128,8 @@
         ?>
         <div class="AddNewTask" onClick="location.href='addPost.php'"><h1>Add Post<h1></div>
     </div>
+
+    <script src="js/animationForum.js" type="text/javascript"></script>
+    <script src="js/animationButtonForum.js" type="text/javascript"></script>
 </body>
 </html>
