@@ -18,7 +18,7 @@
          ?>
       <div class ="Addtask-text">
       <form method="post" >  
-      <textarea name="description" type="text" rows="10" cols="10">
+      <textarea name="description" type="text" rows="10" cols="30">
       </textarea>
          <input type="submit" name="submit" value="Submit">  
       </form>
@@ -27,14 +27,17 @@
    </body>
    <?php
          if (isset($_POST["submit"])) {
+
             $PostID = $_GET["PostID"];
+            $userID = $_SESSION['user'];
+            $username = $_SESSION['username'];
             $description = $_POST["description"];
 
-            $sql = "INSERT INTO reply (PostID, description)
-                    VALUES ('{$PostID}', '{$description}')";
+            $sql = "INSERT INTO reply (PostID, userID, description, replyby)
+                    VALUES ('{$PostID}', {$userID}, '{$description}', '{$username}')";
             
             if ($conn->query($sql) === TRUE) {
-               echo "reply posts!!";
+               echo "you have replied to the post!!";
             } else {
                echo "Error posting reply: " . $conn->error;
             }

@@ -67,21 +67,17 @@
             <input type="submit" value="Compile">
          </form>
       </div>
-
+      <div class = "border-animation">
       <div class = 'button-wrapper'>
-         <div class="buttons-holder">
-            <a href="#" class="button play"  role="button">Play</a>
-            <a href="#" class="button pause" role="button">Pause</a>
-            <a href="#" class="button restart" role="button">Restart</a>
-         </div>
-         <!--/.buttons-holder -->
+         <button class="button-play">Play</button>
+         <button class="button-pause">Pause</button>
       </div>
       <div id = "square"></div>
-      <script src="js/polymorphism.js"></script>
+      </div>
       <br>
       <div class = "lesson-heading">
       <h1>
-      What is happening in the this Code
+      What is happening in the Code
       <h1>
       </div>
       <div class = "example-poly">
@@ -209,6 +205,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
       <script src="js/syntax.js" type="text/javascript"></script>
       <script src="js/mode-java" type="text/javascript"></script>
+      <script src="js/animatePolyLesson" type="text/javascript"></script>
    </body>
 </html>
 

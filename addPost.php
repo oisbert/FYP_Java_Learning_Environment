@@ -26,7 +26,7 @@
                     <textarea id='description' name='description' class='description-textarea' rows= 20 cols=70 required></textarea><br>
                     <br>
                     <br>
-                    <input class="button" type="submit" name="submit" value="Submit Task"/>
+                    <input class="button" type="submit" name="submit" value="Submit Post"/>
                 </form>
             </div>
         </div>

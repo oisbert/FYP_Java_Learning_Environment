@@ -124,13 +124,25 @@ input[type="submit"]{
   margin-left: 20%;
 }
 
-
+.border-animation{
+  margin-top: 5%;
+  margin-left: 30%;
+  margin-right: 30%;
+  background-color: rgb(161, 161, 161);
+  border-style: solid;
+  border-color: black;
+}
 
 #square {
   height: 100px;
   width:100px;
-  background-color: rgb(133, 5, 5);
+  background-color: rgb(5, 133, 26);
 }
 
+#square2 {
+  height: 100px;
+  width:100px;
+  background-color: rgb(5, 133, 26);
+}
 
 
