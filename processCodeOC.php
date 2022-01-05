@@ -6,7 +6,7 @@
     $userIDtoLetters = num2alpha($userID);
 
     $comment = $_POST["comment-editor"];
-    $file = "{$userIDtoLetters}Polymorphism.java";
+    $file = "{$userIDtoLetters}Dog.java";
     file_put_contents($file,$comment);
-    header('Location: polymorphism.php');
+    header('Location: objectAndclasses.php');
 ?>

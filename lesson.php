@@ -13,6 +13,9 @@
     function GeneratePolyFiles() {
             window.location.href= 'generatorPoly.php';
         }
+    function GenerateOCFiles() {
+            window.location.href= 'generatorOC.php';
+        }
 </script>
     <?php 
     include ("validateLoggedIn.php");
@@ -21,7 +24,7 @@
 
 
 <div class="grid-container">
-  <div class="grid-item"><div class = "title"><h1>Objects/classes<h1></div></div>
+  <div class="grid-item" onClick="GenerateOCFiles()"><div class = "title"><h1>Object/Classes<h1></div></div>
   <div class="grid-item" onClick="GeneratePolyFiles()"><div class = "title"><h1>Polymorphism<h1></div></div>
   <div class="grid-item">3</div>  
   <div class="grid-item">4</div>
