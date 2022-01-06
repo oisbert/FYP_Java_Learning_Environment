@@ -8,39 +8,38 @@
       </link>
       <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
    </head>
-   <link rel="stylesheet" type="text/css" href="css/polymorphism.css?v=<?php echo time(); ?>">
+   <link rel="stylesheet" type="text/css" href="css/excercisePage.css?v=<?php echo time(); ?>">
    <body>
       <?php
       include ("header.html");
       include ("validateLoggedIn.php");
       include ("serverConfig.php");
       include ("IDtoLetter.php");
-      include ("randomFileGenerator.php");
+      include ("unlinkFile.php");
       $_SESSION['user'] = $userID;
-   
+      
+      $filename_without_ext=$_SESSION['varname'];
       $userIDtoLetters = num2alpha($userID);
-      $randomFile = randomFileGenerator();
-      $userPoly = fopen("{$userIDtoLetters}Random.java", "w+");
-      $current = file_get_contents("{$randomFile}", "w");
-      $userPolyEdit = fopen("{$userIDtoLetters}Random.java", "w");
-      fwrite($userPolyEdit, $current);
-      $holder = file_get_contents("{$userIDtoLetters}Random.java");
-      $filename_without_ext = basename($randomFile, '.java');
-      $fileNameFixed = strstr($filename_without_ext, '_', true);
-      echo $filename_without_ext;
-      $replace = str_replace("{$fileNameFixed}", "{$userIDtoLetters}Random",$holder);
-      file_put_contents("{$userIDtoLetters}Random.java", $replace);
-      fclose($userPolyEdit);
-      $classPoly = fopen("{$userIDtoLetters}Random.class", "w");
+
+      foreach( glob('excerciseAnswers' . '/*.*') as $fileAnswer){
+         if($fileAnswer == "excerciseAnswers/{$filename_without_ext}Answer.java"){
+         echo $fileAnswer;
+         
+         }
+     }
+     $getAnswerContents = file_get_contents("{$fileAnswer}", "w");
+     echo $getAnswerContents;
+
       ?>
       <br>
       <div class = "excution" >
          <div class = excutionOutput >
+
             <?php
                if (file_exists("{$userIDtoLetters}Random.java")){
                    $file = "{$userIDtoLetters}Random.java";
                    $current = file_get_contents($file);
-                   echo shell_exec("javac {$userIDtoLetters}Random.java && java {$userIDtoLetters}Random");
+                   echo shell_exec("javac $file && java {$userIDtoLetters}Random");
                    echo shell_exec("javac {$userIDtoLetters}Random.java > log.txt 2>&1");
                    echo nl2br(file_get_contents( "log.txt" ));
                } 
@@ -75,6 +74,50 @@
          </form>
       </div>
 
+      <?php
+         $getAnswerContents = file_get_contents("{$fileAnswer}", "w");
+         $lines = explode("\n", $getAnswerContents);
+         $skipped_contentAnswer = implode("\n", array_slice($lines, 2));
+         $skipped_contentAnswer = preg_replace('/\s+/', '',   $skipped_contentAnswer);
+
+         $getUserContents = file_get_contents("{$userIDtoLetters}Random.java", "w");
+         $lines = explode("\n", $getUserContents);
+         $skipped_contentUser = implode("\n", array_slice($lines, 3));
+         $skipped_contentUser = preg_replace('/\s+/', '',  $skipped_contentUser);
+
+         echo $skipped_contentUser;
+         echo $skipped_contentAnswer;
+         similar_text("{$skipped_contentAnswer}","{$skipped_contentUser}",$percent);  
+         echo $percent;
+
+         if($percent > 90){
+            //fopen("Random.java", "w+");
+            //fopen("Random.class", "w");
+            $RandomDelete = "Random.java";
+            $RandomClassDelete = "Random.class";
+            print "<H1>Looks like your close to the answer your file was %'{$percent}' accurate to the answer</H1>";
+            print "<H1>Sit tight and we will check your output</H1>";
+
+            file_put_contents("Random.java", $getAnswerContents);
+
+            $answer = shell_exec("javac $file && java {$userIDtoLetters}Random");
+            shell_exec("javac {$userIDtoLetters}Random.java > log2.txt 2>&1");
+            $log1 = nl2br(file_get_contents( "log.txt" ));
+
+            $answer2 = shell_exec("javac Random.java && java Random");
+            shell_exec("javac Random.java > log2.txt 2>&1");
+            $log2 = nl2br(file_get_contents( "log2.txt" ));
+
+            if($answer == $answer2){
+               print "<H1>Your answer was correct</H1>";
+               unlinkFiles($RandomDelete, $RandomClassDelete);
+            }
+            
+         }
+         else{
+            print "<H1>Your answer was wrong</H1>";
+         }
+      ?>
       
   
       <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>

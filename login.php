@@ -53,7 +53,8 @@
     if(isset($_POST['submit'])) {
 
         include ("serverConfig.php");
-        
+        include ("randomFileGenerator.php");
+        include ("IDtoLetter.php");
         $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
         if ($conn -> connect_error) {
             die("Connection failed:" .$conn -> connect_error);
@@ -98,6 +99,23 @@
             $_SESSION['user'] = $userID;
             $_SESSION['username'] = $row['username'];
             $_SESSION['loggedin'] = true;
+
+          
+            $userIDtoLetters = num2alpha($userID);
+            $randomFile = randomFileGenerator();
+            $userPoly = fopen("{$userIDtoLetters}Random.java", "w+");
+            $current = file_get_contents("{$randomFile}", "w");
+            $userPolyEdit = fopen("{$userIDtoLetters}Random.java", "w");
+            fwrite($userPolyEdit, $current);
+            $holder = file_get_contents("{$userIDtoLetters}Random.java");
+            $filename_without_ext = basename($randomFile, '.java');
+            $fileNameFixed = strstr($filename_without_ext, '_', true);
+            echo $filename_without_ext;
+            $_SESSION['varname'] = $filename_without_ext;
+            $replace = str_replace("{$fileNameFixed}", "{$userIDtoLetters}Random",$holder);
+            file_put_contents("{$userIDtoLetters}Random.java", $replace);
+            fclose($userPolyEdit);
+            $classPoly = fopen("{$userIDtoLetters}Random.class", "w");
             header( "Location: lesson.php" );
         }
         else {
@@ -108,3 +126,8 @@
     }
 
 ?>
+
+    <form method="post" action="exercisePage.php">
+            <input type="hidden" name="varname" value="<?php echo $filename_without_ext; ?>">
+            <input type="submit">
+        </form>
