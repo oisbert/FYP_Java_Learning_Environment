@@ -23,12 +23,11 @@
 
       foreach( glob('excerciseAnswers' . '/*.*') as $fileAnswer){
          if($fileAnswer == "excerciseAnswers/{$filename_without_ext}Answer.java"){
-         echo $fileAnswer;
+        
          
          }
      }
      $getAnswerContents = file_get_contents("{$fileAnswer}", "w");
-     echo $getAnswerContents;
 
       ?>
       <br>
@@ -85,18 +84,15 @@
          $skipped_contentUser = implode("\n", array_slice($lines, 3));
          $skipped_contentUser = preg_replace('/\s+/', '',  $skipped_contentUser);
 
-         echo $skipped_contentUser;
-         echo $skipped_contentAnswer;
          similar_text("{$skipped_contentAnswer}","{$skipped_contentUser}",$percent);  
-         echo $percent;
 
          if($percent > 90){
             //fopen("Random.java", "w+");
             //fopen("Random.class", "w");
             $RandomDelete = "Random.java";
             $RandomClassDelete = "Random.class";
-            print "<H1>Looks like your close to the answer your file was %'{$percent}' accurate to the answer</H1>";
-            print "<H1>Sit tight and we will check your output</H1>";
+            print "<H3 id = 'animation-info1' class = 'Answer-info'>Looks like your close to the answer your file was %'{$percent}' accurate to the answer ✔️</H3>";
+            print "<H3 id = 'animation-info2'class = 'Answer-info'>Sit tight and we will check your output 😄</H3>";
 
             file_put_contents("Random.java", $getAnswerContents);
 
@@ -109,13 +105,17 @@
             $log2 = nl2br(file_get_contents( "log2.txt" ));
 
             if($answer == $answer2){
-               print "<H1>Your answer was correct</H1>";
+               print "<H3 id = 'animation-info3' class = 'Answer-info'>Your answer was correct ✔️</H3>";
+               print "<button id = 'animation-info6' class = 'submitpoints'>Get Points</button>";
                unlinkFiles($RandomDelete, $RandomClassDelete);
+            }
+            if($answer != $answer2){
+               print "<H3 id = 'animation-info4' class = 'Answer-info'>Output is not the same as Answer try again ❌</H3>";
             }
             
          }
          else{
-            print "<H1>Your answer was wrong</H1>";
+            print "<H1 id = 'animation-info5' class = 'Answer-info'>Your answer was wrong ❌</H1>";
          }
       ?>
       
