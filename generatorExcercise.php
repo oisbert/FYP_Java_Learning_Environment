@@ -26,10 +26,6 @@
     $getAnswerContents = file_get_contents("{$fileAnswer}", "w");
     echo $getAnswerContents;
 
-
-    if ($getAnswerContents == $fileAnswer){
-        echo true;
-    }
     $replace = str_replace("{$fileNameFixed}", "{$userIDtoLetters}Random",$holder);
     file_put_contents("{$userIDtoLetters}Random.java", $replace);
     fclose($userPolyEdit);

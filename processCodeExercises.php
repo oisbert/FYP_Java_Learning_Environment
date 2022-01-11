@@ -18,8 +18,10 @@
          
          }
      }
-     fopen("Random.java", "w+");
+    fopen("Random.java", "w+");
     $getAnswerContents = file_get_contents("{$fileAnswer}", "w");
     file_put_contents("Random.java", $getAnswerContents);
+
+    
     header('Location: exercisePage.php');
 ?>

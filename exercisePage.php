@@ -10,6 +10,48 @@
    </head>
    <link rel="stylesheet" type="text/css" href="css/excercisePage.css?v=<?php echo time(); ?>">
    <body>
+<script type="text/javascript">
+    function setCookie(name, value){
+   document.cookie = name + value + ';';
+   }
+
+   function checkIfClicked(){
+   // Split by `;`
+   var cookie = document.cookie.split(";");
+
+  // iterate over cookie array
+  for(var i  = 0; i < cookie.length; i++){
+    var c = cookie[i];
+    // if it contains string "click"
+    if(/click/.test(c))
+       return true;
+  }
+  // cookie does not exist
+  return false;
+   }
+
+// Set clicked to either the existing cookie or false
+   var clicked = checkIfClicked();
+
+// Check if it was clicked before
+   alert(clicked);
+
+   // Get the button
+   var button = document.getElementsByTagName("animation-info6")[0];
+
+   // If it had been clicked, diable button
+   if (clicked) button.disabled = true;
+
+   // Add event listener 
+   // When button clicked, set `click` cookie to true 
+   // and disable button
+   button.addEventListener("click", function(){
+   setCookie("click", "true");
+   button.disabled = true;
+
+   }, false);
+</script>
+
       <?php
       include ("header.html");
       include ("validateLoggedIn.php");
@@ -19,15 +61,16 @@
       $_SESSION['user'] = $userID;
       
       $filename_without_ext=$_SESSION['varname'];
+      
       $userIDtoLetters = num2alpha($userID);
 
       foreach( glob('excerciseAnswers' . '/*.*') as $fileAnswer){
          if($fileAnswer == "excerciseAnswers/{$filename_without_ext}Answer.java"){
         
-         
+            $getAnswerContents = file_get_contents("{$fileAnswer}", "w");
          }
      }
-     $getAnswerContents = file_get_contents("{$fileAnswer}", "w");
+     
 
       ?>
       <br>
@@ -74,7 +117,7 @@
       </div>
 
       <?php
-         $getAnswerContents = file_get_contents("{$fileAnswer}", "w");
+         //$getAnswerContents = file_get_contents("{$fileAnswer}", "w");
          $lines = explode("\n", $getAnswerContents);
          $skipped_contentAnswer = implode("\n", array_slice($lines, 2));
          $skipped_contentAnswer = preg_replace('/\s+/', '',   $skipped_contentAnswer);
@@ -84,7 +127,7 @@
          $skipped_contentUser = implode("\n", array_slice($lines, 3));
          $skipped_contentUser = preg_replace('/\s+/', '',  $skipped_contentUser);
 
-         similar_text("{$skipped_contentAnswer}","{$skipped_contentUser}",$percent);  
+         similar_text("{$skipped_contentAnswer}","{$skipped_contentUser}",$percent);
 
          if($percent > 90){
             //fopen("Random.java", "w+");
@@ -96,7 +139,7 @@
 
             file_put_contents("Random.java", $getAnswerContents);
 
-            $answer = shell_exec("javac $file && java {$userIDtoLetters}Random");
+            $answer = shell_exec("javac {$userIDtoLetters}Random.java && java {$userIDtoLetters}Random");
             shell_exec("javac {$userIDtoLetters}Random.java > log2.txt 2>&1");
             $log1 = nl2br(file_get_contents( "log.txt" ));
 
@@ -106,11 +149,13 @@
 
             if($answer == $answer2){
                print "<H3 id = 'animation-info3' class = 'Answer-info'>Your answer was correct ✔️</H3>";
-               print "<button id = 'animation-info6' class = 'submitpoints'>Get Points</button>";
+
+               print "<button id = 'animation-info6' class = 'submitpoints' onClick= 'AddPoints(this)'>Get Points</button>";
                unlinkFiles($RandomDelete, $RandomClassDelete);
             }
-            if($answer != $answer2){
+            else if($answer != $answer2){
                print "<H3 id = 'animation-info4' class = 'Answer-info'>Output is not the same as Answer try again ❌</H3>";
+               
             }
             
          }

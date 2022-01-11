@@ -17,9 +17,6 @@
             window.location.href= 'generatorOC.php';
         }
 
-    function GenerateRandomFile() {
-            window.location.href= 'generatorExcercise.php';
-        }
 </script>
     <?php 
     include ("validateLoggedIn.php");
