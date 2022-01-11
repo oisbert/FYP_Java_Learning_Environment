@@ -10,46 +10,13 @@
    </head>
    <link rel="stylesheet" type="text/css" href="css/excercisePage.css?v=<?php echo time(); ?>">
    <body>
-<script type="text/javascript">
-    function setCookie(name, value){
-   document.cookie = name + value + ';';
-   }
 
-   function checkIfClicked(){
-   // Split by `;`
-   var cookie = document.cookie.split(";");
+<script>
 
-  // iterate over cookie array
-  for(var i  = 0; i < cookie.length; i++){
-    var c = cookie[i];
-    // if it contains string "click"
-    if(/click/.test(c))
-       return true;
-  }
-  // cookie does not exist
-  return false;
-   }
+   function AddPoints() {
+            window.location.href= 'addpoints.php';
+        }
 
-// Set clicked to either the existing cookie or false
-   var clicked = checkIfClicked();
-
-// Check if it was clicked before
-   alert(clicked);
-
-   // Get the button
-   var button = document.getElementsByTagName("animation-info6")[0];
-
-   // If it had been clicked, diable button
-   if (clicked) button.disabled = true;
-
-   // Add event listener 
-   // When button clicked, set `click` cookie to true 
-   // and disable button
-   button.addEventListener("click", function(){
-   setCookie("click", "true");
-   button.disabled = true;
-
-   }, false);
 </script>
 
       <?php
@@ -88,23 +55,6 @@
                ?>
          </div>
       </div>
-      <?php 
-         function getLessonData($uID) {
-            include ("serverConfig.php");
-            $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-            if ($conn -> connect_error) {
-                die("Connection failed:" .$conn -> connect_error);
-            }
-         
-            $sql = "select * from lessons where lessonID =\"{$uID}%\";";
-            $result = $conn -> query($sql);
-            $conn->close();
-         
-            return $result->fetch_assoc();
-         }
-         ?>
-         <br>
-         <br>
       <div class = "compiler">
          <form action="processCodeExercises.php" method="post" >
             <textarea data-editor = "java" rows="20" cols="55" name="comment-editor"  data-gutter="1" >
@@ -115,6 +65,7 @@
             <input type="submit" value="Compile">
          </form>
       </div>
+
 
       <?php
          //$getAnswerContents = file_get_contents("{$fileAnswer}", "w");
@@ -150,7 +101,15 @@
             if($answer == $answer2){
                print "<H3 id = 'animation-info3' class = 'Answer-info'>Your answer was correct ✔️</H3>";
 
-               print "<button id = 'animation-info6' class = 'submitpoints' onClick= 'AddPoints(this)'>Get Points</button>";
+               $ButtonSQL = "SELECT pointtracker FROM users WHERE userID = {$userID} AND pointtracker = 0;";
+                    $ButtonSQLResult = $conn -> query($ButtonSQL);
+                    $ButtonSQL = $ButtonSQLResult->fetch_assoc();
+
+               if($ButtonSQL) {
+                  print "<button type ='button' id = 'animation-info6' class='submitpoints' disabled '>Already submitted points</button> ";
+               } else {
+                  print "<button type ='button' id = 'animation-info6' class='submitpoints' onClick='AddPoints()'>Complete</button>";
+               }
                unlinkFiles($RandomDelete, $RandomClassDelete);
             }
             else if($answer != $answer2){

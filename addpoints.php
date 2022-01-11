@@ -29,6 +29,14 @@
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
 
+            $sqlPoints = "UPDATE users SET pointtracker = 0";
+
+            if ($conn->query($sqlPoints) === TRUE) {
+                echo "New record created successfully";
+              } else {
+                echo "Error: " . $sqlPoints . "<br>" . $conn->error;
+              }
+
             header( "Location: exercisePage.php" );
             $conn->close();
         ?>

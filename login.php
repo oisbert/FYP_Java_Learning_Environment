@@ -100,7 +100,14 @@
             $_SESSION['username'] = $row['username'];
             $_SESSION['loggedin'] = true;
 
-          
+            $sqlPoints = "UPDATE users SET pointtracker = 1";
+
+            if ($conn->query($sqlPoints) === TRUE) {
+                echo "New record created successfully";
+              } else {
+                echo "Error: " . $sqlPoints . "<br>" . $conn->error;
+              }
+
             $userIDtoLetters = num2alpha($userID);
             $randomFile = randomFileGenerator();
             $userPoly = fopen("{$userIDtoLetters}Random.java", "w+");
