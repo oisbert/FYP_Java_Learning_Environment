@@ -108,7 +108,7 @@
                if($ButtonSQL) {
                   print "<button type ='button' id = 'animation-info6' class='submitpoints' disabled '>Already submitted points</button> ";
                } else {
-                  print "<button type ='button' id = 'animation-info6' class='submitpoints' onClick='AddPoints()'>Complete</button>";
+                  print "<button type ='button' id = 'animation-info6' class='submitpoints' onClick='AddPoints()'>Collect Points</button>";
                }
                unlinkFiles($RandomDelete, $RandomClassDelete);
             }

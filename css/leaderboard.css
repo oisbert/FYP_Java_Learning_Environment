@@ -1,0 +1,37 @@
+body {
+    background-color: #5cdb96;
+}
+
+
+.leaderboard{
+    background: linear-gradient(to right, #43c6ac, #f8ffae);
+    margin-left: 1%;
+    margin-right: 40%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 30px;
+}
+
+ol li {
+    list-style: none;
+   }
+
+li big {
+    margin-left: 50px;
+    font-weight: bold;
+} 
+
+
+
+li medium{
+    float : right;
+    margin-right: 30px;
+    font-weight: bold;
+    font-size: x-large;
+} 
+
+
+
+.title h1{
+    margin-left: 30%;
+}

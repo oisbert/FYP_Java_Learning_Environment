@@ -88,7 +88,7 @@
                 $_SESSION['user'] = $userID;
                 $_SESSION['username'] = $username;
                 $_SESSION['loggedin'] = true;
-                header( "Location: lesson.php" );
+                header( "Location: login.php" );
 
             } 
             else {
