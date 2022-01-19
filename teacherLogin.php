@@ -78,7 +78,7 @@
         $bRow = $bResult->fetch_assoc();
 
         $Access = "SELECT access FROM teacher
-                      WHERE access = 0;";
+                      WHERE access = 0 AND $teacherID = teacherID;";
         $AccessResult = $conn -> query($Access);
         $aRow = $AccessResult->fetch_assoc();
 
