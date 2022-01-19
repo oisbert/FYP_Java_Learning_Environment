@@ -77,6 +77,34 @@ input[type="submit"]{
 	transition: all 0.5s;
 }
 
+.border-animation .Classexample h1{
+  margin-left: 20%;
+}
+
+.border-animation .Classexample img{
+    width: 200px;
+    height: 100px;
+    margin-left: 20%;
+    margin-bottom: 20px;
+}
+
+.border-animation .arrow img{
+  width: 100px;
+  height: 200px;
+  margin-left: 35%;
+}
+
+.border-animation .brand h1{
+
+  margin-left: 20%;
+}
+
+.border-animation .brand img{
+  width: 250px;
+  height: 200px;
+  margin-left: 20%;
+}
+
 #section-1-code {
   border: 1px solid black;
   margin-bottom: 5px;
@@ -133,14 +161,3 @@ input[type="submit"]{
   border-color: black;
 }
 
-#square {
-  height: 100px;
-  width:100px;
-  background-color: rgb(5, 133, 26);
-}
-
-#square2 {
-  height: 100px;
-  width:100px;
-  background-color: rgb(5, 133, 26);
-}

@@ -6,7 +6,7 @@
     $userIDtoLetters = num2alpha($userID);
 
     $comment = $_POST["comment-editor"];
-    $file = "{$userIDtoLetters}Dog.java";
+    $file = "{$userIDtoLetters}Car.java";
     file_put_contents($file,$comment);
     header('Location: objectAndclasses.php');
 ?>

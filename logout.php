@@ -17,8 +17,8 @@
     $PolyDelete = "{$userIDtoLetters}Polymorphism.java";
     $PolyClassDelete = "{$userIDtoLetters}Polymorphism.class";
 
-    $OCDelete = "{$userIDtoLetters}Dog.java";
-    $OCClassDelete = "{$userIDtoLetters}Dog.class";
+    $OCDelete = "{$userIDtoLetters}Car.java";
+    $OCClassDelete = "{$userIDtoLetters}Car.class";
 
     $RandomDelete = "{$userIDtoLetters}Random.java";
     $RandomClassDelete = "{$userIDtoLetters}Random.class";

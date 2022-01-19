@@ -11,16 +11,16 @@
             }
 
             $userIDtoLetters = num2alpha($userID);
-            $userPoly = fopen("{$userIDtoLetters}Dog.java", "w+");
-            $current = file_get_contents("Dog.java", "w");
-            $userPolyEdit = fopen("{$userIDtoLetters}Dog.java", "w");
+            $userPoly = fopen("{$userIDtoLetters}Car.java", "w+");
+            $current = file_get_contents("Car.java", "w");
+            $userPolyEdit = fopen("{$userIDtoLetters}Car.java", "w");
             fwrite($userPolyEdit, $current);
 
-            $holder = file_get_contents("{$userIDtoLetters}Dog.java");
-            $replace = str_replace("Dog", "{$userIDtoLetters}Dog",$holder);
-            file_put_contents("{$userIDtoLetters}Dog.java", $replace);
+            $holder = file_get_contents("{$userIDtoLetters}Car.java");
+            $replace = str_replace("Car", "{$userIDtoLetters}Car",$holder);
+            file_put_contents("{$userIDtoLetters}Car.java", $replace);
             fclose($userPolyEdit);
-            $classPoly = fopen("{$userIDtoLetters}Dog.class", "w");
+            $classPoly = fopen("{$userIDtoLetters}Car.class", "w");
             $conn->close();
             header( "Location: objectAndclasses.php" );
         ?>

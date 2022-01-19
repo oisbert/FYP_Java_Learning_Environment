@@ -12,7 +12,7 @@
 
     <?php 
     include ("validateLoggedIn.php");
-    include ("header.html");
+    include ("headerteacher.html");
     ?>
 
 

@@ -6,6 +6,7 @@ body {
 
 .topnav {
     background: rgba(80, 68, 68, 0.2);
+    
     overflow: hidden;
     border-radius: 5px;
 }
@@ -31,11 +32,7 @@ body {
     border-radius: 3%;
 }
 
-/* Add a color to the active/current link */
-.topnav a.active {
-    background-color: #52e05b;
-    color: white;
-}
+
 
 .topnav .icon {
     display: none;

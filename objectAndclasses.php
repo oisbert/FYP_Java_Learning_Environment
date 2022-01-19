@@ -23,11 +23,11 @@
       <div class = "excution" >
          <div class = excutionOutput >
             <?php
-               if (file_exists("{$userIDtoLetters}Dog.java")){
-                   $file = "{$userIDtoLetters}Dog.java";
+               if (file_exists("{$userIDtoLetters}Car.java")){
+                   $file = "{$userIDtoLetters}Car.java";
                    $current = file_get_contents($file);
-                   echo shell_exec("javac {$userIDtoLetters}Dog.java && java {$userIDtoLetters}Dog");
-                   echo shell_exec("javac {$userIDtoLetters}Dog.java > log.txt 2>&1");
+                   echo shell_exec("javac {$userIDtoLetters}Car.java && java {$userIDtoLetters}Car");
+                   echo shell_exec("javac {$userIDtoLetters}Car.java > log.txt 2>&1");
                    echo nl2br(file_get_contents( "log.txt" ));
                } 
                ?>
@@ -65,7 +65,18 @@
          <button class="button-play">Play</button>
          <button class="button-pause">Pause</button>
       </div>
-      <div id = "square"></div>
+      <div class = "Classexample">
+      <h1>Class: Car</h1>
+      <img src="images/car.png" alt="car">
+      </div>
+      <div class = "arrow">
+      <img src="images/arrowdown.png" alt="car">
+      </div>
+      <div class = "brand">
+      <h1>Object: Audi</h1>
+      <img src="images/Audi.png" alt="car">
+      </div>
+    
       </div>
       <br>
       <div class = "lesson-heading">
@@ -75,105 +86,70 @@
       </div>
       <div class = "example-poly">
          <div class = "section-1">
-            <p>We will break down what in happening in the code above and explain the concept of polymorphism We will talk about what is regarded as two of the 4 pillars in OOP "INHERITANCE and POLYMORPHISM.<br>
-               In the animation above we see a square transition into a circle, Lets explain what this is in programming terms.<br>
-               We have a moving square that has shapeshifted into a circle. We can think of both of these shapes as a class.<br><br> 
-               For example circle and square are instances of the classes: class square{} and class circle{}.<br>
-               Here is a snippet of the square class:
+            <p>During this sections we will be discussing classes and object. 
+               Before we jump into these topics however we will look at an important sub-topic “constructors”.
+               Every class has a constructor. If we do not explicitly state the constructor the java compiler builds a default one for that class.
+               Each time an object is created at least one constructor will be invoked. 
+               The main rule of thumb for constructors is that they “must have the same name as the class”.
             </p>
-            <textarea rows="11" cols="55" data-editor = "java" data-gutter="1">
-            class Square {	
-               public void getArea(){		
-                  System.out.println("24");
-               }
-               public void getColour(){
-                  System.out.println("red");
-               }
-               public void name(){
-                  System.out.println("square");
-               }
-            }
+<textarea rows="11" cols="55" data-editor = "java" data-gutter="1">
+public class Car {
+   double engineSize;
+public Car(String brand) {
+   System.out.println("This car is a :" + brand );
+      }
             </textarea>
-            <p>So now that we have our square how do we morph our square into our circle. <br>
-               We are going to introduce a concept known as inheritance. <br>
-               There will be a more detailed lesson on inheritance in the future lessons but for now here’s a quick explanation. <br>
-               It is a mechanism in which allows us to derive one class from another. The class inherited from another will share a set of attributes and methods.<br><br>
-               Now lets get back to our example. Here the Circle class is extending the base class Square.<br><br>
+            <p>
+               As we can see we have created a class called Car and also a constructor with the same name “Car”. Within this constructor we can set the brand of Car. <br><br>
+               Know that we have a bit more of an understanding of Constructors lets have a look at the key differences between a class and object.<br>
+               A class is described as a blueprint from which individual objects are created. <br><br>
+               A class can contain the following Variable types:<br>
+               •	Local variables are variables that are specified within methods, constructors, or blocks. The variable will be defined and initialized within the method, and then deleted after the method is finished.<BR><BR>
+               •	Instance variables are variables that exist within a class but are not part of any method. When the class is created, these variables are set to their default values. Instance variables can be accessed from within any of the class's methods, constructors, or blocks.<BR><BR>
+               •	Class variables are variables defined with the static keyword within a class, outside of any method.<BR><br>
+
+               A class can have many methods. In our example we have the methods setEngineSize(), getEngineSize() and Beep().
+
+               
             </p>
             <textarea rows="3" cols="55" data-editor = "java" data-gutter="1">
-         class Circle extends Square{
+            public class BCar {
+   double engineSize;
 
-           }
+   public BCar(String brand) {
+      System.out.println("This car is a :" + brand );
+   }
+
+   public void setEngineSize(double size) {
+      engineSize = size;
+   }
+
+   public double getEngineSize( ) {
+      System.out.println("BCars engine size is :" + engineSize );
+      return engineSize;
+   }
+
+   public void Beep(){
+      System.out.println("Beep, Beep");
+   }
          </textarea>
          <br>
-            <p>What is the point of this?<br>
-               You might be thinking ok this is cool and all but what the hell is polymorphism for?<br>
-               Well lets just say you wanted the Circle and the Square to both be red and have the same area. <br>
-               However, when you print the names of the shapes you obviously would want the square to a square and the circle to be a circle. <br>
-               This is where polymorphism comes in handy. <br>
-               “We do not want to write duplicate code for two shapes if they are outputting the same properties.”<br>
-               So how let’s go back to our example code now and see what this looks like. <br><br>
+            <p>As mentioned earlier an object is created from a class. In Java, the new keyword is used to create new objects.<br><br>
+               There is three key steps we must remember when creating an object from a class in java.<br>
+               •	Declaration − A variable declaration with a variable name with an object type.<br>
+               •	Instantiation − The 'new' keyword is used to create the object.<br>
+               •	Initialization − The 'new' keyword is followed by a call to a constructor. This call initializes the new object.<br><br>
+               The below code is and example of creating an object:
             </p>
             <textarea rows="20" cols="55" data-editor = "java" data-gutter="1">
-         public class Polymorphism{		
-            public static void main(String[] args){				
-                Square s=new Square();		
-                Square s1= new Circle();		
-                s.getArea();		
-                s1.getArea();	
-                }	
-             }
-            class Square {	
-                public void getArea(){		
-                   System.out.println("24");
-                }
-	            public void getColour(){
-                   System.out.println("red");
-               }
-            public void name(){
-                   System.out.println("square");
-               }		
-             }
-           }
+            public static void main(String []args) {
+               Car myCar = new Car( "Audi" );
+
+               myCar.setEngineSize(1.6);
+
+               myCar.getEngineSize();
          </textarea>
-         <br>
-            <p>
-               Lets perform a polymorphic action known as overriding:
-               What will happen here<BR>
-               •	Area class will stay the same in circle class<BR>
-               •	getColour will stay the same in circle class <BR>
-               •	We are overriding our “inherited” method name() to change the name of the shape<BR>
-            </p>
-            <textarea rows="5" cols="55" data-editor = "java" data-gutter="1">
-         class Circle extends Square{
-            public void name(){
-                   System.out.println("circle");
-               }	
-           }
-         </textarea>
-         <br>
-            <p>
-               Lets see Polymorphism in action in the driver class: <br>
-               Here we make a two new references to objects. First we make our Square.<br>
-               Then we make a circle but you can see we have created our reference using the keyword “Square” this is because of our inheritance earlier.<br> 
-               This is where Polymorphism gets its name from. The word ‘poly’ meaning many and ‘morphs’ meaning forms. Our square has many forms as it can also be a circle.<br>
-               Once we create this we can see Circle now inherits all of squares properties besides the name() method with we changed using a form of polymorphism known as overriding.
-            </p>
-            <br>
-            <textarea rows="13" cols="55" data-editor = "java" data-gutter="1">
-         public class Polymorphism {
-            public static void main(String[] args) {
-            Square s = new Square();
-            Square s1 = new Circle();
-            s.name();
-            s1.name();
-            s.getArea();
-            s.getColour();
-            s1.getArea();
-            s1.getColour();
-          }
-         }
-         </textarea>
+         
          </div>
       </div>
       </div>
