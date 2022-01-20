@@ -16,19 +16,7 @@
       <?php 
          include ("validateLoggedIn.php");
          include("headerTeacher.html");
-         function getLessonData($uID) {
-            include ("serverConfig.php");
-            $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-            if ($conn -> connect_error) {
-                die("Connection failed:" .$conn -> connect_error);
-            }
-         
-            $sql = "select * from lessons where lessonID =\"{$uID}%\";";
-            $result = $conn -> query($sql);
-            $conn->close();
-         
-            return $result->fetch_assoc();
-         }
+         include("lessonData.php");
          ?>
       <h1>
       Edit chalkboard lesson for polymorphism
@@ -45,10 +33,9 @@
    <?php
          if (isset($_POST["submit"])) {
             $description = $_POST["description"];
-
             $sql = "UPDATE lessons SET description = '$description' WHERE lessonID=1";
-            
-            if ($conn->query($sql) === TRUE) {
+            getLessonData(1, $description);
+            if ($conn->query($sql) === TRUE ) {
                echo "Chalkboard updated successfully";
             } else {
                echo "Error updating Chalkboard: " . $conn->error;

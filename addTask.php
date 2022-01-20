@@ -12,11 +12,8 @@
         
         <?php 
             include ("validateLoggedIn.php");
-            include ("headerTeacher.html")
+            include ("headerTeacher.html");
         ?>
-
-        <h1 class="page-heading">Add Task</h1>
-        <hr>
         <div class = "description-container">
             <div class = "bio-description">
                 <form method="post" action="addTask.php">
