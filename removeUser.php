@@ -10,20 +10,20 @@
                 die("Connection failed:" .$conn -> connect_error);
             }
 
-            $teacherToDelete = $_GET['id'];
+            $userToDelete = $_GET['id'];
 
-            $connectionsSQL = "DELETE FROM teacher WHERE teacherID={$teacherToDelete};";
+            $connectionsSQL = "DELETE FROM users WHERE userID={$userToDelete};";
 
             if ($conn->query($connectionsSQL) === TRUE) {
                 echo "Sucessful";
-                header( "Location: adminRemoveTeacher.php" );
+                header( "Location: adminRemoveUser.php" );
 
             } 
             else {
                 echo "Error: " . $connectionsSQL . "<br>" . $conn->error;
             }
 
-            header( "Location: adminRemoveTeacher.php" );
+            header( "Location: adminRemoveUser.php" );
             $conn->close();
         ?>
     </body>

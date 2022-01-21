@@ -10,15 +10,10 @@
 </head>
 
 <script type="text/javascript">
-    function teacherAccess(variable) {
-        if (confirm("Are you sure you want to Add this User?") == true) {
-                window.location.href= 'teacherAccess.php?id=' + variable;
-                };
-    }
 
-    function teacherDelete(variable) {
+    function userDelete(variable) {
         if (confirm("Are you sure you want to Delete this User?") == true) {
-                window.location.href= 'removeTeacher.php?id=' + variable;
+                window.location.href= 'removeUser.php?id=' + variable;
                 };
     }
 
@@ -39,20 +34,18 @@
                 die("Connection failed:" .$conn -> connect_error);
             }
 
-            $sql = "select teacherID, teachername, email, access
-            from teacher ";
+            $sql = "select userID, username, email 
+            from users ";
 
             $result = $conn -> query($sql);
 
             if(mysqli_num_rows($result) != 0 ) {
                 while($row = $result->fetch_assoc())
                 {   
-                    if($row["access"] == 0)
                     print "<div class='list-teachers'>
-                                    <p class='Details text-left'><b>Name: </b>{$row['teachername']}</p>
+                                    <p class='Details text-left'><b>Name: </b>{$row['username']}</p>
                                     <p class='Details text-left'><b>Email: </b>{$row['email']}</p>
-                                    <button type ='button' class='btn btn-success' onClick='teacherAccess({$row['teacherID']})'>Allow</button>
-                                    <button type ='button' class='btn btn-danger' onClick='teacherDelete({$row['teacherID']})'>Remove</button>";
+                                    <button type ='button' class='btn btn-danger' onClick='userDelete({$row['userID']})'>Remove</button>";
                                     print "</div><BR>";
 
                                     

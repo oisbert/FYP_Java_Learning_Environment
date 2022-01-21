@@ -76,19 +76,11 @@
         $sqlPass = $row["password"];
         $isAdmin = $row["admin"];
 
-        $bannedSql = "SELECT * FROM banneduser 
-                      WHERE userID = {$userID};";
-        $bResult = $conn -> query($bannedSql);
-        $bRow = $bResult->fetch_assoc();
-
         function emailMatches ($inputEmail, $DBEmail) {
             return strcasecmp($inputEmail, $DBEmail) == 0;
         }
         
-        if(mysqli_num_rows($bResult) !== 0 ) {
-            echo "<script> showLoginError('This user is banned') </script>";
-        }
-        else if($isAdmin == 1 && emailMatches($email, $sqlEmail) && password_verify($password, $sqlPass)) {
+        if($isAdmin == 1 && emailMatches($email, $sqlEmail) && password_verify($password, $sqlPass)) {
             $_SESSION['user'] = $userID;
             $_SESSION['username'] = $row['username'];
             $_SESSION['loggedin'] = true;

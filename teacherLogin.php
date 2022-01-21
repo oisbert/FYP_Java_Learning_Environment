@@ -72,10 +72,6 @@
         $sqlEmail = $row["email"];
         $sqlPass = $row["password"];
 
-        $bannedSql = "SELECT * FROM bannedteacher
-                      WHERE teacherID = {$teacherID};";
-        $bResult = $conn -> query($bannedSql);
-        $bRow = $bResult->fetch_assoc();
 
         $Access = "SELECT access FROM teacher
                       WHERE access = 0 AND $teacherID = teacherID;";
@@ -85,11 +81,8 @@
         function emailMatches ($inputEmail, $DBEmail) {
             return strcasecmp($inputEmail, $DBEmail) == 0;
         }
-        if(mysqli_num_rows($bResult) !== 0 ) {
-            echo "<script> showLoginError('This teacher is banned.') </script>";
-        }
 
-        else if(mysqli_num_rows($AccessResult) != 0){
+        if(mysqli_num_rows($AccessResult) != 0){
             echo "<script> showLoginError('This teacher is needs access contact admin.') </script>";
         }
       
