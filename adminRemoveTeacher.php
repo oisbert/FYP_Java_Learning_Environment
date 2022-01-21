@@ -10,11 +10,6 @@
 </head>
 
 <script type="text/javascript">
-    function teacherAccess(variable) {
-        if (confirm("Are you sure you want to Add this User?") == true) {
-                window.location.href= 'teacherAccess.php?id=' + variable;
-                };
-    }
 
     function teacherDelete(variable) {
         if (confirm("Are you sure you want to Delete this User?") == true) {
