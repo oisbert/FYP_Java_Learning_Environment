@@ -52,27 +52,58 @@
     box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
 }
 
+.button-wrapper{
+    display: flex;
+    width: 50%;
+    height: 5%;
+}
+
 .AddNewTask {
-        display: inline-block;
         height: 100px;
-        width: 200px;
+        width: 40%;
         border: 0;
-        margin-left: 40%;
+        margin-left: 20%;
+        margin-right: 20%;
         text-decoration: none;
         border-radius: 15px;
         background-color: rgba(255, 255, 255, 0.233);
         border: 1px solid rgba(255,255,255,0.1);
         backdrop-filter: blur(30px);
         color: rgba(255,255,255,0.8);
-        font-size: 2px;
-        
         cursor: pointer;
         text-transform: uppercase;
 }
 
 .AddNewTask h1{
     margin-left: 5%;
+    margin-top: 25%;
     padding-top: 0.3em;
-    font-size: 25;
+    font-size: 20px;
+}
+
+.TaskStatus {
+    display: inline-block;
+    height: 100px;
+    border: 0;
+    margin-right: 20%;
+    text-decoration: none;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.233);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(30px);
+    color: rgba(255,255,255,0.8);
+    font-size: 2px;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 40px;
+    text-transform: uppercase;
+}
+
+.TaskStatus h1{
+    margin-left: 5%;
+    padding-top: 0.3em;
+    font-size: 20px;
+    margin-left: 20%;
+    
 }
 

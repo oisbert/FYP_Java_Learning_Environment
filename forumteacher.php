@@ -118,7 +118,6 @@
                                         $userNeeded = [];
                                     }
                                    print "<button id = 'animatebutton' class='showcomments' onClick='showComments({$counter})'>Show comments</button> 
-                                    <button id = 'animatebutton' class= 'addreplybtn' type='button' onClick='addReply({$valuePass})'>add reply</button> 
                                     <button id = 'animatebutton' class= 'btn btn-danger' type='button' onClick='deletePost({$valuePass})'>Delete</button>";         
                                     print "</div>";
                                   
@@ -157,7 +156,6 @@
                 }                           
             }
             ?>
-            <img class="AddNewPost" id = 'animatebutton' src ="images/add.png" alt="Add post" onClick="location.href='addPost.php'">
 
          </div>
       </div>

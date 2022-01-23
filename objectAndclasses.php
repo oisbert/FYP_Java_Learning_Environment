@@ -61,10 +61,6 @@
          </form>
       </div>
       <div class = "border-animation">
-      <div class = 'button-wrapper'>
-         <button class="button-play">Play</button>
-         <button class="button-pause">Pause</button>
-      </div>
       <div class = "Classexample">
       <h1>Class: Car</h1>
       <img src="images/car.png" alt="car">

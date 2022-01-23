@@ -6,13 +6,13 @@
     grid-row-gap:4%
   }
   
-  .grid-item {
-background: rgba(255, 255, 255, 0.48);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(9px);
--webkit-backdrop-filter: blur(9px);
-border: 1px solid rgba(255, 255, 255, 0.66);
+.grid-item {
+    background: rgba(255, 255, 255, 0.48);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border: 1px solid rgba(255, 255, 255, 0.66);
     border-radius: 20%;
     height: 350px;
     width: 300px;
@@ -22,6 +22,6 @@ border: 1px solid rgba(255, 255, 255, 0.66);
  
   }
 
-  .grid-item .title{
+.grid-item .title{
     margin-top: 50%;
   }

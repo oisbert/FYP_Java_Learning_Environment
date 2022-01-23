@@ -10,8 +10,6 @@
     </head>
     <body>
         <?php include ("headerTeacher.html"); ?>
-        <h1 class='page-heading'>Task Status</h1>
-        <hr>
         <div class="page-box">
             <?php
                 include ("validateLoggedIn.php");

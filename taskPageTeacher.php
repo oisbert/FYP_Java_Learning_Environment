@@ -49,7 +49,10 @@
             }
         }
         ?>
+        <div class = "button-wrapper">
         <div class="AddNewTask" onClick="location.href='addTask.php'"><h1>Add task<h1></div>
+        <div class="TaskStatus" onClick="location.href='TaskStatusView.php'"><h1>View Status<h1></div>
+        </div>
     </div>
 </body>
 </html>
