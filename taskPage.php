@@ -24,9 +24,15 @@
             alert("Button has been disabled.");
         }
     
-    function cancelRequest(taskID) {
+    function cancelRequest(taskID, taskTitle) {
         if (confirm("Are you sure you want remove your task status") == true){
-        window.location.href= 'cancelRequest.php?taskID=' + taskID;
+        window.location.href= 'cancelRequest.php?taskID=' + taskID + '&taskTitle=' + taskTitle;
+        }
+    }
+
+    function addUpload(taskID) {
+        if (confirm("Are you sure you want upload your task status") == true){
+        window.location.href= 'addUpload.php?taskID=' + taskID;
         }
     }
 
@@ -47,7 +53,7 @@
                 die("Connection failed:" .$conn -> connect_error);
             }
 
-            $sql = "select taskTitle, taskDescription, taskID, teacherID
+            $sql = "select taskTitle, taskDescription, taskID, teacherID, filePath
             from tasks ";
 
             $result = $conn -> query($sql);
@@ -59,6 +65,15 @@
                                     <p class='DetailsTitle text-left'>{$row['taskTitle']}</p>
                                     <p class='DetailsDesc text-left'><b>Description: </b>{$row['taskDescription']}</p>";
 
+                    if($row['filePath'] != NULL){
+                       print "<div class = 'Attachment-link'><a href='uploads/{$row['filePath']}' download>
+                        Download file attachment
+                        </a></div>";
+                    }
+                    else {
+                        print "<p>No Attachment</p>";
+                    }
+
                     $ButtonSQL = "select * from taskstatus where userID = {$_SESSION['user']} AND taskID = {$row['taskID']};";
                     $ButtonSQLResult = $conn -> query($ButtonSQL);
                     $ButtonSQL = $ButtonSQLResult->fetch_assoc();
@@ -66,17 +81,23 @@
                     if($ButtonSQL) {
                         print "<button type ='button' id = 'completebtn' class='btn btn-success' disabled '>Complete</button> ";
                     } else {
-                        print "<button type ='button' id = 'completebtn' class='btn btn-success' onClick='taskCompleted({$row['taskID']})'>Complete</button>";
+                       
+                        print "<form method='post' action='addUpload.php?taskID= {$row['taskID']} &taskTitle= {$row['taskTitle']}'' enctype='multipart/form-data'>";
+                        print "<input type ='file' name='file'>";
+                        print "<button type ='submit' id = 'completebtn' class='btn btn-success' onClick='addUpload({$row['taskID']})'>Complete</button>";
+                        print "</form>";
                     }
 
-                    if($ButtonSQL) {
-                        print "<button type ='button' id = 'needHelpbtn' class='btn btn-warning' disabled '>Need Help</button> ";
-                    } else {
-                        print "<button type ='button' id = 'needHelpbtn' class='btn btn-warning' onClick='requestForHelp({$row['taskID']})'>Need Help</button>";
-                    }
+                    //if($ButtonSQL) {
+                    //    print "<button type ='button' id = 'needHelpbtn' class='btn btn-warning' disabled '>Need Help</button> ";
+                    //} else {
+                    //    print "<button type ='button' id = 'needHelpbtn' class='btn btn-warning' onClick='requestForHelp({$row['taskID']})'>Need Help</button>";
+                    //}
 
                     if($ButtonSQL) {
-                        print "<button type ='button' id = 'cancelbtn' class='btn btn-danger' onClick='cancelRequest({$row['taskID']})'>Cancel</button>";
+                        print "<form method='post' action='cancelRequest.php?taskID= {$row['taskID']} &taskTitle= {$row['taskTitle']}' enctype='multipart/form-data'>";
+                        print "<button type ='submit' id = 'cancelbtn' class='btn btn-danger' onClick='addUpload({$row['taskID']})'>Cancel</button>";
+                        print "</form>";
                     } else {
                         print "<button type ='button' id = 'cancelbtn' class='btn btn-danger' disabled '>Cancel</button> ";
                     }
@@ -92,3 +113,5 @@
 </body>
 </script>
 </html>
+
+

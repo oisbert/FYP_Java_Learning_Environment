@@ -16,11 +16,12 @@
         ?>
         <div class = "description-container">
             <div class = "bio-description">
-                <form method="post" action="addTask.php">
+                <form method="post" action="addTask.php" enctype="multipart/form-data">
                     <h3>Task title:</h3>
-                    <input class="text-input" type='text' placeholder='Enter Task Title' name='taskTitle' required></input>
+                    <input class="text-input" type='text' placeholder='Enter Task Title' name='taskTitle' enctype="multipart/form-data" required></input>
                     <h3 id = 'desc'>Task Description:</h3>
                     <textarea id='description' name='taskDescription' class='description-textarea' rows= 20 cols=70 required></textarea><br>
+                    <input type ="file" name="file">
                     <br>
                     <br>
                     <input class="button" type="submit" name="submit" value="Submit Task"/>
@@ -39,12 +40,29 @@
             die("Connection failed:" .$conn -> connect_error);
         }
         $teacherID = $_SESSION['teacher'];
-        echo $teacherID;
-        $sql = "INSERT INTO tasks ( taskTitle, taskDescription, teacherID)
-                VALUES ('{$_POST['taskTitle']}', '{$_POST['taskDescription']}','{$teacherID}')";
+        // File upload path
+        $targetDir = "uploads/";
+        $fileName = NULL;
+        $fileName = basename($_FILES["file"]["name"]);
+        $targetFilePath = $targetDir . $fileName;
+        $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+        $allowTypes = array('jpg','png','jpeg','gif','pdf','java');
+        move_uploaded_file($_FILES["file"]["tmp_name"],$targetFilePath);
+        
+        //creater directory for student uploads
+        
+        $directoryName = "taskUploads/'{$_POST['taskTitle']}'";
+        if(!is_dir($directoryName)){
+            //Directory does not exist, so lets create it.
+            mkdir($directoryName, 0755);
+        }
+
+        if(in_array($fileType, $allowTypes) OR $fileName == NULL){
+        $sql = "INSERT INTO tasks ( taskTitle, taskDescription, teacherID, filePath)
+                VALUES ('{$_POST['taskTitle']}', '{$_POST['taskDescription']}','{$teacherID}', '{$fileName}')";
 
         if ($conn->query($sql) === TRUE) {
-            //header( "Location: teacherHome.php" );
+            echo "The file ".$fileName. " has been uploaded successfully.";
         } 
         else {
             echo "Error: " . $sql . "<br>" . $conn->error;
@@ -52,6 +70,10 @@
 
         $conn->close();
         }
+        else{
+            echo "Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.";
+        }
+    }
 
     if(isset($_POST["submit"])) addTask();
 ?>

@@ -20,12 +20,25 @@
             }
 
             $taskID = $_GET['taskID'];
+            $taskTitle = $_GET['taskTitle'];
             $currentUser = $_SESSION['user'];
+            $removeFiles = "select filePathUser
+            from taskstatus ";
+            $result = $conn -> query($removeFiles);
 
-            $sql = "DELETE FROM taskstatus WHERE taskID = $taskID";
+            if (mysqli_num_rows($result) != 0) {
+                while($row = $result->fetch_assoc())
+                {   
+                $directoryName = "taskUploads/{$taskTitle}/{$row['filePathUser']}";
+                unlink($directoryName);
 
+            } 
+            }
+
+            $sql = "DELETE FROM taskstatus WHERE taskID = $taskID AND userID = $currentUser";
+            
             if ($conn->query($sql) === TRUE) {
-                header( "Location: taskPage.php" );
+                //header( "Location: cancelRequest.php" );
 
             } 
             else {

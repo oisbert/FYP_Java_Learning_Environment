@@ -10,7 +10,7 @@
 </head>
 
 <script>
-    function deleteVacancy(variable) {
+    function deletetask(variable) {
             if (confirm("Are you sure you want to delete this Task?") == true) {
             window.location.href= 'deleteTask.php?id=' + variable;
             };
@@ -33,8 +33,9 @@
                 die("Connection failed:" .$conn -> connect_error);
             }
 
-            $sql = "select taskTitle, taskDescription, taskID, teacherID
+            $sql = "select taskTitle, taskDescription, taskID, teacherID, filePath
                         from tasks ";
+            
             
             $result = $conn -> query($sql);
 
@@ -43,9 +44,20 @@
                 {   
                     print "<div class='Tasks'>
                                     <p class='Details text-left'><b>Title: </b>{$row['taskTitle']}</p>
-                                    <p class='Details text-left'><b>Description: </b>{$row['taskDescription']}</p>
-                                    <button type='button' class='btn btn-danger' style='margin-bottom:1%; float:right;' onClick='deleteVacancy({$row['taskID']})'>Delete</button>";             
+                                    <p class='Details text-left'><b>Description: </b>{$row['taskDescription']}</p>";
+                                    print "<form method='post' action='deleteTask.php?taskID= {$row['taskID']} &taskTitle= {$row['taskTitle']}' enctype='multipart/form-data'>";
+                                    print "<button type='button' class='btn btn-danger' style='margin-bottom:1%; float:right;' onClick='deletetask({$row['taskID']})'>Delete</button>";
+                                    print "</form>";             
                                     print "</div><BR>";
+
+                    if($row['filePath'] != NULL){
+                         print "<div class = 'Attachment-link'><a href='uploads/{$row['filePath']}' download>
+                                Download file attachment
+                                </a></div>";
+                    }
+                    else {
+                        print "<p>No Attachment</p>";
+                        }
             }
         }
         ?>
