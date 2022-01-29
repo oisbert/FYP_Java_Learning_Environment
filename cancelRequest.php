@@ -30,7 +30,13 @@
                 while($row = $result->fetch_assoc())
                 {   
                 $directoryName = "taskUploads/{$taskTitle}/{$row['filePathUser']}";
+
+                if(file_exists($directoryName)){
                 unlink($directoryName);
+                }
+                else{
+                    echo "no file to remove";
+                }
 
             } 
             }

@@ -16,6 +16,12 @@
             };
         }
 
+    function deleteAlltasks(variable) {
+            if (confirm("Are you sure you want to delete all tasks and Assignments Uploads?") == true) {
+            window.location.href= 'deleteAllTask.php?id=' + variable;
+            };
+        }
+
 </script>
 
 
@@ -44,10 +50,8 @@
                 {   
                     print "<div class='Tasks'>
                                     <p class='Details text-left'><b>Title: </b>{$row['taskTitle']}</p>
-                                    <p class='Details text-left'><b>Description: </b>{$row['taskDescription']}</p>";
-                                    print "<form method='post' action='deleteTask.php?taskID= {$row['taskID']} &taskTitle= {$row['taskTitle']}' enctype='multipart/form-data'>";
-                                    print "<button type='button' class='btn btn-danger' style='margin-bottom:1%; float:right;' onClick='deletetask({$row['taskID']})'>Delete</button>";
-                                    print "</form>";             
+                                    <p class='Details text-left'><b>Description: </b>{$row['taskDescription']}</p>
+                                    <button type='button' class='btn btn-danger' style='margin-bottom:1%; float:right;' onClick='deletetask({$row['taskID']})'>Delete</button>";             
                                     print "</div><BR>";
 
                     if($row['filePath'] != NULL){
@@ -64,6 +68,7 @@
         <div class = "button-wrapper">
         <div class="AddNewTask" onClick="location.href='addTask.php'"><h1>Add task<h1></div>
         <div class="TaskStatus" onClick="location.href='TaskStatusView.php'"><h1>View Status<h1></div>
+        <div class="Delete-All" onClick="location.href='deleteAlltask.php'"><h1>Delete all tasks and Assignments<h1></div>
         </div>
     </div>
 </body>

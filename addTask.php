@@ -51,7 +51,7 @@
         
         //creater directory for student uploads
         
-        $directoryName = "taskUploads/'{$_POST['taskTitle']}'";
+        $directoryName = "taskUploads/{$_POST['taskTitle']}";
         if(!is_dir($directoryName)){
             //Directory does not exist, so lets create it.
             mkdir($directoryName, 0755);

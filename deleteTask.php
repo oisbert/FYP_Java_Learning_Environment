@@ -2,25 +2,6 @@
     <body>
         <?php
 
-   
-
-// delete all files and sub-folders from a folder
-function deleteAll($dir) {
-    foreach(glob($dir . '/*') as $file) {
-        if(is_dir($file))
-            deleteAll($file);
-        else
-            unlink($file);
-    }
-    rmdir($dir);
-}
-
-  
-
-?>
-
-        <?php
-
             include ("validateLoggedIn.php");
             include ("serverConfig.php");
 
@@ -30,36 +11,20 @@ function deleteAll($dir) {
             }
 
             $taskToDelete = $_GET['id'];
-            $taskTitle = $_GET['taskTitle'];
-            $currentUser = $_SESSION['user'];
-            $removeFiles = "select taskTitle
-            from tasks ";
-            $result = $conn -> query($removeFiles);
 
-            if (mysqli_num_rows($result) != 0) {
-                while($row = $result->fetch_assoc())
-                {   
-                $directoryName = "taskUploads/{$taskTitle}";
-                deleteAll($directoryName);
-
-            } 
-            }
             $connectionsSQL = "DELETE FROM tasks WHERE taskID={$taskToDelete};";
 
             if ($conn->query($connectionsSQL) === TRUE) {
                 echo "Sucessful";
-                header( "Location: deleteTask.php" );
+                header( "Location: taskPageTeacher.php" );
 
             } 
             else {
                 echo "Error: " . $connectionsSQL . "<br>" . $conn->error;
             }
 
-            header( "Location: deleteTask.php" );
+            header( "Location: taskPageTeacher.php" );
             $conn->close();
         ?>
-
-
-
     </body>
 </html>

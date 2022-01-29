@@ -82,7 +82,7 @@
                         print "<button type ='button' id = 'completebtn' class='btn btn-success' disabled '>Complete</button> ";
                     } else {
                        
-                        print "<form method='post' action='addUpload.php?taskID= {$row['taskID']} &taskTitle= {$row['taskTitle']}'' enctype='multipart/form-data'>";
+                        print "<form method='post' action='addUpload.php?taskID= {$row['taskID']} &taskTitle={$row['taskTitle']}'' enctype='multipart/form-data'>";
                         print "<input type ='file' name='file'>";
                         print "<button type ='submit' id = 'completebtn' class='btn btn-success' onClick='addUpload({$row['taskID']})'>Complete</button>";
                         print "</form>";

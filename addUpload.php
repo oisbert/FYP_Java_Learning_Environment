@@ -8,18 +8,12 @@
         $currentUser = $_SESSION['user'];
         $taskID = $_GET['taskID'];
         $taskTitle= $_GET['taskTitle'];
-        //$fileName = $_GET['fileName'];
         
-        $directoryName = "taskUploads/{$taskTitle}";
-        if(!is_dir($directoryName)){
-            //Directory does not exist, so lets create it.
-            mkdir($directoryName, 0755);
-        }
 
         $targetDir = "taskUploads/{$taskTitle}/";
         $fileName = NULL;
         $fileName = basename($_FILES["file"]["name"]);
-        $targetFilePath = $targetDir . $fileName;
+        $targetFilePath = $targetDir.$fileName;
         $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
         $allowTypes = array('jpg','png','jpeg','gif','pdf','java');
 

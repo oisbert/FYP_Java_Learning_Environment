@@ -19,7 +19,7 @@
                 if ($conn -> connect_error) {
                     die("Connection failed:" .$conn -> connect_error);
                 }
-                $sql = "SELECT a.status, b.taskTitle, c.username
+                $sql = "SELECT a.status, b.taskTitle, c.username, a.filePathUser
                         FROM taskstatus a 
                         INNER JOIN tasks b
                         ON a.taskID = b.taskID
@@ -32,6 +32,7 @@
                                     <th>Assignment name</th>
                                     <th>Student Name</th>
                                     <th>Status</th>
+                                    <th>Submission</th>
                                 </tr>
                             </thead>";
                             
@@ -42,6 +43,7 @@
                             print "<TD>{$row['taskTitle']}</TD>";
                             print "<TD>{$row['username']}</TD>";
                             print "<TD>{$row['status']}</TD>";
+                            print "<TD><a href='taskUploads/{$row['taskTitle']}/{$row['filePathUser']}' download>{$row['filePathUser']}</a></TD>";
                             print "</TR>";
                         }
                     } else {
