@@ -24,9 +24,9 @@
             alert("Button has been disabled.");
         }
     
-    function cancelRequest(taskID, taskTitle) {
+        function cancel(taskID, taskTitle) {
         if (confirm("Are you sure you want remove your task status") == true){
-        window.location.href= 'cancelRequest.php?taskID=' + taskID + '&taskTitle=' + taskTitle;
+        window.location.href= 'removeSubmission.php?taskID=' + taskID + '&taskTitle=' + taskTitle;
         }
     }
 
@@ -78,25 +78,26 @@
                     $ButtonSQLResult = $conn -> query($ButtonSQL);
                     $ButtonSQL = $ButtonSQLResult->fetch_assoc();
 
+                    //$convertor = $row['taskTitle'].toString();
                     if($ButtonSQL) {
                         print "<button type ='button' id = 'completebtn' class='btn btn-success' disabled '>Complete</button> ";
                     } else {
                        
-                        print "<form method='post' action='addUpload.php?taskID= {$row['taskID']} &taskTitle={$row['taskTitle']}'' enctype='multipart/form-data'>";
+                        print "<form method='post' action='addUpload.php?taskID= {$row['taskID']} &taskTitle={$row['taskTitle']} &status=Complete' enctype='multipart/form-data'>";
                         print "<input type ='file' name='file'>";
                         print "<button type ='submit' id = 'completebtn' class='btn btn-success' onClick='addUpload({$row['taskID']})'>Complete</button>";
                         print "</form>";
                     }
 
                     //if($ButtonSQL) {
-                    //    print "<button type ='button' id = 'needHelpbtn' class='btn btn-warning' disabled '>Need Help</button> ";
+                    //   print "<button type ='button' id = 'needHelpbtn' class='btn btn-warning' disabled '>Need Help</button> ";
                     //} else {
                     //    print "<button type ='button' id = 'needHelpbtn' class='btn btn-warning' onClick='requestForHelp({$row['taskID']})'>Need Help</button>";
                     //}
 
                     if($ButtonSQL) {
-                        print "<form method='post' action='cancelRequest.php?taskID= {$row['taskID']} &taskTitle= {$row['taskTitle']}' enctype='multipart/form-data'>";
-                        print "<button type ='submit' id = 'cancelbtn' class='btn btn-danger' onClick='addUpload({$row['taskID']})'>Cancel</button>";
+                        print "<form method='post' action='removeSubmission.php?taskID= {$row['taskID']} &taskTitle={$row['taskTitle']}' enctype='multipart/form-data'>";
+                        print "<button type ='submit' id = 'cancelbtn' class='btn btn-danger' onClick='cancel({$row['taskID']}, {$row['taskTitle']})'>Cancel</button>";
                         print "</form>";
                     } else {
                         print "<button type ='button' id = 'cancelbtn' class='btn btn-danger' disabled '>Cancel</button> ";

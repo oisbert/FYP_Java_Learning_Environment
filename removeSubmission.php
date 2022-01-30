@@ -12,7 +12,6 @@
         <?php
 
             include ("validateLoggedIn.php");
-            
             include ("serverConfig.php");
             $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
             if ($conn -> connect_error) {
@@ -22,8 +21,7 @@
             $taskID = $_GET['taskID'];
             $taskTitle = $_GET['taskTitle'];
             $currentUser = $_SESSION['user'];
-            $removeFiles = "select filePathUser
-            from taskstatus ";
+            $removeFiles = "SELECT filePathUser FROM taskstatus WHERE taskID = {$taskID} AND userID = {$currentUser}";
             $result = $conn -> query($removeFiles);
 
             if (mysqli_num_rows($result) != 0) {
@@ -36,6 +34,7 @@
                 }
                 else{
                     echo "no file to remove";
+                    echo $directoryName;
                 }
 
             } 
@@ -51,7 +50,7 @@
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
 
-            header( "Location: taskPage.php" );
+            //header( "Location: cancelRequest.php" );
             $conn->close();
         ?>
     </body>

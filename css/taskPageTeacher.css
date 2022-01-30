@@ -34,13 +34,13 @@
 }
 
 #completebtn {
-    margin-left: 8%;
-    margin-right: 6%;
+    margin-left: 5%;
+    margin-right: 20%;
     box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
 }
 
 #needHelpbtn {
-    margin-left: 5%;
+    margin-left: 10%;
     margin-right: 6%;
     box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
 
@@ -48,14 +48,14 @@
 
 #cancelbtn {
     margin-left: 5%;
-    margin-right: 6%;
+    margin-right: 10%;
     box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
 }
 
 .button-wrapper{
     display: flex;
-    width: 50%;
-    height: 5%;
+    width: 70%;
+    height: 10%;
 }
 
 .AddNewTask {

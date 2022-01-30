@@ -19,12 +19,13 @@
                 if ($conn -> connect_error) {
                     die("Connection failed:" .$conn -> connect_error);
                 }
-                $sql = "SELECT a.status, b.taskTitle, c.username, a.filePathUser
+                $sql = "SELECT a.status, b.taskTitle, c.username, a.filePathUser, a.taskID
                         FROM taskstatus a 
                         INNER JOIN tasks b
                         ON a.taskID = b.taskID
                         INNER JOIN users c
-                        ON a.userID = c.userID";
+                        ON a.userID = c.userID
+                        ORDER BY taskID";
                 $result = $conn -> query($sql);
                     print "<table class='StatusTable' border='1'>";
                     print "<thead>

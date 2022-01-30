@@ -8,12 +8,15 @@
         $currentUser = $_SESSION['user'];
         $taskID = $_GET['taskID'];
         $taskTitle= $_GET['taskTitle'];
-        
+        $status= $_GET['status'];
+
+        $temp = explode(".", $_FILES["file"]["name"]);
+        $newfilename = round(microtime(true)) . '.' . end($temp);
 
         $targetDir = "taskUploads/{$taskTitle}/";
         $fileName = NULL;
         $fileName = basename($_FILES["file"]["name"]);
-        $targetFilePath = $targetDir.$fileName;
+        $targetFilePath = $targetDir.$newfilename;
         $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
         $allowTypes = array('jpg','png','jpeg','gif','pdf','java');
 
@@ -22,10 +25,10 @@
       
         if(in_array($fileType, $allowTypes) OR $fileName == NULL){
         $sql = "INSERT INTO taskstatus ( userID, taskID, status, filePathUser)
-                VALUES ('{$currentUser}', '{$taskID}', 'Help Needed', '{$fileName}')";
+                VALUES ('{$currentUser}', '{$taskID}', '{$status}', '{$newfilename}')";
 
         if ($conn->query($sql) === TRUE) {
-            echo "The file ".$fileName. " has been uploaded successfully.";
+            echo "The file ".$newfilename. " has been uploaded successfully.".$status;
         } 
         else {
             echo "Error: " . $sql . "<br>" . $conn->error;
