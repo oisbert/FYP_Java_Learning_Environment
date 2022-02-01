@@ -8,6 +8,12 @@
         <title>Task View</title>
 
     </head>
+
+    <script type="text/javascript">
+        function addFeedback(taskID, userID) {
+            window.location.href= 'addFeedback.php?taskID=' + taskID + '&userID=' + userID;
+        }
+    </script>
     <body>
         <?php include ("headerTeacher.html"); ?>
         <div class="page-box">
@@ -19,7 +25,7 @@
                 if ($conn -> connect_error) {
                     die("Connection failed:" .$conn -> connect_error);
                 }
-                $sql = "SELECT a.status, b.taskTitle, c.username, a.filePathUser, a.taskID
+                $sql = "SELECT a.status, b.taskTitle, c.username, a.filePathUser, a.taskID, a.userID
                         FROM taskstatus a 
                         INNER JOIN tasks b
                         ON a.taskID = b.taskID
@@ -34,6 +40,7 @@
                                     <th>Student Name</th>
                                     <th>Status</th>
                                     <th>Submission</th>
+                                    <th>Feedback</th>
                                 </tr>
                             </thead>";
                             
@@ -45,6 +52,7 @@
                             print "<TD>{$row['username']}</TD>";
                             print "<TD>{$row['status']}</TD>";
                             print "<TD><a href='taskUploads/{$row['taskTitle']}/{$row['filePathUser']}' download>{$row['filePathUser']}</a></TD>";
+                            print "<TD><button type='button' class='btn btn-success' onClick='addFeedback({$row['taskID']}, {$row['userID']})'>Add Feedback</button></TD>";
                             print "</TR>";
                         }
                     } else {

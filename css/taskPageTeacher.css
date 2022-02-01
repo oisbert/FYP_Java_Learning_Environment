@@ -34,28 +34,27 @@
 }
 
 #completebtn {
-    margin-left: 5%;
-    margin-right: 20%;
+    margin-right: 10px;
     box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
 }
 
-#needHelpbtn {
-    margin-left: 10%;
-    margin-right: 6%;
+#feedbackbtn {
+    margin-left: 10px;
     box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
 
 }
 
 #cancelbtn {
-    margin-left: 5%;
-    margin-right: 10%;
+    
     box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
 }
 
 .button-wrapper{
+    margin-left: 30%;
     display: flex;
-    width: 70%;
-    height: 10%;
+    justify-content: space-between;
+    width: 20rem;
+
 }
 
 .AddNewTask {

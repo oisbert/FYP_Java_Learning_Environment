@@ -24,10 +24,20 @@
             alert("Button has been disabled.");
         }
     
-        function cancel(taskID, taskTitle) {
-        if (confirm("Are you sure you want remove your task status") == true){
-        window.location.href= 'removeSubmission.php?taskID=' + taskID + '&taskTitle=' + taskTitle;
+    function cancel(taskID, taskTitle) {
+            if (confirm("Are you sure you want remove your task status") == true){
+            window.location.href= 'removeSubmission.php?taskID=' + taskID + '&taskTitle=' + taskTitle;
         }
+    }
+
+    function cancel(taskID, taskTitle) {
+            if (confirm("Are you sure you want remove your task status") == true){
+            window.location.href= 'UserFeedback.php?taskID=' + taskID + '&taskTitle=' + taskTitle;
+        }
+    }
+
+    function viewFeedback(taskID){
+        window.location.href= 'userFeedback.php?taskID=' + taskID;
     }
 
     function addUpload(taskID) {
@@ -53,10 +63,12 @@
                 die("Connection failed:" .$conn -> connect_error);
             }
 
-            $sql = "select taskTitle, taskDescription, taskID, teacherID, filePath
-            from tasks ";
+            $sql = "SELECT a.taskTitle, a.taskDescription, a.taskID, a.teacherID, a.filePath, b.feedback
+            FROM tasks a
+            INNER JOIN taskstatus b ON a.taskID = b.taskID";
 
             $result = $conn -> query($sql);
+            
 
             if(mysqli_num_rows($result) != 0) {
                 while($row = $result->fetch_assoc())
@@ -74,11 +86,11 @@
                         print "<p>No Attachment</p>";
                     }
 
-                    $ButtonSQL = "select * from taskstatus where userID = {$_SESSION['user']} AND taskID = {$row['taskID']};";
+                    $ButtonSQL = "select taskID, userID, feedback from taskstatus where userID = {$_SESSION['user']} AND taskID = {$row['taskID']};";
                     $ButtonSQLResult = $conn -> query($ButtonSQL);
                     $ButtonSQL = $ButtonSQLResult->fetch_assoc();
-
-                    //$convertor = $row['taskTitle'].toString();
+                    $row2 = mysqli_fetch_row($ButtonSQLResult);
+                    print "<div class ='button-wrapper'>";
                     if($ButtonSQL) {
                         print "<button type ='button' id = 'completebtn' class='btn btn-success' disabled '>Complete</button> ";
                     } else {
@@ -102,8 +114,14 @@
                     } else {
                         print "<button type ='button' id = 'cancelbtn' class='btn btn-danger' disabled '>Cancel</button> ";
                     }
+
+                    if($ButtonSQL && $row2['feedback'] != NULL) {
+                        print "<button type ='button' id = 'feedbackbtn' class='btn btn-warning' onClick='viewFeedback({$row['taskID']})'>Feedback</button>";
+                    } else {
+                        print "<button type ='button' id = 'feedbackbtn' class='btn btn-warning' disabled '>No feedback avalible</button> ";
+                    }
                
-                    print "</div><BR>";
+                    print "</div></div><BR>";
                                     
             }
         }
