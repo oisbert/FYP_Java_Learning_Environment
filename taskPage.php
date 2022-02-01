@@ -63,9 +63,10 @@
                 die("Connection failed:" .$conn -> connect_error);
             }
 
-            $sql = "SELECT a.taskTitle, a.taskDescription, a.taskID, a.teacherID, a.filePath, b.feedback
-            FROM tasks a
-            INNER JOIN taskstatus b ON a.taskID = b.taskID";
+            $userID = $_SESSION["user"];
+
+            $sql = "SELECT taskTitle, taskDescription, taskID, teacherID, filePath
+            FROM tasks";
 
             $result = $conn -> query($sql);
             
@@ -86,7 +87,7 @@
                         print "<p>No Attachment</p>";
                     }
 
-                    $ButtonSQL = "select taskID, userID, feedback from taskstatus where userID = {$_SESSION['user']} AND taskID = {$row['taskID']};";
+                    $ButtonSQL = "select taskID, userID, feedback from taskstatus where taskID = {$row['taskID']} and userID = {$userID};";
                     $ButtonSQLResult = $conn -> query($ButtonSQL);
                     $ButtonSQL = $ButtonSQLResult->fetch_assoc();
                     $row2 = mysqli_fetch_row($ButtonSQLResult);
@@ -95,8 +96,8 @@
                         print "<button type ='button' id = 'completebtn' class='btn btn-success' disabled '>Complete</button> ";
                     } else {
                        
-                        print "<form method='post' action='addUpload.php?taskID= {$row['taskID']} &taskTitle={$row['taskTitle']} &status=Complete' enctype='multipart/form-data'>";
-                        print "<input type ='file' name='file'>";
+                        print "<form method='post' name ='upload-student' action='addUpload.php?taskID= {$row['taskID']} &taskTitle={$row['taskTitle']} &status=Complete' enctype='multipart/form-data'>";
+                        print "<input id ='inputfile' type ='file' name='file'>";
                         print "<button type ='submit' id = 'completebtn' class='btn btn-success' onClick='addUpload({$row['taskID']})'>Complete</button>";
                         print "</form>";
                     }
@@ -115,8 +116,9 @@
                         print "<button type ='button' id = 'cancelbtn' class='btn btn-danger' disabled '>Cancel</button> ";
                     }
 
-                    if($ButtonSQL && $row2['feedback'] != NULL) {
+                    if($ButtonSQL && $row2['feedback'] == NULL) {
                         print "<button type ='button' id = 'feedbackbtn' class='btn btn-warning' onClick='viewFeedback({$row['taskID']})'>Feedback</button>";
+                        
                     } else {
                         print "<button type ='button' id = 'feedbackbtn' class='btn btn-warning' disabled '>No feedback avalible</button> ";
                     }
