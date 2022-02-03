@@ -13,6 +13,10 @@
         function addFeedback(taskID, userID) {
             window.location.href= 'addFeedback.php?taskID=' + taskID + '&userID=' + userID;
         }
+
+        function autoGrade(userID, taskID) {
+            window.location.href= 'autoGrader.php?userID=' + userID + '&taskID=' + taskID;
+        }
     </script>
     <body>
         <?php include ("headerTeacher.html"); ?>
@@ -54,7 +58,7 @@
                             print "<TD>{$row['status']}</TD>";
                             print "<TD><a href='taskUploads/{$row['taskTitle']}/{$row['filePathUser']}' download>{$row['filePathUser']}</a></TD>";
                             print "<TD><button type='button' class='btn btn-success' onClick='addFeedback({$row['taskID']}, {$row['userID']})'>Add Feedback</button></TD>";
-                            print "<TD><button type='button' class='btn btn-success' onClick='addFeedback({$row['taskID']}, {$row['userID']})'>Auto Grade</button></TD>";
+                            print "<TD><a href='./autoGrader.php?taskID={$row['taskID']} &taskTitle={$row['taskTitle']} &userID={$row['userID']} &filePathUser={$row['filePathUser']}'> AutoGrade</a></TD>";
                             print "</TR>";
                         }
                     } else {

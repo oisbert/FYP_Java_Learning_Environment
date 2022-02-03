@@ -1,10 +1,11 @@
 <?php
-//where file 1 is the attempt and file 2 is the answer
+
+
 function OutputChecker($file1,$file2){
     if (file_exists("{$file1}")){
-    $current = file_get_contents($file);
+    $current = file_get_contents($file1);
     $output = shell_exec("javac {$file1} && java {$file1}");
-    echo shell_exec("javac {$file1}.java > outputchecker.txt 2>&1");
+    echo shell_exec("javac {$file1} > outputchecker.txt 2>&1");
     echo nl2br(file_get_contents( "outputchecker.txt" ));
     $data1 = file_get_contents( "outputchecker.txt" );
 

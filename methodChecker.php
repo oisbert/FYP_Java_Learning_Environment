@@ -1,8 +1,5 @@
 <?php
 
-$myfile = fopen("Staticpolymorphism.java", "r") or die("Unable to open file!");
-$data = file_get_contents("Staticpolymorphism.java");
-
 
 
 function checkForStatic($string)
@@ -10,7 +7,8 @@ function checkForStatic($string)
     $result = preg_split('/public/', $string);
     
     $answerCheck = 0;
-
+    $foundStatic = 0;
+    $foundNonStatic = 0;
     if (count($result) > 1)
     {
         $result_split = explode(' ', $result[1]);
@@ -19,6 +17,7 @@ function checkForStatic($string)
         if ($answer == 'static')
         {
             echo "\"{$answer}\" correct static method found";
+            $foundStatic++;
             
         }
         else if ($answer == 'class'){
@@ -28,24 +27,19 @@ function checkForStatic($string)
         {
             echo "\"{$answer}\" no static method found. ";
             $answerCheck = 1;
+            $foundNonStatic++;
         }
     }
 
     if ($answerCheck == 1){
-        echo "issue in file";
+        echo "issue in file found {$foundNonStatic} non static declared methods in file";
     }
     else {
-        echo " ";
+        
     }
+    
 }
 
 
-$lines = explode("\n", $data);
 
-foreach($lines as $word) {
-    echo checkForStatic($word) . "<br/>\n";
- 
-   
-}
-fclose($myfile);
 ?>
