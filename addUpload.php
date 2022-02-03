@@ -10,13 +10,19 @@
         $taskTitle= $_GET['taskTitle'];
         $status= $_GET['status'];
 
-        $temp = explode(".", $_FILES["file"]["name"]);
-        $newfilename = round(microtime(true)) . '.' . end($temp);
+        $targetDir = "taskUploads/{$taskTitle}/{$currentUser}";
 
-        $targetDir = "taskUploads/{$taskTitle}/";
+        // Checking whether a file is directory or not
+        if (is_dir($targetDir)){
+            echo ("Given $gfg_directory exists");
+        }else{
+            mkdir("taskUploads/{$taskTitle}/{$currentUser}", 0700);
+        }
+
+        $userDirectory = "taskUploads/{$taskTitle}/{$currentUser}/";
         $fileName = NULL;
         $fileName = basename($_FILES["file"]["name"]);
-        $targetFilePath = $targetDir.$newfilename;
+        $targetFilePath = $userDirectory.$fileName;
         $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
         $allowTypes = array('jpg','png','jpeg','gif','pdf','java');
 
@@ -25,10 +31,10 @@
       
         if(in_array($fileType, $allowTypes) OR $fileName == NULL){
         $sql = "INSERT INTO taskstatus ( userID, taskID, status, filePathUser)
-                VALUES ('{$currentUser}', '{$taskID}', '{$status}', '{$newfilename}')";
+                VALUES ('{$currentUser}', '{$taskID}', '{$status}', '{$fileName}')";
 
         if ($conn->query($sql) === TRUE) {
-            echo "The file ".$newfilename. " has been uploaded successfully.".$status;
+            echo "The file ".$fileName. " has been uploaded successfully.".$status;
         } 
         else {
             echo "Error: " . $sql . "<br>" . $conn->error;

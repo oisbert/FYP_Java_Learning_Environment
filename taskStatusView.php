@@ -41,6 +41,7 @@
                                     <th>Status</th>
                                     <th>Submission</th>
                                     <th>Feedback</th>
+                                    <th>AutoGrade</th>
                                 </tr>
                             </thead>";
                             
@@ -53,6 +54,7 @@
                             print "<TD>{$row['status']}</TD>";
                             print "<TD><a href='taskUploads/{$row['taskTitle']}/{$row['filePathUser']}' download>{$row['filePathUser']}</a></TD>";
                             print "<TD><button type='button' class='btn btn-success' onClick='addFeedback({$row['taskID']}, {$row['userID']})'>Add Feedback</button></TD>";
+                            print "<TD><button type='button' class='btn btn-success' onClick='addFeedback({$row['taskID']}, {$row['userID']})'>Auto Grade</button></TD>";
                             print "</TR>";
                         }
                     } else {
