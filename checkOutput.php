@@ -1,6 +1,6 @@
 <?php
 
-function OutputChecker($file1,$file2){
+function OutputChecker($file1,$file2, &$FormatCheck, &$outputCheck){
     $file1trim = trim($file1, ".java");
     $file2trim = trim($file2, ".java");
 
@@ -50,14 +50,12 @@ function OutputChecker($file1,$file2){
     }
     else{
         print "<H1>Test 3: Pass Answer format check</H1>";
-        print "<H3>Your Output: {$output}</H3>";
-        print "<H3>Answer Output: {$output2}</H3>";
+
     }
 
     if($outputCheck > 0){
         print "<H1>Test 3: Failed output was incorrect</H1>";
-        print "<H3>Your Output: {$outputNoSpace1}</H3>";
-        print "<H3>Answer Output: {$outputNoSpace2}</H3>";
+        print "<H3>Hint:check for any white spaces</H3>";
     }
     else{
         print "<H1>Test 3: Pass Answer output check</H1>";

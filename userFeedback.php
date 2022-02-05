@@ -23,7 +23,7 @@
 
                 $_SESSION['user'] = $userID;
                 $taskID = $_GET['taskID'];
-                $sql = "SELECT feedback
+                $sql = "SELECT feedback,autoFeedback 
                         FROM taskstatus 
                         WHERE userID = {$userID} AND taskID = {$taskID}";
                 $result = $conn -> query($sql);
@@ -32,10 +32,24 @@
                     if(mysqli_num_rows($result) != 0) {
                         while($row = $result->fetch_assoc())
                         {   
+                            print "<H3>Personal Feedback</H3>";
+                            if($row['feedback'] != null){
                             print "<p>{$row['feedback']}</p>";
+                            }
+                            else{
+                                print "<p>No Information available</p>";
+                            }
+                            print "<H3>Auto Feedback</H3>";
+                            if($row['autoFeedback'] != null){
+                                print "<p>{$row['autoFeedback']}</p>";
+                            }
+                            else{
+                            print "<p>No Information available</p>";
+                            }
                         }
                     } 
                     $conn->close();
+
                     print "</div>";
 
             ?>

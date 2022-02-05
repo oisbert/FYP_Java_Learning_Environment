@@ -27,6 +27,18 @@
       $userIDtask = $_GET['userID'];
       $userFile = $_GET['filePathUser'];
 
+
+      //submit value holders
+      $Captest = NULL;
+      $Captestfail = NULL;
+      $statictest = NULL;
+      $statictestfail = NULL;
+      $formatCheck = NULL;
+      $formatCheckFailed = NULL;
+      $outputCheck = NULL;
+      $outputCheckFailed = NULL;
+
+
       $targetDir = "taskUploads/{$taskTitle}/{$userIDtask}/{$userFile}";
       $new_str = str_replace(' ', '', $targetDir);
       $myfile = file_get_contents($new_str, "r") or die("Unable to open file!");
@@ -36,10 +48,12 @@
       print "<div class = auto-background>";
       print "<div class = running-test-1>";
       if(getNextWord($myfile) == true){
-         print "<H1>Test 1 passed: Class file starts with Capital letter</H1>";
+         $Captest = "Test 1 passed: Class file starts with Capital letter";
+         print "<H1>$Captest</H1>";
       }
       else{
-         print "<H1>Test 1 Failed: Class file does not start with Capital letter</H1>";
+         $Captestfail = "Test 1 Failed: Class file does not start with Capital letter <br>";
+         print "<H1>$Captestfail</H1>";
       }
       print "</div>";
       $lines = explode("\n", $myfile);
@@ -59,10 +73,12 @@
       }
 
       if($count == 0){
-         print "<H1>Test 2 passed: All methods declared as static </H1>";
+         $statictest = "Test 2 passed: All methods declared as static";
+         print "<H1>$statictest</H1>";
       }
       else{
-         print "<H1>Test 2 Failed: Method declared without static</H1>";
+         $statictestfail = "Test 2 Failed: Method declared without static";
+         print "<H1>$statictestfail</H1>";
       }
       print "</div>";
 
@@ -86,18 +102,61 @@
       $FileAnswer = "Answer{$userFile}";
       //echo "-------------- test 3 ----------------";
       print "<div class = running-test-3>";
-      OutputChecker($userFile,$FileAnswer);
+
+      $FormatCheck = 0;
+      $outputCheck = 0;
+      OutputChecker($userFile,$FileAnswer, $FormatCheck ,$outputCheck);
+
+      if($FormatCheck > 0){
+         $formatCheckFailed = "Test 3: Failed formatting was incorrect";
+     }
+     else{
+         $formatCheck = "Test 3: Pass Answer format check";
+ 
+     }
+ 
+     if($outputCheck > 0){
+         $outputCheckFailed = "Test 3: Failed output was incorrect";
+     }
+     else{
+         $outputCheck = "Test 3: Pass Answer output check";
+     }
       print "</div>";
-      //echo "{$new_str} <br>";
-      //echo $new_str2;
-      //extension of files you want to remove.
-      //remove desired extension files in current directory
+
+
       array_map('unlink', glob("*.class"));
       array_map('unlink', glob("Answer{$userFile}"));
       array_map('unlink', glob("{$userFile}"));
+
+      //feedbackbox
+
       print "</div>";
       ?>
+   <div class = "feedback">
+      <form action="autoGradeSubmit.php?taskID=<?php echo $taskID ?> &userID=<?php echo $userIDtask?>" method="post" >
+      <textarea rows="20" cols="55" name="content">
+      <?php 
+      echo $Captest; 
+      echo $Captestfail;
+      ?>
+
+      <?php echo $statictest;
+         echo $statictestfail;
+      ?>
+                     
+      <?php echo $formatCheck;
+         echo $formatCheckFailed;
+      ?>
+
+      <?php echo $outputCheck;
+         echo $outputCheckFailed;
+      ?>
+      </textarea>
+      <input type="submit"  name="submit" value="Submit Feedback">
+         </form>
+      </div>
    </body>
+
 </html>
 
 
