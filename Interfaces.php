@@ -60,13 +60,6 @@
             <input type="submit" value="Compile">
          </form>
       </div>
-      <div class = "border-animation">
-      <div class = 'button-wrapper'>
-         <button class="button-play">Play</button>
-         <button class="button-pause">Pause</button>
-      </div>
-      <div id = "square"></div>
-      </div>
       <br>
       <div class = "lesson-heading">
       <h1>
@@ -75,105 +68,62 @@
       </div>
       <div class = "example-poly">
          <div class = "section-1">
-            <p>We will break down what in happening in the code above and explain the concept of polymorphism We will talk about what is regarded as two of the 4 pillars in OOP "INHERITANCE and POLYMORPHISM.<br>
-               In the animation above we see a square transition into a circle, Lets explain what this is in programming terms.<br>
-               We have a moving square that has shapeshifted into a circle. We can think of both of these shapes as a class.<br><br> 
-               For example circle and square are instances of the classes: class square{} and class circle{}.<br>
-               Here is a snippet of the square class:
+            <p>
+               In this lesson we will look at a concept called Interfaces. An interface is an "abstract class" that groups related<br>
+               methods together. The methods implemented in these in the abstract class "do not have an implementation".<br>
             </p>
             <textarea rows="11" cols="55" data-editor = "java" data-gutter="1">
-            class Square {	
-               public void getArea(){		
-                  System.out.println("24");
-               }
-               public void getColour(){
-                  System.out.println("red");
-               }
-               public void name(){
-                  System.out.println("square");
-               }
+            // Interface
+            interface Animal {
+               public void animalSound(); 
+               public void NumberOfLegs(); 
             }
             </textarea>
-            <p>So now that we have our square how do we morph our square into our circle. <br>
-               We are going to introduce a concept known as inheritance. <br>
-               There will be a more detailed lesson on inheritance in the future lessons but for now here’s a quick explanation. <br>
-               It is a mechanism in which allows us to derive one class from another. The class inherited from another will share a set of attributes and methods.<br><br>
-               Now lets get back to our example. Here the Circle class is extending the base class Square.<br><br>
+            <p><br>The next step is to implement our interface with another class. This will allow us to access these methods in the class<br>
+               On implementation of the interface we must overide all its methods<br>
             </p>
-            <textarea rows="3" cols="55" data-editor = "java" data-gutter="1">
-         class Circle extends Square{
-
-           }
-         </textarea>
-         <br>
-            <p>What is the point of this?<br>
-               You might be thinking ok this is cool and all but what the hell is polymorphism for?<br>
-               Well lets just say you wanted the Circle and the Square to both be red and have the same area. <br>
-               However, when you print the names of the shapes you obviously would want the square to a square and the circle to be a circle. <br>
-               This is where polymorphism comes in handy. <br>
-               “We do not want to write duplicate code for two shapes if they are outputting the same properties.”<br>
-               So how let’s go back to our example code now and see what this looks like. <br><br>
-            </p>
-            <textarea rows="20" cols="55" data-editor = "java" data-gutter="1">
-         public class Polymorphism{		
-            public static void main(String[] args){				
-                Square s=new Square();		
-                Square s1= new Circle();		
-                s.getArea();		
-                s1.getArea();	
-                }	
-             }
-            class Square {	
-                public void getArea(){		
-                   System.out.println("24");
-                }
-	            public void getColour(){
-                   System.out.println("red");
-               }
-            public void name(){
-                   System.out.println("square");
-               }		
-             }
-           }
-         </textarea>
-         <br>
-            <p>
-               Lets perform a polymorphic action known as overriding:
-               What will happen here<BR>
-               •	Area class will stay the same in circle class<BR>
-               •	getColour will stay the same in circle class <BR>
-               •	We are overriding our “inherited” method name() to change the name of the shape<BR>
-            </p>
-            <textarea rows="5" cols="55" data-editor = "java" data-gutter="1">
-         class Circle extends Square{
-            public void name(){
-                   System.out.println("circle");
-               }	
-           }
-         </textarea>
-         <br>
-            <p>
-               Lets see Polymorphism in action in the driver class: <br>
-               Here we make a two new references to objects. First we make our Square.<br>
-               Then we make a circle but you can see we have created our reference using the keyword “Square” this is because of our inheritance earlier.<br> 
-               This is where Polymorphism gets its name from. The word ‘poly’ meaning many and ‘morphs’ meaning forms. Our square has many forms as it can also be a circle.<br>
-               Once we create this we can see Circle now inherits all of squares properties besides the name() method with we changed using a form of polymorphism known as overriding.
-            </p>
-            <br>
-            <textarea rows="13" cols="55" data-editor = "java" data-gutter="1">
-         public class Polymorphism {
-            public static void main(String[] args) {
-            Square s = new Square();
-            Square s1 = new Circle();
-            s.name();
-            s1.name();
-            s.getArea();
-            s.getColour();
-            s1.getArea();
-            s1.getColour();
-          }
+            <textarea rows="7" cols="55" data-editor = "java" data-gutter="1">
+            class Lion implements Animal {
+               public void animalSound() {
+                  System.out.println("Rawr");
+            }
+               public void NumberOfLegs() {
+                  System.out.println("4");
+            }
          }
          </textarea>
+         <br>
+            <p><br>
+               <br>Lets put it all together in our main class and check the output<br>
+               We need to create of the class object then simply call the method<br>
+            <br><br>
+            </p>
+            <textarea rows="20" cols="55" data-editor = "java" data-gutter="1">
+            public class Interfaces {
+               public static void main(String[] args) {
+                  Lion myLion = new Lion();
+                  Duck myDuck = new Duck();  
+                  myLion.animalSound();
+                  myLion.NumberOfLegs();
+                  myDuck.animalSound();
+                  myDuck.NumberOfLegs();
+            }
+         }
+         </textarea>
+         <br>
+         <br>
+         <h2>notes on Interfaces</h2>
+            <p>
+            
+            •	Interfaces cannot be used to construct objects <br>
+            (in the example above, it is not possible to create an "Animal" object in the MyMainClass)<br><br>
+            •	Interface methods do not have a body - the body is provided by the "implement" class<br><br>
+            •	When implementing an interface you must override all of its methods<br><br>
+            •	Interfaces cannot contain constructors <br>
+
+              
+            </p>
+            <br>
          </div>
       </div>
       </div>
