@@ -27,7 +27,7 @@
                 die("Connection failed:" .$conn -> connect_error);
             }
 
-            $taskToDelete = $_GET['id'];
+            //$taskToDelete = $_GET['id'];
 
              // folder path that contains files and subfolders
              $path = "./taskUploads";
@@ -39,11 +39,20 @@
 
             if ($conn->query($connectionsSQL) === TRUE) {
                 echo "Sucessful";
-                header( "Location: taskPageTeacher.php" );
 
             } 
             else {
                 echo "Error: " . $connectionsSQL . "<br>" . $conn->error;
+            }
+
+            $connections2SQL = "DELETE FROM taskstatus;";
+
+            if ($conn->query($connections2SQL) === TRUE) {
+                echo "Sucessful";
+
+            } 
+            else {
+                echo "Error: " . $connections2SQL . "<br>" . $conn->error;
             }
 
             header( "Location: taskPageTeacher.php" );

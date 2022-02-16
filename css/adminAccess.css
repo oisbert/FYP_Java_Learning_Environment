@@ -1,22 +1,20 @@
 body {
-	background: linear-gradient(-45deg, #fafafa, #1ea80c, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 20s ease infinite;
-	height: 100vh;
+    background: linear-gradient(-45deg, #fafafa, #1ea80c, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 20s ease infinite;
+    height: 100vh;
 }
-
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+    0% {
+        background-position: 0% 50%;
+   }
+    50% {
+        background-position: 100% 50%;
+   }
+    100% {
+        background-position: 0% 50%;
+   }
 }
-
 .list-teachers {
     background-color: rgba(191, 191, 191,0.5);
     padding-top: 1%;
@@ -33,7 +31,6 @@ body {
     overflow: hidden;
     word-wrap: break-word;
 }
-
 .DetailsTitle {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
@@ -42,33 +39,27 @@ body {
     padding-bottom: 5px;
     text-decoration: underline;
 }
-
 .DetailsDesc {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     margin-left: 1em;
     padding-bottom: 20px;
 }
-
 #completebtn {
     margin-left: 8%;
     margin-right: 6%;
     box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
 }
-
 #needHelpbtn {
     margin-left: 5%;
     margin-right: 6%;
     box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
-
 }
-
 #cancelbtn {
     margin-left: 5%;
     margin-right: 6%;
     box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
 }
-
 .AddNewTask {
     margin: auto;
     margin-bottom: 5%;
@@ -77,11 +68,8 @@ body {
     border: 3px solid rgb(14, 202, 14);
     border-radius: 40px;
     padding: 10px;
-
 }
-
 .AddNewTask h1{
     margin-left: 20%;
     width: 50%;
-
 }

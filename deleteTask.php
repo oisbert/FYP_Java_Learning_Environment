@@ -16,11 +16,23 @@
 
             if ($conn->query($connectionsSQL) === TRUE) {
                 echo "Sucessful";
-                header( "Location: taskPageTeacher.php" );
 
             } 
             else {
                 echo "Error: " . $connectionsSQL . "<br>" . $conn->error;
+            }
+
+            $taskToDelete = $_GET['id'];
+
+            $connections2SQL = "DELETE FROM taskstatus WHERE taskID={$taskToDelete};";
+
+            if ($conn->query($connections2SQL) === TRUE) {
+                echo "Sucessful";
+                
+
+            } 
+            else {
+                echo "Error: " . $connections2SQL . "<br>" . $conn->error;
             }
 
             header( "Location: taskPageTeacher.php" );

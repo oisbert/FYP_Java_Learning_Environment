@@ -39,7 +39,7 @@
                 die("Connection failed:" .$conn -> connect_error);
             }
 
-            $sql = "select taskTitle, taskDescription, taskID, teacherID, filePath
+            $sql = "select taskTitle, taskDescription, taskID, teacherID, filePath, taskfilename
                         from tasks ";
             
             
@@ -51,8 +51,16 @@
                     print "<div class='Tasks'>
                                     <p class='Details text-left'><b>Title: </b>{$row['taskTitle']}</p>
                                     <p class='Details text-left'><b>Description: </b>{$row['taskDescription']}</p>
-                                    <button type='button' class='btn btn-danger' style='margin-bottom:1%; float:right;' onClick='deletetask({$row['taskID']})'>Delete</button>";             
-                                    print "</div><BR>";
+                                    <button type='button' class='btn btn-danger' style='margin-bottom:1%; float:right;' onClick='deletetask({$row['taskID']})'>Delete</button>
+                                    <form method='post' action='taskPageTeacher.php' enctype='multipart/form-data'><br><br>
+                                    <input type='hidden' value='{$row['taskfilename']}' name='taskfilename'>
+                                    <p class='Details text-left'><b>Upload answer to the task here to Auto-Grade</p>
+                                    <input type ='file' name='file'>
+                                    <br>
+                                    <br>
+                                    <input class='button' type='submit' name='submit' value='Submit Answer' style='float:left''><br><br><br>
+                                    </form>";           
+                                    
 
                     if($row['filePath'] != NULL){
                          print "<div class = 'Attachment-link'><a href='uploads/{$row['filePath']}' download>
@@ -62,6 +70,7 @@
                     else {
                         print "<p>No Attachment</p>";
                         }
+                    print "</div><BR>";
             }
         }
         ?>
@@ -73,3 +82,43 @@
     </div>
 </body>
 </html>
+
+<?php 
+
+    function addAnswer() {
+        include ("serverConfig.php");
+        $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+        if ($conn -> connect_error) {
+            die("Connection failed:" .$conn -> connect_error);
+        }
+        $teacherID = $_SESSION['teacher'];
+        //$taskTitle = $_POST['taskTitle'];
+        $taskfilename = $_POST['taskfilename'];
+        $targetDir = "tasksAnswers/";
+        $temp = explode(".", $_FILES["file"]["name"]);
+        $fileName = 'Answer'.$taskfilename.'.'.end($temp);
+        $fileName = str_replace(' ', '', $fileName);
+        $targetFilePath = $targetDir . $fileName;
+        $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+        $allowTypes = array('java');
+        move_uploaded_file($_FILES["file"]["tmp_name"],$targetFilePath);
+        
+        //creater directory for student uploads
+        
+        $directoryName = "tasksAnswers/";
+        if(!is_dir($directoryName)){
+            //Directory does not exist, so lets create it.
+            mkdir($directoryName, 0755);
+        }
+
+        if(in_array($fileType, $allowTypes)){
+            echo "File uploaded";
+        }
+        else{
+            echo "Sorry, only java files are allowed";
+            unlink("tasksAnswers/{$fileName}");
+        }
+    }
+
+    if(isset($_POST["submit"])) addAnswer();
+?>

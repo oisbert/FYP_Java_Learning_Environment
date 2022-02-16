@@ -20,11 +20,15 @@
     $OCDelete = "{$userIDtoLetters}Car.java";
     $OCClassDelete = "{$userIDtoLetters}Car.class";
 
+    $InterfacesDelete = "{$userIDtoLetters}Interfaces.java";
+    $InterfacesClassDelete = "{$userIDtoLetters}Interfaces.class";
+
     $RandomDelete = "{$userIDtoLetters}Random.java";
     $RandomClassDelete = "{$userIDtoLetters}Random.class";
 
     unlinkFiles($PolyDelete, $PolyClassDelete);
     unlinkFiles($OCDelete, $OCClassDelete);
+    unlinkFiles($InterfacesDelete,$InterfacesClassDelete);
     unlinkFiles($RandomDelete, $RandomClassDelete);
 
     session_destroy();

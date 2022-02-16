@@ -16,6 +16,9 @@
     function GenerateOCFiles() {
             window.location.href= 'generatorOC.php';
         }
+    function GenerateInterfaceFiles() {
+            window.location.href= 'generatorInterfaces.php';
+        }
 
 </script>
     <?php 
@@ -27,7 +30,7 @@
 <div class="grid-container">
   <div class="grid-item" onClick="GenerateOCFiles()"><div class = "title"><h1>Object/Classes<h1></div></div>
   <div class="grid-item" onClick="GeneratePolyFiles()"><div class = "title"><h1>Polymorphism<h1></div></div>
-  <div class="grid-item">3</div>  
+  <div class="grid-item" onClick="GenerateInterfaceFiles()"><div class = "title"><h1>Interfaces<h1></div></div>
   <div class="grid-item">4</div>
   <div class="grid-item">5</div>
   <div class="grid-item">6</div>  

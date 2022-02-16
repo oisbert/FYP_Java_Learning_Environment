@@ -65,7 +65,7 @@
 
             $userID = $_SESSION["user"];
 
-            $sql = "SELECT taskTitle, taskDescription, taskID, teacherID, filePath
+            $sql = "SELECT taskTitle, taskDescription, taskID, teacherID, filePath , taskfilename
             FROM tasks";
 
             $result = $conn -> query($sql);
@@ -96,7 +96,7 @@
                         print "<button type ='button' id = 'completebtn' class='btn btn-success' disabled '>Complete</button> ";
                     } else {
                        
-                        print "<form method='post' name ='upload-student' action='addUpload.php?taskID= {$row['taskID']} &taskTitle={$row['taskTitle']} &status=Complete' enctype='multipart/form-data'>";
+                        print "<form method='post' name ='upload-student' action='addUpload.php?taskID= {$row['taskID']} &taskTitle={$row['taskTitle']} &taskfilename={$row['taskfilename']} &status=Complete' enctype='multipart/form-data'>";
                         print "<input id ='inputfile' type ='file' name='file'>";
                         print "<button type ='submit' id = 'completebtn' class='btn btn-success' onClick='addUpload({$row['taskID']})'>Complete</button>";
                         print "</form>";
@@ -116,12 +116,7 @@
                         print "<button type ='button' id = 'cancelbtn' class='btn btn-danger' disabled '>Cancel</button> ";
                     }
 
-                    if($ButtonSQL && $row2['feedback'] == NULL) {
-                        print "<button type ='button' id = 'feedbackbtn' class='btn btn-warning' onClick='viewFeedback({$row['taskID']})'>Feedback</button>";
-                        
-                    } else {
-                        print "<button type ='button' id = 'feedbackbtn' class='btn btn-warning' disabled '>No feedback avalible</button> ";
-                    }
+                    print "<button type ='button' id = 'feedbackbtn' class='btn btn-warning' onClick='viewFeedback({$row['taskID']})'>Feedback</button>";
                
                     print "</div></div><BR>";
                                     

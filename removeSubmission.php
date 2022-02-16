@@ -27,7 +27,7 @@
             if (mysqli_num_rows($result) != 0) {
                 while($row = $result->fetch_assoc())
                 {   
-                $directoryName = "taskUploads/{$taskTitle}/{$row['filePathUser']}";
+                $directoryName = "taskUploads/{$taskTitle}/{$currentUser}/{$row['filePathUser']}";
 
                 if(file_exists($directoryName)){
                 unlink($directoryName);
@@ -50,7 +50,7 @@
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
 
-            //header( "Location: cancelRequest.php" );
+            header( "Location: taskPage.php" );
             $conn->close();
         ?>
     </body>
