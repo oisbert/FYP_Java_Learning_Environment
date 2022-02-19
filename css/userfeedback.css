@@ -9,6 +9,8 @@
     transform: translate(-50%,-50%);
     top: 20%;
     left: 50%;
+    white-space: pre;
+    word-wrap: normal;
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);

@@ -10,7 +10,7 @@
     </head>
 
     <script type="text/javascript">
-        function addFeedback(taskID, userID) {
+        function addFeedback(taskID, userID, filename) {
             window.location.href= 'addFeedback.php?taskID=' + taskID + '&userID=' + userID;
         }
 
