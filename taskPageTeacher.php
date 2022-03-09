@@ -22,6 +22,12 @@
             };
         }
 
+    function deleteUpload(variable) {
+            if (confirm("Are you sure you want Remove this answer file") == true) {
+            window.location.href= 'deleteAnswerFile.php?id=' + variable;
+            };
+        }
+
 </script>
 
 <body>
@@ -47,6 +53,7 @@
             if(mysqli_num_rows($result) != 0) {
                 while($row = $result->fetch_assoc())
                 {   
+                    $taskfile = $row['taskfilename'];
                     print "<div class='Tasks'>
                                     <p class='Details text-left'><b>Title: </b>{$row['taskTitle']}</p>
                                     <p class='Details text-left'><b>Description: </b>{$row['taskDescription']}</p>
@@ -56,8 +63,12 @@
                                     <input type ='file' name='file'>
                                     <br>
                                     <br>
-                                    <input class='button' type='submit' name='submit' value='Submit Answer' style='float:left''><br><br><br>
-                                    <button type='button' id = 'DeleteButton' class='btn btn-danger' style='margin-bottom:1%; float:right;' onClick='deletetask({$row['taskID']})'>Delete</button>
+                                    <input class='button' type='submit' name='submit' value='Submit Answer' style='float:left''><br><br><br>";
+                                    if (file_exists("tasksAnswers/Answer{$taskfile}.java")) {
+                                        print "<button type='button' id = 'DeleteButton' class='btn btn-danger' style='margin-bottom:1%; float:right;' onClick='deleteUpload({$row['taskID']})'>Delete Answer Upload</button>";
+                                    }
+                                   
+                                    print "<button type='button' id = 'DeleteButton' class='btn btn-danger' style='margin-bottom:1%; float:right;' onClick='deletetask({$row['taskID']})'>Delete Task</button>
                                     </form>";           
                                     
 

@@ -44,9 +44,15 @@
 
       $targetDir = "taskUploads/{$taskTitle}/{$userIDtask}/{$userFile}";
       $new_str = str_replace(' ', '', $targetDir);
-      $myfile = file_get_contents($new_str, "r") or die("Unable to open file!");
+      $myfile = file_get_contents($new_str, "r");
+      $targetDir2 = "tasksAnswers/Answer{$userFile}";
+      $new_str2 = str_replace(' ', '', $targetDir2);
       //echo $new_str;
-      //echo "-------------- test 1 ----------------";
+
+      if (file_exists($new_str2)) {
+         $AnswerFile = file_get_contents($new_str2, "r");
+
+      //"-------------- test 1 ----------------";
 
       print "<div class = auto-background>";
       print "<div class = running-test-1>";
@@ -147,6 +153,10 @@
       //feedbackbox
 
       print "</div>";
+   }
+   else{
+      print "<h1>No file found Cant Auto-Grade</h2>";
+   }
       ?>
    <div class = "feedback">
       <form action="autoGradeSubmit.php?taskID=<?php echo $taskID ?> &userID=<?php echo $userIDtask?>" method="post" >

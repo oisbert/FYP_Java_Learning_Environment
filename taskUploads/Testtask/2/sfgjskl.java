@@ -1,4 +1,4 @@
-public class AnswerStaticpolymorphism {
+public class Staticpolymorphism {
     public static void main(String[] args) {
         Square s = new Square();
         Square s1 = new Circle();
