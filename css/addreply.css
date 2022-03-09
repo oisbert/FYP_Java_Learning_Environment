@@ -16,7 +16,7 @@
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
 }
-.description textarea{
+.Addtask-text textarea{
     resize:none;
     display: block;
     height: 300px;
@@ -27,11 +27,8 @@
     margin-top: 8px;
     font-size: 14px;
     font-weight: 300;
-    resize: none;
 }
-.description .bio-description{
-    margin-top: 1%;
-}
+
 input[type="submit"]{
     background-color: #551b1b;
     height: 30px;

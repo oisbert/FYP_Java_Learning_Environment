@@ -1,5 +1,5 @@
 <?php
-function getNextWord($string)
+function checkCap($string)
 {
     $result = preg_split('/class/', $string);
     if (count($result) > 1)

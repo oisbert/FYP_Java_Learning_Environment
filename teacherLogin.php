@@ -18,6 +18,7 @@
 
     </head>
     <body>
+    <div class="bg-image"></div>
         <div class="wrapper">
             <div class="banner">
                     <div class="login">
@@ -38,7 +39,7 @@
                                     <button class="button" onClick="location.href='teacherRegister.php'">Register</button>
                                 </div>
                             </div>
-                        <a href="login.php" style="color: white; padding-left: 10%">Are you a User? Click here</a>
+                        <a href="login.php" style="color: black; padding-left: 10%">Are you a User? Click here</a>
                     </div>
                 </div>
             </div>

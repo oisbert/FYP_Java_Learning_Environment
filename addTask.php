@@ -88,7 +88,7 @@
         $conn->close();
         }
         else{
-            echo "Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.";
+            echo "Sorry, only JPG, JPEG, PNG, GIF, PDF & JAVA files are allowed to upload.";
         }
     }
 

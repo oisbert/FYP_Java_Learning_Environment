@@ -12,7 +12,7 @@
 
             $userToDelete = $_GET['id'];
 
-            $connectionsSQL = "DELETE FROM users WHERE userID={$userToDelete};";
+            $connectionsSQL = "DELETE FROM users WHERE userID={$userToDelete}";
 
             if ($conn->query($connectionsSQL) === TRUE) {
                 echo "Sucessful";

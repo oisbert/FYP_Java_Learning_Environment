@@ -50,14 +50,14 @@
                     print "<div class='Tasks'>
                                     <p class='Details text-left'><b>Title: </b>{$row['taskTitle']}</p>
                                     <p class='Details text-left'><b>Description: </b>{$row['taskDescription']}</p>
-                                    <button type='button' class='btn btn-danger' style='margin-bottom:1%; float:right;' onClick='deletetask({$row['taskID']})'>Delete</button>
                                     <form method='post' action='taskPageTeacher.php' enctype='multipart/form-data'><br><br>
                                     <input type='hidden' value='{$row['taskfilename']}' name='taskfilename'>
-                                    <p class='Details text-left'><b>Upload answer to the task here to Auto-Grade</p>
+                                    <p class='Details text-left'><b>Upload answer to the task here to Auto-Grade (Please name file Answer{$row['taskfilename']}.java)</p>
                                     <input type ='file' name='file'>
                                     <br>
                                     <br>
                                     <input class='button' type='submit' name='submit' value='Submit Answer' style='float:left''><br><br><br>
+                                    <button type='button' id = 'DeleteButton' class='btn btn-danger' style='margin-bottom:1%; float:right;' onClick='deletetask({$row['taskID']})'>Delete</button>
                                     </form>";           
                                     
 
@@ -91,7 +91,6 @@
             die("Connection failed:" .$conn -> connect_error);
         }
         $teacherID = $_SESSION['teacher'];
-        //$taskTitle = $_POST['taskTitle'];
         $taskfilename = $_POST['taskfilename'];
         $targetDir = "tasksAnswers/";
         $temp = explode(".", $_FILES["file"]["name"]);

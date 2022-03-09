@@ -34,8 +34,8 @@
                 die("Connection failed:" .$conn -> connect_error);
             }
 
-            $sql = "select userID, username, email 
-            from users ";
+            $sql = "SELECT userID, username, email 
+            FROM users WHERE admin = 0";
 
             $result = $conn -> query($sql);
 

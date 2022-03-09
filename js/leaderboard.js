@@ -1,5 +1,5 @@
 anime({
     targets: '.leaderboard',
-    translateX: 350,
+    translateX: "+=10%",
     delay: anime.stagger(150, {direction: 'reverse'})
   });

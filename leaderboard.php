@@ -25,7 +25,7 @@
                 die("Connection failed:" .$conn -> connect_error);
             }
 
-            $sql = "SELECT username, points
+            $sql = "SELECT username, points, admin
             FROM users ORDER BY points DESC";
 
             $result = $conn -> query($sql);
@@ -33,6 +33,7 @@
             if(mysqli_num_rows($result) != 0) {
                 while($row = $result->fetch_assoc())
                 {   
+                    if($row['admin'] != 1){
                     print "<div class='leaderboard'>
                                     <ol>
                                     <li>
@@ -40,6 +41,7 @@
                                     <medium>{$row['points']}</medium>
                                     </li>
                                     </ol>";
+                    }
                
                     print "</div><BR>";
                                     
@@ -49,7 +51,7 @@
 
     </div>
 
-    <script src="js/leaderboard.js" type="text/javascript"></script>
+    <script src="js/leaderboard" type="text/javascript"></script>
 </body>
 </script>
 </html>

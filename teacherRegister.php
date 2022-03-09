@@ -28,6 +28,7 @@
 
     </head>
     <body>
+    <div class="bg-image"></div>
         <div class="wrapper">
             <div class="banner"> 
                     <div class="login">

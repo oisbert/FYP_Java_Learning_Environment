@@ -2,8 +2,7 @@
 <html>
    <head>
       <title>
-         Embedding an online compiler 
-         into a website
+         autoGrader
       </title>
       </link>
       <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
@@ -51,7 +50,7 @@
 
       print "<div class = auto-background>";
       print "<div class = running-test-1>";
-      if(getNextWord($myfile) == true){
+      if(checkCap($myfile) == true){
          $Captest = "---Test 1 passed: Class file starts with Capital letter ✔️";
          print "<H1>$Captest</H1>";
       }
@@ -68,11 +67,10 @@
       $count = 0;
       foreach($lines as $word) {
          if(checkForStatic($word) == true){
-            //print "<H4>Test 2 passed: All methods declared as static </H4>";  
+            // 
       }
       else{
          $count++;
-         //print "<H1>Test 2 Failed: Method declared without static</H1>";
       }
       }
 
@@ -107,7 +105,7 @@
 
       //echo "-------------- test 3 ----------------";
       print "<div class = running-test-3>";
-      if(checkMethodName($userFile) == true){
+      if(checkMethodName($new_str) == true){
          $lowercaseMethod = "---Test 3 passed: All methods have a lowercase ✔️";
          print "<H1>$lowercaseMethod </H1>";
       }

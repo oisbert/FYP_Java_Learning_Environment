@@ -11,8 +11,8 @@ body {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.37);
-    margin-left: 1%;
-    margin-right: 40%;
+    margin-right: 13%;
+    transform: translateX(10%);
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 30px;
@@ -41,3 +41,20 @@ li medium{
 .title h1{
     margin-left: 45%;
 }
+
+/* Use a media query to add a breakpoint at 800px: */
+@media screen and (max-width: 800px) {
+    .leaderboard{
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.37);
+        margin-left: 1%;
+        margin-right: 5%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 30px;
+    }
+  }

@@ -8,12 +8,10 @@ function OutputChecker($file1,$file2, &$FormatCheck, &$outputCheck){
     $output = shell_exec("javac {$file1trim}.java && java {$file1trim}");
      shell_exec("javac {$file1trim}.java > outputchecker.txt 2>&1");
      nl2br(file_get_contents( "outputchecker.txt" ));
-    //$data1 = file_get_contents( "outputchecker.txt" );
 
     $output2 = shell_exec("javac {$file2trim}.java && java {$file2trim}");
      shell_exec("javac {$file2} > outputchecker.txt 2>&1");
      nl2br(file_get_contents( "outputchecker.txt" ));
-   // $data2 = file_get_contents( "outputchecker.txt" );
 
     //remove white spaces
     $outputNoSpace1 = str_replace(' ', '', $output);
@@ -24,10 +22,6 @@ function OutputChecker($file1,$file2, &$FormatCheck, &$outputCheck){
         //echo "Output format match";
     }
     else{
-        //echo "Outputs do not match format as follows <br>";
-        //echo "{$output2}<br>";
-        //echo "Your output was<br>";
-        //echo "{$output}<br>";
         $FormatCheck = 1;
     }
 
@@ -36,10 +30,6 @@ function OutputChecker($file1,$file2, &$FormatCheck, &$outputCheck){
         //echo "Output is correct";
     }
     else{
-        //echo "Outputs do not match<br>";
-        //echo "{$outputNoSpace2}<br>";
-        //echo "Your output was<br>";
-        //echo "{$outputNoSpace1}<br>";
         $outputCheck = 1;
     }
 

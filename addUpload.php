@@ -26,7 +26,7 @@
         $fileName = str_replace(' ', '', $fileName);
         $targetFilePath = $userDirectory.$fileName;
         $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
-        $allowTypes = array('jpg','png','jpeg','gif','pdf','java');
+        $allowTypes = array('java');
 
         move_uploaded_file($_FILES["file"]["tmp_name"],$targetFilePath);
 
@@ -40,12 +40,13 @@
             header("Location: taskpage.php");
         } 
         else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Please upload a file to complete the task";
          }
 
         $conn->close();
         }
         else{
-            echo "Sorry, only JPG, JPEG, PNG, GIF, PDF and java files are allowed to upload.";
+            echo "Please upload a file to complete the task";
+            header("Location: taskpage.php");
         }
 ?>

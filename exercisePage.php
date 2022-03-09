@@ -81,11 +81,9 @@
          similar_text("{$skipped_contentAnswer}","{$skipped_contentUser}",$percent);
 
          if($percent > 90){
-            //fopen("Random.java", "w+");
-            //fopen("Random.class", "w");
             $RandomDelete = "Random.java";
             $RandomClassDelete = "Random.class";
-            print "<H3 id = 'animation-info1' class = 'Answer-info'>Looks like your close to the answer your file was %'{$percent}' accurate to the answer ✔️</H3>";
+            print "<H3 id = 'animation-info1' class = 'Answer-info'>Running tests ✔️</H3>";
             print "<H3 id = 'animation-info2'class = 'Answer-info'>Sit tight and we will check your output 😄</H3>";
 
             file_put_contents("Random.java", $getAnswerContents);
@@ -98,7 +96,7 @@
             shell_exec("javac Random.java > log2.txt 2>&1");
             $log2 = nl2br(file_get_contents( "log2.txt" ));
 
-            if($answer == $answer2){
+            if(strval($answer) == strval($answer2)){
                print "<H3 id = 'animation-info3' class = 'Answer-info'>Your answer was correct ✔️</H3>";
 
                $ButtonSQL = "SELECT pointtracker FROM users WHERE userID = {$userID} AND pointtracker = 0;";
@@ -114,19 +112,18 @@
             }
             else if($answer != $answer2){
                print "<H3 id = 'animation-info4' class = 'Answer-info'>Output is not the same as Answer try again ❌</H3>";
-               
             }
             
          }
          else{
-            print "<H1 id = 'animation-info5' class = 'Answer-info'>Your answer was wrong ❌</H1>";
+            print "<H1 id = 'animation-info5' class = 'Answer-info'>Your answer is wrong (tip: checkformatting and output) ❌</H1>";
          }
       ?>
       
   
       <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
-      <script src="js/syntax.js" type="text/javascript"></script>
+      <script src="js/syntaxCompiler.js" type="text/javascript"></script>
       <script src="js/mode-java" type="text/javascript"></script>
       <script src="js/animatePolyLesson" type="text/javascript"></script>
    </body>

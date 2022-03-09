@@ -14,23 +14,18 @@
     overflow: hidden;
     word-wrap: break-word;
 }
-
 .running-test-1 {
     margin-bottom: 200px;
 }
-
 .running-test-2{
     margin-bottom: 200px;
 }
-
 .running-test-3{
     margin-bottom: 200px;
 }
-
 .running-test-4{
     margin-bottom: 200px;
 }
-
 .feedback textarea{
     background-color: rgba(191, 191, 191,0.5);
     padding-top: 1%;

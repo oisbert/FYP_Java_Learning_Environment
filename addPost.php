@@ -14,9 +14,6 @@
             include ("validateLoggedIn.php");
             include ("header.html")
         ?>
-
-        <h1 class="page-heading">Add Post</h1>
-        <hr>
         <div class = "description-container">
             <div class = "bio-description">
                 <form method="post" action="addPost.php">
