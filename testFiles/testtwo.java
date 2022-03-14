@@ -14,7 +14,7 @@ class Square {
     public static void getArea() {
         System.out.println("24");
     }
-    public static void getColour() {
+    public static void GetColour() {
         System.out.println("red");
     }
     public static void name() {

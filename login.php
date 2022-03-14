@@ -125,8 +125,3 @@
     }
 
 ?>
-
-    <form method="post" action="exercisePage.php">
-            <input type="hidden" name="varname" value="<?php echo $filename_without_ext; ?>">
-            <input type="submit">
-        </form>

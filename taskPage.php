@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/taskPage?v=<?php echo time(); ?>">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
     <title>Tasks </title>
 </head>
@@ -45,6 +46,7 @@
         window.location.href= 'addUpload.php?taskID=' + taskID;
         }
     }
+
 
 </script>
 
@@ -96,8 +98,8 @@
                         print "<button type ='button' id = 'completebtn' class='btn btn-success' disabled '>Submitted</button> ";
                     } else {
                         print "<form method='post' name ='upload-student' action='addUpload.php?taskID= {$row['taskID']} &taskTitle={$row['taskTitle']} &taskfilename={$row['taskfilename']} &status=Complete' enctype='multipart/form-data'>";
-                        print "<input id ='inputfile' type ='file' name='file'>";
-                        print "<button type ='submit' id = 'completebtn' class='btn btn-success' onClick='addUpload({$row['taskID']})'>Upload</button>";
+                        print "<input id ='inputfile' type ='file' name='file' id='Uploader'  >";
+                        print "<button type ='submit' name='submit' id = 'submit' class='btn btn-success' onClick='addUpload({$row['taskID']})'>Upload</button>";
                         print "</form>";
                     }
 
@@ -124,9 +126,13 @@
         ?>
 
     </div>
-    <script src="js/animateTasks.js" type="text/javascript"></script>
-</body>
+    </body>
+    <script>
+
+
+
 </script>
+    <script src="js/animateTasks.js" type="text/javascript"></script>
 </html>
 
 

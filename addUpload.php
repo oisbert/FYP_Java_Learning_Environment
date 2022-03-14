@@ -49,4 +49,3 @@
             echo "Please upload a file to complete the task";
             header("Location: taskpage.php");
         }
-?>

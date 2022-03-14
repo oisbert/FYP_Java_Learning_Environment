@@ -22,7 +22,7 @@
 <div class="grid-container">
   <div class="grid-item" onClick="location.href='OCedit.php'"><div class = "title"><h1>Objects/classes<h1></div></div>
   <div class="grid-item" onClick="location.href='polymorphismEdit.php'"><div class = "title"><h1>Polymorphism<h1></div></div>
-  <div class="grid-item">3</div>  
+  <div class="grid-item"onClick="location.href='interfacesEdit.php'"><div class = "title"><h1>Interfaces<h1></div></div>  
   <div class="grid-item">4</div>
   <div class="grid-item">5</div>
   <div class="grid-item">6</div>  

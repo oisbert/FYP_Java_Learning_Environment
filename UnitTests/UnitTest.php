@@ -41,11 +41,8 @@ class test extends \PHPUnit\Framework\TestCase {
 
         $this->assertTrue( checkMethodName( "testFiles/test.java" ) ==true);
 
-        $result = checkForStatic( checkMethodName( "testFiles/testtwo.java" ) );
-
-        if ($result = false){
         $this->assertFalse( checkMethodName( "testFiles/testtwo.java" ) ==true);
-        }
+        
     }
 
     public function test_checkCap(){

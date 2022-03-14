@@ -25,3 +25,25 @@
 .grid-item .title{
     margin-top: 50%;
   }
+
+  @media only screen and (max-width: 1100px) {
+
+    .grid-item {
+      width: 300px;
+    }
+
+    .grid-container {
+      margin-left:5%;
+      display: grid;
+      grid-template-columns: auto ;
+      padding: 5%;
+      grid-column-gap: 4%;
+      grid-row-gap:4%
+    }
+    
+
+    .input {
+        width: 95%;
+        left: 2.5%;
+    }
+}

@@ -4,7 +4,7 @@
 function checkMethodName($fileOpen){
     $private = "private";
     $public = "public";
-    $publicClass = "public class";
+    //$publicClass = "public class";
     $count = 0;
     $holder = fopen($fileOpen,"r");
     while(!feof($holder)) {
@@ -42,6 +42,5 @@ function checkMethodName($fileOpen){
     else{
         return true;
     }
-    fclose($file);
+    fclose($fileOpen);
 }
-?> 

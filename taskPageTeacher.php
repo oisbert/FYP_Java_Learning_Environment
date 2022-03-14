@@ -56,16 +56,19 @@
                     $taskfile = $row['taskfilename'];
                     print "<div class='Tasks'>
                                     <p class='Details text-left'><b>Title: </b>{$row['taskTitle']}</p>
-                                    <p class='Details text-left'><b>Description: </b>{$row['taskDescription']}</p>
-                                    <form method='post' action='taskPageTeacher.php' enctype='multipart/form-data'><br><br>
-                                    <input type='hidden' value='{$row['taskfilename']}' name='taskfilename'>
-                                    <p class='Details text-left'><b>Upload answer to the task here to Auto-Grade (Please name file Answer{$row['taskfilename']}.java)</p>
-                                    <input type ='file' name='file'>
-                                    <br>
-                                    <br>
-                                    <input class='button' type='submit' name='submit' value='Submit Answer' style='float:left''><br><br><br>";
+                                    <p class='Details text-left'><b>Description: </b>{$row['taskDescription']}</p>";
+                                   
                                     if (file_exists("tasksAnswers/Answer{$taskfile}.java")) {
                                         print "<button type='button' id = 'DeleteButton' class='btn btn-danger' style='margin-bottom:1%; float:right;' onClick='deleteUpload({$row['taskID']})'>Delete Answer Upload</button>";
+                                    }
+                                    else{
+                                        print "<form method='post' action='taskPageTeacher.php' enctype='multipart/form-data'><br><br>
+                                        <input type='hidden' value='{$row['taskfilename']}' name='taskfilename'>
+                                        <p class='Details text-left'><b>Upload answer to the task here to Auto-Grade (Please name file Answer{$row['taskfilename']}.java)</p>
+                                        <input type ='file' name='file'>
+                                        <br>
+                                        <br>
+                                        <input class='button' type='submit' name='submit' value='Submit Answer' style='float:left''><br><br><br>";
                                     }
                                    
                                     print "<button type='button' id = 'DeleteButton' class='btn btn-danger' style='margin-bottom:1%; float:right;' onClick='deletetask({$row['taskID']})'>Delete Task</button>
