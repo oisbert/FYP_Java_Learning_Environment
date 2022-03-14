@@ -11,16 +11,18 @@
         $taskfilename= $_GET['taskfilename'];
         $status= $_GET['status'];
 
-        $targetDir = "taskUploads/{$taskTitle}/{$currentUser}";
+        $taskTitleNoSpaces = str_replace(' ', '', $taskTitle);
+
+        $targetDir = "taskUploads/{$taskTitleNoSpaces}/{$currentUser}";
 
         // Checking whether a file is directory or not
         if (is_dir($targetDir)){
             echo ("Given directory exists");
         }else{
-            mkdir("taskUploads/{$taskTitle}/{$currentUser}", 0700);
+            mkdir("taskUploads/{$taskTitleNoSpaces}/{$currentUser}", 0700);
         }
 
-        $userDirectory = "taskUploads/{$taskTitle}/{$currentUser}/";
+        $userDirectory = "taskUploads/{$taskTitleNoSpaces}/{$currentUser}/";
         $temp = explode(".", $_FILES["file"]["name"]);
         $fileName = $taskfilename.'.'.end($temp);
         $fileName = str_replace(' ', '', $fileName);

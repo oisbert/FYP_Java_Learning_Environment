@@ -32,6 +32,7 @@
     font-family: Arial, Helvetica, sans-serif;
     margin-left: 1em;
     padding-bottom: 20px;
+    line-height: 1.5; 
 }
 
 #completebtn {
@@ -49,9 +50,15 @@
     box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
 }
 
+#fileuploader{
+    margin-bottom: 10px;
+}
+
+
+
 .button-wrapper{
-    margin-top: 5%;
-    margin-left: 48%;
+    margin-top: 30px;
+    margin-left: 30%;
     display: flex;
     justify-content: space-between;
     width: 30rem;
@@ -98,11 +105,16 @@ h4 {
 /* Use a media query to add a breakpoint at 800px: */
 @media screen and (max-width: 800px) {
     .button-wrapper{
-        margin-left: 20%;
-        display: flex;
+        margin-left: 1%;
+        display: block;
         justify-content: space-between;
         width: 30rem;
     
     }
+
+    #submit{
+        margin-left: 5px;
+    }
+
   }
 

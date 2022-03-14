@@ -97,17 +97,11 @@
                     if($ButtonSQL) {
                         print "<button type ='button' id = 'completebtn' class='btn btn-success' disabled '>Submitted</button> ";
                     } else {
-                        print "<form method='post' name ='upload-student' action='addUpload.php?taskID= {$row['taskID']} &taskTitle={$row['taskTitle']} &taskfilename={$row['taskfilename']} &status=Complete' enctype='multipart/form-data'>";
+                        print "<form id ='fileuploader' method='post' name ='upload-student' action='addUpload.php?taskID= {$row['taskID']} &taskTitle={$row['taskTitle']} &taskfilename={$row['taskfilename']} &status=Complete' enctype='multipart/form-data'>";
                         print "<input id ='inputfile' type ='file' name='file' id='Uploader'  >";
                         print "<button type ='submit' name='submit' id = 'submit' class='btn btn-success' onClick='addUpload({$row['taskID']})'>Upload</button>";
                         print "</form>";
                     }
-
-                    //if($ButtonSQL) {
-                    //   print "<button type ='button' id = 'needHelpbtn' class='btn btn-warning' disabled '>Need Help</button> ";
-                    //} else {
-                    //    print "<button type ='button' id = 'needHelpbtn' class='btn btn-warning' onClick='requestForHelp({$row['taskID']})'>Need Help</button>";
-                    //}
 
                     if($ButtonSQL) {
                         print "<form method='post' action='removeSubmission.php?taskID= {$row['taskID']} &taskTitle={$row['taskTitle']}' enctype='multipart/form-data'>";

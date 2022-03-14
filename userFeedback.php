@@ -52,6 +52,9 @@
                             }
                         }
                     } 
+                    else{
+                        print "<p>No Information available</p>";
+                    }
                     $conn->close();
 
                     print "</div>";

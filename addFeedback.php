@@ -10,7 +10,10 @@
     <title>Add Post</title>
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
 <script type="text/javascript">
+
+    //function which allows to move the checked box item to the text area
     $(document).ready(function() {
         $('.checkboxClass').click(function() {
             var text = "";
@@ -49,6 +52,8 @@
                     $Path =  $row['taskTitle'];
                 }
             }
+
+            //collect the contents of the file uploaded by the user
 
             $fileHolder = file_get_contents("taskUploads/{$Path}/{$userID}/{$file}", true);
 

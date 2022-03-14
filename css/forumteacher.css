@@ -40,6 +40,15 @@
     position: relative;
     margin-left: 5%;
 }
+
+.reply td {
+    width:400px;
+    text-align:center;
+    border:1px solid black;
+    padding:5px
+  
+}
+
 .Posts .showcomments{
     margin-top: 5%;
     margin-bottom: 5%;

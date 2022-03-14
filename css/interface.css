@@ -1,5 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Walter+Turncoat);
 
+body {
+  background-color: #5cdb96;
+}
+
+
+
+
 input[type="submit"]{
   height: 30px;
   float:right;
@@ -15,7 +22,6 @@ input[type="submit"]{
   cursor: pointer;
   margin: 5px;
 }
-
 .excution{
   margin-right: 25%;
   display: inline-block;
@@ -77,6 +83,34 @@ input[type="submit"]{
 	transition: all 0.5s;
 }
 
+.border-animation .Classexample h1{
+  margin-left: 20%;
+}
+
+.border-animation .Classexample img{
+    width: 200px;
+    height: 100px;
+    margin-left: 20%;
+    margin-bottom: 20px;
+}
+
+.border-animation .arrow img{
+  width: 100px;
+  height: 200px;
+  margin-left: 35%;
+}
+
+.border-animation .brand h1{
+
+  margin-left: 20%;
+}
+
+.border-animation .brand img{
+  width: 250px;
+  height: 200px;
+  margin-left: 20%;
+}
+
 #section-1-code {
   border: 1px solid black;
   margin-bottom: 5px;
@@ -96,7 +130,7 @@ input[type="submit"]{
 
 }
 
-.example-poly {
+.example-Interface {
   background-color: rgba(191, 191, 191,0.6);
   margin-left: 5%;
   margin-right: 5%;
@@ -106,7 +140,7 @@ input[type="submit"]{
   border-top: 1px solid rgba(255, 255, 255, 0.5);
   border-left: 1px solid rgba(255, 255, 255, 0.5);
   font-family: sans-serif;
-  font-weight: 400;
+  font-weight: 200;
 }
 
 .section-1 {
@@ -125,26 +159,13 @@ input[type="submit"]{
 }
 
 .border-animation{
-  margin-top: 70px;
+  margin-top: 5%;
   margin-left: 30%;
   margin-right: 30%;
   background-color: rgb(161, 161, 161);
   border-style: solid;
   border-color: black;
 }
-
-#square {
-  height: 100px;
-  width:100px;
-  background-color: rgb(5, 133, 26);
-}
-
-#square2 {
-  height: 100px;
-  width:100px;
-  background-color: rgb(5, 133, 26);
-}
-
 
 /* Use a media query to add a breakpoint at 800px: */
 @media screen and (max-width: 800px) {

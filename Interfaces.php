@@ -8,7 +8,7 @@
       </link>
       <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
    </head>
-   <link rel="stylesheet" type="text/css" href="css/polymorphism.css?v=<?php echo time(); ?>">
+   <link rel="stylesheet" type="text/css" href="css/interface.css?v=<?php echo time(); ?>">
    <body>
       <?php
       include ("header.html");
@@ -66,7 +66,7 @@
       What is happening in the Code
       <h1>
       </div>
-      <div class = "example-poly">
+      <div class = "example-Interface">
          <div class = "section-1">
             <p>
                In this lesson we will look at a concept called Interfaces. An interface is an "abstract class" that groups related<br>
@@ -147,7 +147,6 @@
       <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
       <script src="js/syntaxCompiler.js" type="text/javascript"></script>
-      <script src="js/mode-java" type="text/javascript"></script>
       <script src="js/animatePolyLesson" type="text/javascript"></script>
    </body>
 </html>

@@ -20,7 +20,7 @@
          }
 
         $conn->close();
-        //header('Location: taskStatusView.php');
+        header('Location: taskStatusView.php');
         }
         else{
             echo "not working";

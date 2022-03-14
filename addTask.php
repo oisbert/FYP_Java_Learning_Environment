@@ -64,22 +64,29 @@ function addTask()
     $teacherID = $_SESSION['teacher'];
     // File upload path
     $targetDir = "uploads/";
-    $fileName = NULL;
+    //$fileName = NULL;
     $fileName = basename($_FILES["file"]["name"]);
+
     $targetFilePath = $targetDir . $fileName;
     $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
     $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'pdf', 'java');
     move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath);
 
+    $directoryNewName = "{$_POST['taskTitle']}";
+    $directoryNameNoSpaces = str_replace(' ', '', $directoryNewName);
+
     //creater directory for student uploads
 
-    $directoryName = "taskUploads/{$_POST['taskTitle']}";
+    $directoryName = "taskUploads/{$directoryNameNoSpaces}";
     if (!is_dir($directoryName)) {
         //Directory does not exist, so lets create it.
         mkdir($directoryName, 0755);
     }
 
-    if (in_array($fileType, $allowTypes) or $fileName == NULL) {
+    $sqlCheck = mysqli_query($conn, "SELECT * from tasks WHERE taskTitle = {$_POST['taskTitle']}");
+
+
+    if (in_array($fileType, $allowTypes) or $fileName == NULL AND mysqli_num_rows($sqlCheck) == 0) {
         $sql = "INSERT INTO tasks ( taskTitle, taskDescription, teacherID, filePath, taskfilename)
                 VALUES ('{$_POST['taskTitle']}', '{$_POST['taskDescription']}','{$teacherID}', '{$fileName}','{$_POST['taskfile']}')";
 
