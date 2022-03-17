@@ -1,15 +1,6 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="css/UserConnections.css?v=<?php echo time(); ?>">
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 
-        <title>Delete Post</title>
-        
-    </head>
-    <body>
-        <?php
+<?php
+        //function to delete a post from the forum
 
             include ("validateLoggedIn.php");
             
@@ -18,9 +9,9 @@
             if ($conn -> connect_error) {
                 die("Connection failed:" .$conn -> connect_error);
             }
-
+            //get the current postID
             $PostID = $_GET['PostID'];
-
+            //then remove it form the database
             $sql = "DELETE FROM posts WHERE PostID = $PostID";
 
             if ($conn->query($sql) === TRUE) {

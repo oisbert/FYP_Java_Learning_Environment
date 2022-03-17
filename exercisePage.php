@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+      <!-- 
+         code for the exercises page
+      -->
    <head>
       <title>
-         Embedding an online compiler 
-         into a website
+         Exercise Page 
       </title>
       </link>
       <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
@@ -12,7 +14,7 @@
    <body>
 
 <script>
-
+   //add points function call
    function AddPoints() {
             window.location.href= 'addpoints.php';
         }
@@ -25,10 +27,13 @@
       include ("serverConfig.php");
       include ("IDtoLetter.php");
       include ("unlinkFile.php");
+      //get the id of the current user logged in 
       $_SESSION['user'] = $userID;
       
+      //load the random generated exercise file into the variable
       $filename_without_ext=$_SESSION['varname'];
       
+      //convert the current user id to alphabetical format
       $userIDtoLetters = num2alpha($userID);
 
       foreach( glob('excerciseAnswers' . '/*.*') as $fileAnswer){
@@ -68,7 +73,6 @@
 
 
       <?php
-         //$getAnswerContents = file_get_contents("{$fileAnswer}", "w");
          $lines = explode("\n", $getAnswerContents);
          $skipped_contentAnswer = implode("\n", array_slice($lines, 2));
          $skipped_contentAnswer = preg_replace('/\s+/', '',   $skipped_contentAnswer);

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+       <!-- 
+         Menu that shows the avalible chalkboards to edit for the teacher 
+      -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +11,7 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
 </head>
+
 <body>
 
     <?php 
@@ -15,22 +19,37 @@
     include ("headerTeacher.html");
     ?>
 
-<div class ="Page-Note">
-    <h1>Select a chalkboard you would like to edit<h1>
-</div>
+    <div class="Page-Note">
+        <h1>Select a chalkboard you would like to edit<h1>
+    </div>
+       <!-- 
+         Create a grid view of the options avalible
+      -->
+    <div class="grid-container">
+        <div class="grid-item" onClick="location.href='OCedit.php'">
+            <div class="title">
+                <h1>Objects/classes<h1>
+            </div>
+        </div>
+        <div class="grid-item" onClick="location.href='polymorphismEdit.php'">
+            <div class="title">
+                <h1>Polymorphism<h1>
+            </div>
+        </div>
+        <div class="grid-item" onClick="location.href='interfacesEdit.php'">
+            <div class="title">
+                <h1>Interfaces<h1>
+            </div>
+        </div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
 
-<div class="grid-container">
-  <div class="grid-item" onClick="location.href='OCedit.php'"><div class = "title"><h1>Objects/classes<h1></div></div>
-  <div class="grid-item" onClick="location.href='polymorphismEdit.php'"><div class = "title"><h1>Polymorphism<h1></div></div>
-  <div class="grid-item"onClick="location.href='interfacesEdit.php'"><div class = "title"><h1>Interfaces<h1></div></div>  
-  <div class="grid-item">4</div>
-  <div class="grid-item">5</div>
-  <div class="grid-item">6</div>  
-  <div class="grid-item">7</div>
-  <div class="grid-item">8</div>
-  <div class="grid-item">9</div>  
-</div>
-
-<script src = "js/animationLesson"></script>
+    <script src="js/animationLesson"></script>
 </body>
+
 </html>
