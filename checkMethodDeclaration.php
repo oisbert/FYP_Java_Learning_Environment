@@ -1,6 +1,5 @@
 <?php 
 
-
 function checkMethodName($fileOpen){
     $private = "private";
     $public = "public";

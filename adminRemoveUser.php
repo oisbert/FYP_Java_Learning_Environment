@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+      <!-- 
+         Page to show the admin users currently on the site
+         and give them the option to remove the accounts
+      -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +14,7 @@
 </head>
 
 <script type="text/javascript">
-
+    //function to remove a user
     function userDelete(variable) {
         if (confirm("Are you sure you want to Delete this User?") == true) {
                 window.location.href= 'removeUser.php?id=' + variable;
@@ -33,7 +37,7 @@
             if ($conn -> connect_error) {
                 die("Connection failed:" .$conn -> connect_error);
             }
-
+            //get all the users from the database but exclude the admin accounts
             $sql = "SELECT userID, username, email 
             FROM users WHERE admin = 0";
 

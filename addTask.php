@@ -1,5 +1,7 @@
 <html>
-
+          <!-- 
+         Function to add a task to the students task page
+      -->
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/addTask.css?v=<?php echo time(); ?>">
@@ -17,7 +19,7 @@
         $(function() {
             $('#input1').on('keypress', function(e) {
                 if (e.which == 32) {
-                    console.log('Space Detected');
+                    console.log('Space Detected'); //for testing
                     return false;
                 }
             });
@@ -28,8 +30,13 @@
     include("validateLoggedIn.php");
     include("headerTeacher.html");
     ?>
+
     <div class="description-container">
         <div class="bio-description">
+
+          <!-- 
+         from to create a task
+        -->
             <form method="post" action="addTask.php" enctype="multipart/form-data">
                 <h3>Task title:</h3>
                 <input class="text-input" type='text' placeholder='Enter Task Title' name='taskTitle' enctype="multipart/form-data" required></input>
@@ -54,53 +61,67 @@
 
 <?php
 
-function addTask()
-{
-    include("serverConfig.php");
-    $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-    if ($conn->connect_error) {
-        die("Connection failed:" . $conn->connect_error);
-    }
-    $teacherID = $_SESSION['teacher'];
-    // File upload path
-    $targetDir = "uploads/";
-    //$fileName = NULL;
-    $fileName = basename($_FILES["file"]["name"]);
+    //function carried out whgen the forum task is submitted
+    function addTask(){
 
-    $targetFilePath = $targetDir . $fileName;
-    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-    $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'pdf', 'java');
-    move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath);
+        include("serverConfig.php");
+        $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 
-    $directoryNewName = "{$_POST['taskTitle']}";
-    $directoryNameNoSpaces = str_replace(' ', '', $directoryNewName);
+        if ($conn->connect_error) {
+            die("Connection failed:" . $conn->connect_error);
+        }
+        //get the current signed in teacherID
+        $teacherID = $_SESSION['teacher'];
 
-    //creater directory for student uploads
+        // File upload path
+        $targetDir = "uploads/";
+        //filename is the name of the file submitted
+        $fileName = basename($_FILES["file"]["name"]);
+        
+        //the target file path is uploads/file.
+        $targetFilePath = $targetDir . $fileName;
+        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
-    $directoryName = "taskUploads/{$directoryNameNoSpaces}";
-    if (!is_dir($directoryName)) {
-        //Directory does not exist, so lets create it.
-        mkdir($directoryName, 0755);
-    }
+        //types allowed to be uploaded
+        $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'pdf', 'java');
+        move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath);
 
-    $sqlCheck = mysqli_query($conn, "SELECT * from tasks WHERE taskTitle = {$_POST['taskTitle']}");
+        //create a new directory with the name of the task to store the uploaded
+        $directoryNewName = "{$_POST['taskTitle']}";
+        $directoryNameNoSpaces = str_replace(' ', '', $directoryNewName);
 
-
-    if (in_array($fileType, $allowTypes) or $fileName == NULL AND mysqli_num_rows($sqlCheck) == 0) {
-        $sql = "INSERT INTO tasks ( taskTitle, taskDescription, teacherID, filePath, taskfilename)
-                VALUES ('{$_POST['taskTitle']}', '{$_POST['taskDescription']}','{$teacherID}', '{$fileName}','{$_POST['taskfile']}')";
-
-        if ($conn->query($sql) === TRUE) {
-            echo "The file " . $fileName . " has been uploaded successfully.";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+        //creater directory for student uploads
+        $directoryName = "taskUploads/{$directoryNameNoSpaces}";
+        if (!is_dir($directoryName)) {
+            //Directory does not exist, so lets create it.
+            mkdir($directoryName, 0755);
         }
 
-        $conn->close();
-    } else {
-        echo "Sorry, only JPG, JPEG, PNG, GIF, PDF & JAVA files are allowed to upload.";
-    }
-}
+        //sql query to check the tasks table
+        $sqlCheck = mysqli_query($conn, "SELECT * from tasks WHERE taskTitle = {$_POST['taskTitle']}");
 
-if (isset($_POST["submit"])) addTask();
+        /*
+        if the file does have one of the allowed types and the sql query is 0 (task doesnt already exist)
+        allow the task upload
+        */
+        if (in_array($fileType, $allowTypes) or $fileName == NULL AND mysqli_num_rows($sqlCheck) == 0) {
+            /*
+            Insert the information into the tasks table
+            */
+            $sql = "INSERT INTO tasks ( taskTitle, taskDescription, teacherID, filePath, taskfilename)
+                    VALUES ('{$_POST['taskTitle']}', '{$_POST['taskDescription']}','{$teacherID}', '{$fileName}','{$_POST['taskfile']}')";
+
+            if ($conn->query($sql) === TRUE) {
+                echo "The file " . $fileName . " has been uploaded successfully.";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+
+            $conn->close();
+        } else {
+            echo "Sorry, only JPG, JPEG, PNG, GIF, PDF & JAVA files are allowed to upload.";
+        }
+    }
+
+    if (isset($_POST["submit"])) addTask();
 ?>

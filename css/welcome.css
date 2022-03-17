@@ -1,0 +1,125 @@
+.wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+.bg-image{
+    height: 100%;
+    width: 100%;
+    background-image: url('../images/loginback.jpg');
+    background-size: cover;
+    background-position: fixed;
+    background-repeat: no-repeat;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+
+.banner {
+    width: 50%;
+    height: 60%;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 20px 20px 50px 500px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageContainer {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0;
+    grid-column-gap: 0;
+}
+
+.welcomeText {
+    margin-top: 0;
+    display: grid;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 2%;
+    color: rgb(0, 0, 0);
+}
+
+
+.buttons {
+    text-align: center;
+}
+
+.button {
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 5px;
+    background-repeat:no-repeat;
+    cursor:pointer;
+    overflow: hidden;
+    background-color: Transparent;
+    border:1px solid black;
+    color: rgb(0, 0, 0);
+    margin-top: 2%;
+}
+
+.button2 {
+    padding-left: 13%;
+    padding-right: 13%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 5px;
+    background-repeat:no-repeat;
+    cursor:pointer;
+    overflow: hidden;
+    background-color: Transparent;
+    border:1px solid black;
+    color: white;
+    margin-top: 5%;
+}
+
+.submit {
+    text-align: center;
+}
+
+.input {
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    margin-bottom: 5%;
+    border-radius: 5px;
+    background-repeat:no-repeat;
+    cursor:pointer;
+    overflow: hidden;
+    background-color: Transparent;
+    border:1px solid black;
+    height: 10%;
+}
+
+.input::placeholder {
+    color: white;
+}
+
+.register {
+    margin-top: 40%;
+}
+
+@media only screen and (max-width: 1100px) {
+
+    .banner {
+        left: 5%;
+        width: 90%;
+        height: 80%;
+        top: 10%;
+    }
+}

@@ -1,5 +1,7 @@
 <html>
-
+       <!-- 
+         Function to add a post to the forum page
+      -->
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -17,6 +19,11 @@
             include ("validateLoggedIn.php");
             include ("header.html")
         ?>
+
+           <!-- 
+            Add text box to enter the post content 
+            action carried out is addpost.php
+            -->
     <div class="description-container">
         <div class="bio-description">
             <form method="post" action="addPost.php">
@@ -36,7 +43,8 @@
 </html>
 
 <?php 
-
+    //the addpost php function adds the post to the database when the post is submitted
+    
     function addPost() {
         include ("serverConfig.php");
         $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
