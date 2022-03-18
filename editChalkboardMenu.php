@@ -41,12 +41,11 @@
                 <h1>Interfaces<h1>
             </div>
         </div>
-        <div class="grid-item">4</div>
-        <div class="grid-item">5</div>
-        <div class="grid-item">6</div>
-        <div class="grid-item">7</div>
-        <div class="grid-item">8</div>
-        <div class="grid-item">9</div>
+        <div class="grid-item"><div class = "title"><h1>Abstraction<h1></div></div>
+        <div class="grid-item"><div class = "title"><h1>Encapsulation<h1></div></div>
+        <div class="grid-item"><div class = "title"><h1>Association<h1></div></div>  
+        <div class="grid-item"><div class = "title"><h1>Aggregation<h1></div></div> 
+        <div class="grid-item"><div class = "title"><h1>Composition<h1></div></div> 
     </div>
 
     <script src="js/animationLesson"></script>
