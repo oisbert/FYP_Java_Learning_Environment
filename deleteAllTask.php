@@ -27,8 +27,6 @@
                 die("Connection failed:" .$conn -> connect_error);
             }
 
-            //$taskToDelete = $_GET['id'];
-
              // folder path that contains files and subfolders
              $path = "./taskUploads";
              $path2 = "./uploads";
