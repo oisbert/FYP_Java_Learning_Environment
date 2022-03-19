@@ -57,11 +57,11 @@
       print "<div class = auto-background>";
       print "<div class = running-test-1>";
       if(checkCap($myfile) == true){
-         $Captest = "---Test 1 passed: Class file starts with Capital letter ✔️";
+         $Captest = "---Test 1 passed: Class file starts with Capital letter ";
          print "<H1>$Captest</H1>";
       }
       else{
-         $Captestfail = "---Test 1 Failed: Class file does not start with Capital letter ❌";
+         $Captestfail = "---Test 1 Failed: Class file does not start with Capital letter ";
          print "<H1>$Captestfail</H1>";
       }
       print "</div>";
@@ -81,11 +81,11 @@
       }
 
       if($count == 0){
-         $statictest = "---Test 2 passed: All methods declared as static ✔️";
+         $statictest = "---Test 2 passed: All methods declared as static ";
          print "<H1>$statictest</H1>";
       }
       else{
-         $statictestfail = "---Test 2 Failed: Method declared without static ❌";
+         $statictestfail = "---Test 2 Failed: Method declared without static ";
          print "<H1>$statictestfail</H1>";
       }
       print "</div>";
@@ -112,11 +112,11 @@
       //echo "-------------- test 3 ----------------";
       print "<div class = running-test-3>";
       if(checkMethodName($new_str) == true){
-         $lowercaseMethod = "---Test 3 passed: All methods have a lowercase ✔️";
+         $lowercaseMethod = "---Test 3 passed: All methods have a lowercase ";
          print "<H1>$lowercaseMethod </H1>";
       }
      else{
-         $lowercaseMethodFailed = "---Test 3 Failed: methods detected without a lowercase ❌";
+         $lowercaseMethodFailed = "---Test 3 Failed: methods detected without a lowercase ";
          print "<H1>$lowercaseMethodFailed</H1>";
  
      }
@@ -130,18 +130,18 @@
       OutputChecker($userFile,$FileAnswer, $FormatCheck ,$outputCheck);
 
       if($FormatCheck > 0){
-         $formatCheckFailed = "---Test 4: Failed formatting was incorrect ❌";
+         $formatCheckFailed = "---Test 4: Failed formatting was incorrect ";
      }
      else{
-         $formatCheck = "---Test 4: Pass Answer format check ✔️";
+         $formatCheck = "---Test 4: Pass Answer format check ";
  
      }
  
      if($outputCheck > 0){
-         $outputCheckFailed = "---Test 5: Failed output was incorrect ❌";
+         $outputCheckFailed = "---Test 5: Failed output was incorrect ";
      }
      else{
-         $outputCheck = "---Test 5: Pass Answer output check ✔️";
+         $outputCheck = "---Test 5: Pass Answer output check ";
      }
       print "</div>";
 

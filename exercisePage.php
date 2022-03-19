@@ -87,8 +87,8 @@
          if($percent > 90){
             $RandomDelete = "Random.java";
             $RandomClassDelete = "Random.class";
-            print "<H3 id = 'animation-info1' class = 'Answer-info'>Running tests ✔️</H3>";
-            print "<H3 id = 'animation-info2'class = 'Answer-info'>Sit tight and we will check your output 😄</H3>";
+            print "<H3 id = 'animation-info1' class = 'Answer-info'>Running tests</H3>";
+            print "<H3 id = 'animation-info2'class = 'Answer-info'>Sit tight and we will check your output</H3>";
 
             file_put_contents("Random.java", $getAnswerContents);
 
@@ -101,7 +101,7 @@
             $log2 = nl2br(file_get_contents( "log2.txt" ));
 
             if(strval($answer) == strval($answer2)){
-               print "<H3 id = 'animation-info3' class = 'Answer-info'>Your answer was correct ✔️</H3>";
+               print "<H3 id = 'animation-info3' class = 'Answer-info'>Your answer was correct</H3>";
 
                $ButtonSQL = "SELECT pointtracker FROM users WHERE userID = {$userID} AND pointtracker = 0;";
                     $ButtonSQLResult = $conn -> query($ButtonSQL);
@@ -115,12 +115,12 @@
                unlinkFiles($RandomDelete, $RandomClassDelete);
             }
             else if($answer != $answer2){
-               print "<H3 id = 'animation-info4' class = 'Answer-info'>Output is not the same as Answer try again ❌</H3>";
+               print "<H3 id = 'animation-info4' class = 'Answer-info'>Output is not the same as Answer try again</H3>";
             }
             
          }
          else{
-            print "<H1 id = 'animation-info5' class = 'Answer-info'>Your answer is wrong (tip: checkformatting and output) ❌</H1>";
+            print "<H1 id = 'animation-info5' class = 'Answer-info'>Your answer is wrong (tip: checkformatting and output) </H1>";
          }
       ?>
       

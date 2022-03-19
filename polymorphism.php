@@ -60,13 +60,7 @@
             <input type="submit" value="Compile">
          </form>
       </div>
-      <div class = "border-animation">
-      <div class = 'button-wrapper'>
-         <button class="button-play">Play</button>
-         <button class="button-pause">Pause</button>
-      </div>
-      <div id = "square"></div>
-      </div>
+ 
       <br>
       <div class = "lesson-heading">
       <h1>
@@ -75,10 +69,8 @@
       </div>
       <div class = "example-poly">
          <div class = "section-1">
-            <p>We will break down what in happening in the code above and explain the concept of polymorphism We will talk about what is regarded as two of the 4 pillars in OOP "INHERITANCE and POLYMORPHISM.<br>
-               In the animation above we see a square transition into a circle, Lets explain what this is in programming terms.<br>
-               We have a moving square that has shapeshifted into a circle. We can think of both of these shapes as a class.<br><br> 
-               For example circle and square are instances of the classes: class square{} and class circle{}.<br>
+            <p>We will break down what in happening in the code above and explain the concept of polymorphism. We will talk about what is regarded as two of the 4 pillars in OOP "INHERITANCE and POLYMORPHISM.<br>
+               Below we have some code to help us understand the concepts of polymorphism.
                Here is a snippet of the square class:
             </p>
             <textarea rows="11" cols="55" data-editor = "java" data-gutter="1">
@@ -94,7 +86,7 @@
                }
             }
             </textarea>
-            <p>So now that we have our square how do we morph our square into our circle. <br>
+            <p>So now that we have our square we may want to use these same methods to create another shape with similar properties<br>
                We are going to introduce a concept known as inheritance. <br>
                There will be a more detailed lesson on inheritance in the future lessons but for now here’s a quick explanation. <br>
                It is a mechanism in which allows us to derive one class from another. The class inherited from another will share a set of attributes and methods.<br><br>

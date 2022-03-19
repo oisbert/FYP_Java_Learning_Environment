@@ -76,8 +76,8 @@
             }
 
             //collect the contents of the file uploaded by the user
-
-            $fileHolder = file_get_contents("taskUploads/{$Path}/{$userID}/{$file}", true);
+            $Path2 = str_replace(' ', '', $Path);
+            $fileHolder = file_get_contents("taskUploads/{$Path2}/{$userID}/{$file}", true);
 
             $data1 = array('taskID' => $taskID);
             $data2 = array('userID' => $userID);

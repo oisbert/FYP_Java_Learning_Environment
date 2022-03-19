@@ -60,20 +60,7 @@
             <input type="submit" value="Compile">
          </form>
       </div>
-      <div class = "border-animation">
-      <div class = "Classexample">
-      <h1>Class: Car</h1>
-      <img src="images/car.png" alt="car">
-      </div>
-      <div class = "arrow">
-      <img src="images/arrowdown.png" alt="car">
-      </div>
-      <div class = "brand">
-      <h1>Object: Audi</h1>
-      <img src="images/Audi.png" alt="car">
-      </div>
-    
-      </div>
+
       <br>
       <div class = "lesson-heading">
       <h1>
