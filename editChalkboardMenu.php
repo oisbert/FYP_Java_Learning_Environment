@@ -48,7 +48,7 @@
         <div class="grid-item"><div class = "title"><h1>Composition<h1></div></div> 
     </div>
 
-    <script src="js/animationLesson"></script>
+    <script src="js/animationLesson.js"></script>
 </body>
 
 </html>

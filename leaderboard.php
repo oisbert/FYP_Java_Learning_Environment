@@ -51,7 +51,7 @@
 
     </div>
 
-    <script src="js/leaderboard" type="text/javascript"></script>
+    <script src="js/leaderboard.js" type="text/javascript"></script>
 </body>
 </script>
 </html>
