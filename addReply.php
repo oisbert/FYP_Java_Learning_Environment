@@ -54,6 +54,7 @@
             
             if ($conn->query($sql) === TRUE) {
                echo "you have replied to the post!!";
+               header("Location: forumHome.php");
             } else {
                echo "Error posting reply: " . $conn->error;
             }

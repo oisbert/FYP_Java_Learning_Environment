@@ -33,7 +33,7 @@
    <?php
          if (isset($_POST["submit"])) {
             $description = $_POST["description"];
-            $sql = "UPDATE lessons SET description = '$description' WHERE lessonID=1";
+            $sql = "UPDATE lessons SET description = '$description' WHERE lessonID=2";
             getLessonData(2, $description);
             if ($conn->query($sql) === TRUE ) {
                echo "Chalkboard updated successfully";

@@ -6,6 +6,7 @@
 
         include("validateLoggedIn.php");
         include("serverConfig.php");
+        $userID = $_GET['userID'];
 
         $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 
@@ -17,7 +18,7 @@
             update the points coloumn add 1 to the points
         */
 
-        $sql = "UPDATE users SET points = points + 1";
+        $sql = "UPDATE users SET points = points + 1 WHERE userID = $userID";
 
         if ($conn->query($sql) === TRUE) {
             header("Location: exercisePage.php");

@@ -15,8 +15,8 @@
 
 <script>
    //add points function call
-   function AddPoints() {
-            window.location.href= 'addpoints.php';
+   function AddPoints(variable) {
+            window.location.href= 'addpoints.php?userID='+ variable;
         }
 
 </script>
@@ -110,7 +110,7 @@
                if($ButtonSQL) {
                   print "<button type ='button' id = 'animation-info6' class='submitpoints' disabled '>Already submitted points</button> ";
                } else {
-                  print "<button type ='button' id = 'animation-info6' class='submitpoints' onClick='AddPoints()'>Collect Points</button>";
+                  print "<button type ='button' id = 'animation-info6' class='submitpoints' onClick='AddPoints({$userID})'>Collect Points</button>";
                }
                unlinkFiles($RandomDelete, $RandomClassDelete);
             }

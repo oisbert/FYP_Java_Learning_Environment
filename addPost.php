@@ -56,7 +56,7 @@
                 VALUES ('{$_POST['Title']}', '{$_POST['description']}','{$userID}', NOW())";
 
         if ($conn->query($sql) === TRUE) {
-           
+            header("Location: forumHome.php");
         } 
         else {
             echo "Error: " . $sql . "<br>" . $conn->error;
