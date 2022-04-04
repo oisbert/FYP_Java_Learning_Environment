@@ -19,7 +19,7 @@
          include("lessonData.php");
          ?>
       <h1>
-      Edit chalkboard lesson for polymorphism
+      Edit chalkboard lesson for Object/Classes
       <h1>
       <div class ="lesson-area">
       <form method="post" >  
@@ -36,7 +36,7 @@
             $sql = "UPDATE lessons SET description = '$description' WHERE lessonID=2";
             getLessonData(2, $description);
             if ($conn->query($sql) === TRUE ) {
-               echo "Chalkboard updated successfully";
+               echo "Chalkboard updated";
             } else {
                echo "Error updating Chalkboard: " . $conn->error;
             }

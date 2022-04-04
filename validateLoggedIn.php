@@ -14,22 +14,16 @@
 
     if(isset($_SESSION['user'])) {
         $userID = $_SESSION['user'];
-       $bannedSql = "SELECT * FROM banneduser 
-                      WHERE userID = {$userID};";
-        $bResult = $conn -> query($bannedSql);
     }
     else if(isset($_SESSION['teacher'])) {
         $teacherID = $_SESSION['teacher'];
-        $bannedSql = "SELECT * FROM bannedteacher
-                      WHERE teacherID = {$teacherID};";
         $Access = "SELECT access FROM teacher
-                      WHERE access = 0;";
+                      WHERE access = 0 AND teacherID = $teacherID;";
         $AccessResult = $conn -> query($Access);
-        $bResult = $conn -> query($bannedSql);
+        if(mysqli_num_rows($AccessResult) != 0) {
+            header( "Location: login.php" );
+        }
     }
-    
-    if(mysqli_num_rows($bResult) !== 0 && mysqli_num_rows($AccessResult) == 0) {
-        header( "Location: login.php" );
-    }
+
 
 ?>

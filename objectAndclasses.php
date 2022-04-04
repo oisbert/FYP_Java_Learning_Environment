@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
    <head>
       <title>
@@ -70,7 +70,7 @@
       <div class = "example-poly">
          <div class = "section-1">
             <p>During this sections we will be discussing classes and object. 
-               Before we jump into these topics however we will look at an important sub-topic “constructors”.
+               Before we jump into these topics however we will look at an important sub-topic constructors.
                Every class has a constructor. If we do not explicitly state the constructor the java compiler builds a default one for that class.
                Each time an object is created at least one constructor will be invoked. 
                The main rule of thumb for constructors is that they “must have the same name as the class”.
@@ -83,13 +83,13 @@ public Car(String brand) {
       }
             </textarea>
             <p>
-               As we can see we have created a class called Car and also a constructor with the same name “Car”. Within this constructor we can set the brand of Car. <br><br>
+               As we can see we have created a class called Car and also a constructor with the same name Car. Within this constructor we can set the brand of Car. <br><br>
                Know that we have a bit more of an understanding of Constructors lets have a look at the key differences between a class and object.<br>
                A class is described as a blueprint from which individual objects are created. <br><br>
                A class can contain the following Variable types:<br>
-               •	Local variables are variables that are specified within methods, constructors, or blocks. The variable will be defined and initialized within the method, and then deleted after the method is finished.<BR><BR>
-               •	Instance variables are variables that exist within a class but are not part of any method. When the class is created, these variables are set to their default values. Instance variables can be accessed from within any of the class's methods, constructors, or blocks.<BR><BR>
-               •	Class variables are variables defined with the static keyword within a class, outside of any method.<BR><br>
+               -	Local variables are variables that are specified within methods, constructors, or blocks. The variable will be defined and initialized within the method, and then deleted after the method is finished.<BR><BR>
+               -	Instance variables are variables that exist within a class but are not part of any method. When the class is created, these variables are set to their default values. Instance variables can be accessed from within any of the class's methods, constructors, or blocks.<BR><BR>
+               -	Class variables are variables defined with the static keyword within a class, outside of any method.<BR><br>
 
                A class can have many methods. In our example we have the methods setEngineSize(), getEngineSize() and Beep().
 
@@ -119,9 +119,9 @@ public Car(String brand) {
          <br>
             <p>As mentioned earlier an object is created from a class. In Java, the new keyword is used to create new objects.<br><br>
                There is three key steps we must remember when creating an object from a class in java.<br>
-               •	Declaration − A variable declaration with a variable name with an object type.<br>
-               •	Instantiation − The 'new' keyword is used to create the object.<br>
-               •	Initialization − The 'new' keyword is followed by a call to a constructor. This call initializes the new object.<br><br>
+               -	Declaration − A variable declaration with a variable name with an object type.<br>
+               -	Instantiation − The new keyword is used to create the object.<br>
+               -	Initialization − The new keyword is followed by a call to a constructor. This call initializes the new object.<br><br>
                The below code is and example of creating an object:
             </p>
             <textarea rows="20" cols="55" data-editor = "java" data-gutter="1">

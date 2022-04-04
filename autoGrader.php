@@ -145,7 +145,6 @@
      }
       print "</div>";
 
-
       array_map('unlink', glob("*.class"));
       array_map('unlink', glob("Answer{$userFile}"));
       array_map('unlink', glob("{$userFile}"));

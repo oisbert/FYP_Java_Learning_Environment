@@ -1,4 +1,3 @@
-
 <?php
         //function to delete a post from the forum
 
@@ -10,18 +9,18 @@
                 die("Connection failed:" .$conn -> connect_error);
             }
             //get the current postID
-            $PostID = $_GET['PostID'];
+            $feedID = $_GET['quickfeedbackID'];
             //then remove it form the database
-            $sql = "DELETE FROM posts WHERE PostID = $PostID";
+            $sql = "DELETE FROM quickfeedback WHERE quickfeedbackID = $feedID";
 
             if ($conn->query($sql) === TRUE) {
-                header( "Location: forumteacher.php" );
+                header( "Location: addFeedback.php" );
 
             } 
             else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
 
-            header( "Location: forumteacher.php" );
+            header( "Location: addFeedback.php" );
             $conn->close();
         ?>

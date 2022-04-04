@@ -51,7 +51,7 @@
             $result = $conn -> query($sql);
             
             
-            
+            print "<img class='AddNewPost' id = 'animatebutton' src ='images/add.png' alt='Add post' onClick='location.href='addPost.php'>";
             if(mysqli_num_rows($result) != 0) {
                 $counter = 0;
                 while($row = $result->fetch_assoc())
@@ -152,7 +152,7 @@
                 }                           
             }
             ?>
-            <img class="AddNewPost" id = 'animatebutton' src ="images/add.png" alt="Add post" onClick="location.href='addPost.php'">
+    
 
          </div>
       </div>
