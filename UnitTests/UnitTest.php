@@ -39,9 +39,9 @@ class test extends \PHPUnit\Framework\TestCase {
             Test the functionality of the checkMethodName
         */
 
-        $this->assertTrue( checkMethodName( "testFiles/test.java" ) ==true);
+        $this->assertTrue( checkMethodName( "testFiles/test.java", "test" ) ==true);
 
-        $this->assertFalse( checkMethodName( "testFiles/testtwo.java" ) ==true);
+        $this->assertFalse( checkMethodName( "testFiles/testtwo.java", "testtwo" ) ==true);
         
     }
 
