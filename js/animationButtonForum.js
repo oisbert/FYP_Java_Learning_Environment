@@ -1,3 +1,6 @@
+
+//same code as animation lesson we are just targetting the animatebutton instead
+//see animateLesson.js for more information
 var buttonEl = document.querySelectorAll('#animatebutton');
 
 function animateButton(el, scale, duration, elasticity) {

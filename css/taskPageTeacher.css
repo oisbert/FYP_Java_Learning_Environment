@@ -51,21 +51,21 @@
 }
 
 .AddNewTask {
-        height: 100px;
-        width: 40%;
-        border: 0;
-        margin-left: 20%;
-        margin-right: 20%;
-        padding-left: 20px;
+    height: 100px;
+    width: 40%;
+    border: 0;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-left: 20px;
     padding-right: 20px;
-        text-decoration: none;
-        border-radius: 15px;
-        background-color: rgba(255, 255, 255, 0.233);
-        border: 1px solid rgba(255,255,255,0.1);
-        backdrop-filter: blur(30px);
-        color: rgba(255,255,255,0.8);
-        cursor: pointer;
-        text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.233);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(30px);
+    color: rgba(255,255,255,0.8);
+    cursor: pointer;
+    text-transform: uppercase;
 }
 
 .Delete-All{
