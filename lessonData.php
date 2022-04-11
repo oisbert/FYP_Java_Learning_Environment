@@ -17,7 +17,7 @@
            if ($conn->query($insert) === TRUE) {
             echo "Record updated successfully";
             }else {
-           //echo "Error updating record: " . $conn->error;
+           echo "Error updating record: " . $conn->error;
            }
 
            $conn->close();

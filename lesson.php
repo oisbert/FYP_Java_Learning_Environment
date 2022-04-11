@@ -10,12 +10,16 @@
 </head>
 <body>
 <script type="text/javascript">
+    //functions to generate the temporary user files when a page is clicked
+    //generates the polymorphism file
     function GeneratePolyFiles() {
             window.location.href= 'generatorPoly.php';
         }
+    //generates the object and classes file
     function GenerateOCFiles() {
             window.location.href= 'generatorOC.php';
         }
+    //generate the interfaces file
     function GenerateInterfaceFiles() {
             window.location.href= 'generatorInterfaces.php';
         }

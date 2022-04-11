@@ -1,6 +1,6 @@
 
         <?php
-
+            //function to add completed task information to the table when user selects upload..function called on tasks page
             include ("validateLoggedIn.php");
             
             include ("serverConfig.php");

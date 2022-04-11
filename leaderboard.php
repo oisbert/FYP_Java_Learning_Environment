@@ -19,12 +19,13 @@
 
     <div class = "page-main">
         <?php
+        //this page loads the leaderboard information 
             include ("serverConfig.php");
             $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
             if ($conn -> connect_error) {
                 die("Connection failed:" .$conn -> connect_error);
             }
-
+            //get the points and the usernames from the database
             $sql = "SELECT username, points, admin
             FROM users ORDER BY points DESC";
 
@@ -33,7 +34,9 @@
             if(mysqli_num_rows($result) != 0) {
                 while($row = $result->fetch_assoc())
                 {   
+                    //do not include admin accounts on the leaderboard 
                     if($row['admin'] != 1){
+                    //load all the students on the onto the leaderboard in order of points
                     print "<div class='leaderboard'>
                                     <ol>
                                     <li>

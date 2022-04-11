@@ -2,8 +2,7 @@
 <html>
    <head>
       <title>
-         Embedding an online compiler 
-         into a website
+       Chalkboard Object and Classes 
       </title>
       <script language="javascript" type="text/javascript" src="/static/js/codemirror-5.62.0/lib/codemirror.js"></script>
       <link rel="stylesheet" type="text/css" href="/static/js/codemirror-5.62.0/lib/codemirror.css">
@@ -21,6 +20,7 @@
       <h1>
       Edit chalkboard lesson for Object/Classes
       <h1>
+       <!--text box to edit the lesson-->
       <div class ="lesson-area">
       <form method="post" >  
       <textarea name="description" type="text" rows="30" cols="70">
@@ -31,8 +31,10 @@
    
    </body>
    <?php
+      //when the user has submitted the form this code executes and updates the lessons data in the database
          if (isset($_POST["submit"])) {
             $description = $_POST["description"];
+            //update the lesson data where the lessonID is 2 a.k.a the object and classes lesson
             $sql = "UPDATE lessons SET description = '$description' WHERE lessonID=2";
             getLessonData(2, $description);
             if ($conn->query($sql) === TRUE ) {

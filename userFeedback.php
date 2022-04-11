@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <!--- UI for students to view feedback on the tasks page --->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/userfeedback.css?v=<?php echo time(); ?>">
@@ -22,11 +23,12 @@
                 if ($conn -> connect_error) {
                     die("Connection failed:" .$conn -> connect_error);
                 }
-
+                //get the session of the user
                 $_SESSION['user'] = $userID;
+                //get the taskID form the current task which the feedback is based on
                 $taskID = $_GET['taskID'];
-                echo $taskID;
-                print "hello";
+
+                //get the required feedback form the database
                 $sql = "SELECT feedback,autoFeedback 
                         FROM taskstatus 
                         WHERE userID = {$userID} AND taskID = {$taskID}";
@@ -41,6 +43,7 @@
                             print "<p>{$row['feedback']}</p>";
                             }
                             else{
+                                //if no information avalible print...
                                 print "<p>No Information available</p>";
                             }
                             print "<H3>Auto Feedback</H3>";

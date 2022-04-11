@@ -1,7 +1,7 @@
 <html>
     <body>
         <?php
-
+            //functio to remove user from application utilized in adminRemoveUser.php
             include ("validateLoggedIn.php");
             include ("serverConfig.php");
 

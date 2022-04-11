@@ -11,7 +11,7 @@ public class Staticpolymorphism {
     }
 }
 class Square {
-    public static void GetArea() {
+    public static void getArea() {
         System.out.println("24");
     }
     public static void getColour() {

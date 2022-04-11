@@ -1,4 +1,5 @@
 <html>
+    <!-- Allow users to register to the site-->
     <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/register.css?v=<?php echo time(); ?>">
@@ -8,7 +9,7 @@
         <title>User : Register</title>
 
         <script>
-
+            //function to check password match
             function check_pass() {
                 if (document.getElementById('password').value ==
                         document.getElementById('confirm_password').value) {
@@ -34,6 +35,7 @@
                     <form method="post" action="">
                         <input class="input" type="text" name="name" pattern="[a-zA-Z'\s]{2,100}" title="Must be between 2 and 100 chars" placeholder="Full Name" required><br>
                         <input class="input" type="email" name="email" placeholder="Email" required><br>
+                        <!--included pattern to format the password..password must be between 6 and 16 chars and include at least one uppercase and one number-->
                         <input class="input" id="password" type="password" name="pass" placeholder="Password" onchange='check_pass();'
                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}" title="Must be between 6 and 16 chars and include at least one uppercase and one number" required><br>
                         <input class="input" id="confirm_password" type="password" name="passConfirm" placeholder="Confirm Password" onchange='check_pass();'
@@ -57,9 +59,9 @@
 </html>
 
 <?php
-
+    //add account information to the database
     if(isset($_POST['submit'])) {
-
+        //start session
         session_start();
         session_unset();
 
@@ -73,6 +75,7 @@
 
             $username = $_POST['name'];
             $email = $_POST['email'];
+            //hash the password in the database
             $hashedPass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
             $sql = "INSERT INTO users (username, email, password)

@@ -99,6 +99,12 @@
      box-shadow: none;
      transform: translateY(0);
 }
+
+.information{
+    color: #FFFFFF;
+    margin-left: 20%;
+
+}
  #animation-info1 {
      animation-delay: 2s;
 }

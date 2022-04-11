@@ -1,5 +1,7 @@
 
 <?php
+//This function converts the userID to a letter
+//example 1--a,  12--AB, cd--34
 function num2alpha($n) {
         $r = '';
         for ($i = 1; $n >= 0 && $i < 10; $i++) {

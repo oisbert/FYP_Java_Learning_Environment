@@ -1,7 +1,7 @@
 <html>
     <body>
         <?php
-
+            //function to remove teacher utilized in adminRemoveteacher.php
             include ("validateLoggedIn.php");
             include ("serverConfig.php");
 

@@ -2,8 +2,7 @@
 <html>
    <head>
       <title>
-         Embedding an online compiler 
-         into a website
+         Lesson Page Object and Classes
       </title>
       </link>
       <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
@@ -16,17 +15,22 @@
       include ("serverConfig.php");
       include ("IDtoLetter.php");
       $_SESSION['user'] = $userID;
-   
+      //convert userID to letters needed later
      $userIDtoLetters = num2alpha($userID);
       ?>
       <br>
       <div class = "excution" >
          <div class = excutionOutput >
             <?php
+            //check is the file has been generated
                if (file_exists("{$userIDtoLetters}Car.java")){
+                  //store file in a variable called file
                    $file = "{$userIDtoLetters}Car.java";
+                   //get the contents of the file and store in current
                    $current = file_get_contents($file);
+                   //echo what the file executes
                    echo shell_exec("javac {$userIDtoLetters}Car.java && java {$userIDtoLetters}Car");
+                   //echo and log errors if code fails to compile
                    echo shell_exec("javac {$userIDtoLetters}Car.java > log.txt 2>&1");
                    echo nl2br(file_get_contents( "log.txt" ));
                } 
@@ -34,13 +38,14 @@
          </div>
       </div>
       <?php 
+      //gather the lesson data from database for the chalkboard
          function getLessonData($uID) {
             include ("serverConfig.php");
             $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
             if ($conn -> connect_error) {
                 die("Connection failed:" .$conn -> connect_error);
             }
-         
+            //select all from lessons where lessonID is this lessons
             $sql = "select * from lessons where lessonID =\"{$uID}%\";";
             $result = $conn -> query($sql);
             $conn->close();
@@ -50,18 +55,24 @@
          ?>
          <br>
          <br>
+      <!--create the compiler box-->
       <div class = "compiler">
+         <!--create the compiler form to execute the code-->
          <form action="processCodeOC.php" method="post" >
+             <!--load the data editor javascript onto the text box to syntax highlight the code-->
             <textarea data-editor = "java" rows="20" cols="55" name="comment-editor"  data-gutter="1" >
             <?php
+            //load the current code into the editor 
                echo $current;
                ?>
             </textarea>
+            <!--create submit button to execute the code and send it to processCodeOC.php-->
             <input type="submit" value="Compile">
          </form>
       </div>
 
       <br>
+      <!--The following is the body of the lesson (explanation of what is happening in the code)-->
       <div class = "lesson-heading">
       <h1>
       What is happening in the Code
@@ -137,7 +148,7 @@ public Car(String brand) {
       </div>
       </div>
       
-
+      <!--This is the area where the chalkboard is created loads lesson data from lessonID 2-->
       <div class ="lesson-area">
       <H1>Chalkboard Notes <H1>
          <?php

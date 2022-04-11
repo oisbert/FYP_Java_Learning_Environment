@@ -10,6 +10,8 @@
       <title>Forum</title>
    </head>
    <script>
+
+      //function to launch model with comment section
       function showComments(modalNumber) {
           var modal = document.getElementById("myModal" + modalNumber);
           modal.style.display = "block";
@@ -26,6 +28,7 @@
           }
       }
       
+      //function to add a reply..links the user to the addReply.php page
       function addReply(PostID) {
           window.location.href= 'addReply.php?PostID=' + PostID;
       }
@@ -68,7 +71,7 @@
                     $replyResult = $conn -> query($replySql);
                     
                     while($replyRow = $replyResult ->fetch_assoc()){
-                        
+                        //load all replies into an array using the desc to hold description....PostID to hold the ID of the Post and username to hold who the reply was by
                         if("{$row['PostID']}" == "{$replyRow['PostID']}"){
                         $reply = array('Desc' => $replyRow['description'], 'PostID' => $replyRow['PostID'], 'username' => $replyRow['replyby']);
                         $replyNeeded[] = $reply;
@@ -79,7 +82,7 @@
                         }
             
                     }
-            
+                    //we need to grab the username from the posts table to show who the post was by
                     $usernameSQL = "SELECT a.username, a.userID
                                         from users a 
                                         INNER JOIN posts b 
@@ -102,13 +105,15 @@
             
                     }
             
-                    
+                    //create a post 
                     print "<div class='Posts'>
                                     <p class='Details text-left'><b>Title: </b>{$row['Title']}</p>
                                     <p class='Details text-left'><b></b>{$row['description']}</p>";
+                                    //loop through the userNeeded array
                                     if(!empty($userNeeded)) {
                                         foreach ($userNeeded as $row) 
                                         {   
+                                            //each time finds a user related to this post put the user name in the post
                                    echo "<p class='Details text-left'><b>by user: </b> {$row['username']}</p>";
                                         }
                                         $userNeeded = [];
@@ -117,7 +122,7 @@
                                     <button id = 'animatebutton' class= 'addreplybtn' type='button' onClick='addReply({$valuePass})'>add reply</button>";          
                                     print "</div>";
                                   
-                                    
+                        //model to hold the replys/comments            
                     print "<div id='myModal{$counter}' class='modal'>
                                                     <!-- Modal content -->
                                                     <div class='modal-content'>
@@ -130,7 +135,7 @@
                                                         </thead>";
                                                         if(!empty($replyNeeded)) {
                                                             foreach ($replyNeeded as $row ) 
-                                                                
+                                                                //get the replys needed for this post
                                                             {   
                                                                 echo '<tr>';
                                                                

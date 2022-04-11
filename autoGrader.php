@@ -47,7 +47,6 @@
       $myfile = file_get_contents($new_str, "r");
       $targetDir2 = "tasksAnswers/Answer{$userFile}";
       $new_str2 = str_replace(' ', '', $targetDir2);
-      //echo $new_str;
 
       if (file_exists($new_str2)) {
          $AnswerFile = file_get_contents($new_str2, "r");
@@ -111,7 +110,7 @@
 
       //echo "-------------- test 3 ----------------";
       print "<div class = running-test-3>";
-      if(checkMethodName($new_str) == true){
+      if(checkMethodName($new_str,$userFile) == true){
          $lowercaseMethod = "---Test 3 passed: All methods have a lowercase ";
          print "<H1>$lowercaseMethod </H1>";
       }

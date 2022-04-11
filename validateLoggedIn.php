@@ -1,4 +1,5 @@
 <?php
+    //validates the type of user logged in
     session_start();
 
     if (!(isset($_SESSION["loggedin"])) || $_SESSION["loggedin"] == false) {
@@ -11,10 +12,11 @@
     if ($conn -> connect_error) {
         die("Connection failed:" .$conn -> connect_error);
     }
-
+    //if user set session variable to user
     if(isset($_SESSION['user'])) {
         $userID = $_SESSION['user'];
     }
+    //if a teacher set session variable to teacher.... if the access is set to 0 deny access
     else if(isset($_SESSION['teacher'])) {
         $teacherID = $_SESSION['teacher'];
         $Access = "SELECT access FROM teacher

@@ -92,27 +92,47 @@
             $_SESSION['username'] = $row['username'];
             $_SESSION['loggedin'] = true;
 
+            //set the users points tracker to one to allow them to gain a point
             $sqlPoints = "UPDATE users SET pointtracker = 1";
 
+            //record the points 
             if ($conn->query($sqlPoints) === TRUE) {
                 echo "New record created successfully";
               } else {
                 echo "Error: " . $sqlPoints . "<br>" . $conn->error;
               }
 
+
+            //code to generate the random file on log-in for the exercise page
             $userIDtoLetters = num2alpha($userID);
+
+            //get a random file from the exercises folder and put into randomFile variable
             $randomFile = randomFileGenerator();
+
+            //open a new file called userIDRandom.java and make it writeable
             $userPoly = fopen("{$userIDtoLetters}Random.java", "w+");
+
+            //Get the contents of the random file and store in current
             $current = file_get_contents("{$randomFile}", "w");
+
+            //open the created file
             $userPolyEdit = fopen("{$userIDtoLetters}Random.java", "w");
+
+            //put the contents of the randomly picked file into the temporary user file created
             fwrite($userPolyEdit, $current);
+
+            //get the contents of the temporary user file
             $holder = file_get_contents("{$userIDtoLetters}Random.java");
+
+            //get the temp file without its extension ".java"
             $filename_without_ext = basename($randomFile, '.java');
             $fileNameFixed = strstr($filename_without_ext, '_', true);
-            echo $filename_without_ext;
+
+            //load the name of the file into a session variable to reference the file on the exercises page
             $_SESSION['varname'] = $filename_without_ext;
             $replace = str_replace("{$fileNameFixed}", "{$userIDtoLetters}Random",$holder);
             file_put_contents("{$userIDtoLetters}Random.java", $replace);
+            //close the file
             fclose($userPolyEdit);
             $classPoly = fopen("{$userIDtoLetters}Random.class", "w");
             header( "Location: lesson.php" );

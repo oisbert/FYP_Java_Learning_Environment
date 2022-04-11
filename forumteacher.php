@@ -29,7 +29,7 @@
       function addReply(PostID) {
           window.location.href= 'addReply.php?PostID=' + PostID;
       }
-
+      //Added delete post button to the teacher forum to remove the post
       function deletePost(PostID) {
           window.location.href= 'deletePost.php?PostID=' + PostID;
       }

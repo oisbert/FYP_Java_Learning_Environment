@@ -14,15 +14,9 @@ function checkForStatic($string)
         $result_split = explode(' ', $result[1]);
 
         $answer = $result_split[1];
-        if ($answer == 'static')
+        if ($answer == 'static' || $answer == 'class')
         {
-            //echo "\"{$answer}\" correct static method found";
-            //return true;
-            
-        }
-        else if ($answer == 'class'){
-            //echo "\"{$answer}\" no change public class method found not a method";
-            //return true;
+            //do nothing   
         }
         else
         {

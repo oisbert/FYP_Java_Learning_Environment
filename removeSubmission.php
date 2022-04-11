@@ -1,6 +1,6 @@
 
         <?php
-
+            //function to remvoe a students submission from the site
             include ("validateLoggedIn.php");
             include ("serverConfig.php");
             $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
@@ -14,6 +14,7 @@
             $removeFiles = "SELECT filePathUser FROM taskstatus WHERE taskID = {$taskID} AND userID = {$currentUser}";
             $result = $conn -> query($removeFiles);
 
+            //look for the directory of the task if its found delete it
             if (mysqli_num_rows($result) != 0) {
                 while($row = $result->fetch_assoc())
                 {   

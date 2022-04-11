@@ -7,13 +7,15 @@
      if ($conn -> connect_error) {
          die("Connection failed:" .$conn -> connect_error);
     }
-
+    //load the session variables 
     session_start();
 
     $userID = $_SESSION['user'];
     $userIDtoLetters = num2alpha($userID);
+    
     session_unset();
 
+    //load all temporary user files created during the session into variables
     $PolyDelete = "{$userIDtoLetters}Polymorphism.java";
     $PolyClassDelete = "{$userIDtoLetters}Polymorphism.class";
 
@@ -25,14 +27,18 @@
 
     $RandomDelete = "{$userIDtoLetters}Random.java";
     $RandomClassDelete = "{$userIDtoLetters}Random.class";
-
+    //remove the files 
+    //delete all the polymorphism lesson files related to the current user
+    //delete all the Object and Classes lessons files related to the current user
+    //delete all the Interface lesson files related to the current user 
+    //delete the randomly generated file for the exercises class
     unlinkFiles($PolyDelete, $PolyClassDelete);
     unlinkFiles($OCDelete, $OCClassDelete);
     unlinkFiles($InterfacesDelete,$InterfacesClassDelete);
     unlinkFiles($RandomDelete, $RandomClassDelete);
-
+    //destroy the user session
     session_destroy();
-
+    //redirect to the login
     header( "Location: login.php" );
 
 ?>
