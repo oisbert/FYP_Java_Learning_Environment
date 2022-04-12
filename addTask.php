@@ -112,6 +112,7 @@
                     VALUES ('{$_POST['taskTitle']}', '{$_POST['taskDescription']}','{$teacherID}', '{$fileName}','{$_POST['taskfile']}')";
 
             if ($conn->query($sql) === TRUE) {
+                header("location: taskpageTeacher.php");
                 echo "The file " . $fileName . " has been uploaded successfully.";
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
@@ -119,7 +120,8 @@
 
             $conn->close();
         } else {
-            echo "Sorry, only JPG, JPEG, PNG, GIF, PDF & JAVA files are allowed to upload.";
+            print "<h4> Sorry, only JPG, JPEG, PNG, GIF, PDF & JAVA files are allowed to upload.</h4>";
+            unlink( $targetFilePath );
         }
     }
 

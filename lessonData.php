@@ -10,15 +10,13 @@
         $result = $conn -> query($sql);
 
         if ($conn -> query($sql) === TRUE) {
-           echo "Chalkboard updated successfully";
+           
         } else {
            $insert = "INSERT INTO lessons (lessonID, description) VALUES ({$uID}, '{$description}')";
 
            if ($conn->query($insert) === TRUE) {
-            echo "Record updated successfully";
-            }else {
-           echo "Error updating record: " . $conn->error;
-           }
+            echo "Updated";
+            }
 
            $conn->close();
         }
