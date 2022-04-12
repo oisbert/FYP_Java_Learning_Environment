@@ -77,14 +77,17 @@
         $targetDir = "uploads/";
         //filename is the name of the file submitted
         $fileName = basename($_FILES["file"]["name"]);
-        
+
+        //we are adding micro time on front of the uploaded file name
+        //this is to stop users overwriting uploads
+        $temp = explode(".", $_FILES["file"]["name"]);
+        $newfilename = round(microtime(true)) . $fileName . '.' . end($temp);
         //the target file path is uploads/file.
-        $targetFilePath = $targetDir . $fileName;
+        $targetFilePath = $targetDir . $newfilename;
         $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
         //types allowed to be uploaded
         $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'pdf', 'java');
-        move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath);
 
         //create a new directory with the name of the task to store the uploaded
         $directoryNewName = "{$_POST['taskTitle']}";
@@ -98,29 +101,39 @@
         }
 
         //sql query to check the tasks table
-        $sqlCheck = mysqli_query($conn, "SELECT * from tasks WHERE taskTitle = {$_POST['taskTitle']}");
+        $sqlCheck = mysqli_query($conn, "SELECT * from tasks WHERE taskTitle = '$directoryNewName'");
 
         /*
         if the file does have one of the allowed types and the sql query is 0 (task doesnt already exist)
         allow the task upload
         */
-        if (in_array($fileType, $allowTypes) or $fileName == NULL AND mysqli_num_rows($sqlCheck) == 0) {
+        if (in_array($fileType, $allowTypes) or $fileName == NULL ) {
             /*
-            Insert the information into the tasks table
+            If a title the same title already exists dont allow upload
             */
-            $sql = "INSERT INTO tasks ( taskTitle, taskDescription, teacherID, filePath, taskfilename)
-                    VALUES ('{$_POST['taskTitle']}', '{$_POST['taskDescription']}','{$teacherID}', '{$fileName}','{$_POST['taskfile']}')";
+            if (mysqli_num_rows($sqlCheck) == 1){
+                print "<h4>Task with the same name found try a different one</h4>";
+            }else{
+                /*
+                Insert the information into the tasks table
+                */
+                move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath);
 
-            if ($conn->query($sql) === TRUE) {
-                header("location: taskpageTeacher.php");
-                echo "The file " . $fileName . " has been uploaded successfully.";
-            } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+                $sql = "INSERT INTO tasks ( taskTitle, taskDescription, teacherID, filePath, taskfilename)
+                        VALUES ('{$_POST['taskTitle']}', '{$_POST['taskDescription']}','{$teacherID}', '{$newfilename}','{$_POST['taskfile']}')";
+
+                if ($conn->query($sql) === TRUE) {
+                    header("location: taskpageTeacher.php");
+                    echo "The file " . $fileName . " has been uploaded successfully.";
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+
+                $conn->close();
             }
-
-            $conn->close();
-        } else {
-            print "<h4> Sorry, only JPG, JPEG, PNG, GIF, PDF & JAVA files are allowed to upload.</h4>";
+        }
+        else {
+            print "<h4>Sorry, only JPG, JPEG, PNG, GIF, PDF & JAVA files are allowed to upload.</h4>";
             unlink( $targetFilePath );
         }
     }

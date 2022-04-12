@@ -26,22 +26,6 @@
   
 }
 
-
-#completebtn {
-    margin-right: 4%;
-    box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
-}
-
-#feedbackbtn {
-    margin-left: 4%;
-    box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
-
-}
-
-#cancelbtn {
-    box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
-}
-
 .button-wrapper{
     margin-left: 35%;
     display: flex;

@@ -1,4 +1,3 @@
-
 .description-container {
     margin-top: 500px;
     display: inline-block;
@@ -15,6 +14,7 @@
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 60px;
 }
+
 .description-container textarea{
     resize:none;
     display: block;
@@ -29,6 +29,7 @@
     font-size: 14px;
     font-weight: 300;
 }
+
 .description-container .bio-description{
     margin-top: 1%;
 }
