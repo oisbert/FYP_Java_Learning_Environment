@@ -21,11 +21,11 @@ input[type="submit"]{
   display: inline-block;
   font-family: sans-serif;
   color: #fff;
+  float:right;
 }
 
 .excutionOutput{
   background-color: #32323200;
- 
   margin-top: 40%;
   margin-right:10%;
 }

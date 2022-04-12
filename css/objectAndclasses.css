@@ -27,7 +27,7 @@ input[type="submit"]{
   display: inline-block;
   font-family: sans-serif;
   color: #fff;
- 
+  float:right;
 }
 
 .excutionOutput{
@@ -183,7 +183,7 @@ input[type="submit"]{
 
  .excutionOutput{
   background-color: #32323200;
- 
+  float: right;
   margin-top: 40%;
   margin-left:15%;
 }
