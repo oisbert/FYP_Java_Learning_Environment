@@ -40,6 +40,7 @@
          include ("header.html");
          ?>
       <div class = "page-main">
+      <img class='AddNewPost' id = 'animatebutton' src ='images/add.png' alt='Add post' onClick="window.location.href='addPost.php'">"; 
          <?php
             include ("serverConfig.php");
             $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
@@ -54,7 +55,7 @@
             $result = $conn -> query($sql);
             
             
-            print "<img class='AddNewPost' id = 'animatebutton' src ='images/add.png' alt='Add post' onClick='location.href='addPost.php'>";
+            
             if(mysqli_num_rows($result) != 0) {
                 $counter = 0;
                 while($row = $result->fetch_assoc())
@@ -154,11 +155,13 @@
                                                         </div></div>";
                                                         $counter++;
                                                         
-                }                           
+                }                          
             }
+
+            
             ?>
     
-
+            
          </div>
       </div>
       <script src="js/animationForum.js" type="text/javascript"></script>
