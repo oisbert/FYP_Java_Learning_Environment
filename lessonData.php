@@ -15,7 +15,7 @@
            $insert = "INSERT INTO lessons (lessonID, description) VALUES ({$uID}, '{$description}')";
 
            if ($conn->query($insert) === TRUE) {
-            echo "Updated";
+            //echo "Updated";
             }
 
            $conn->close();
