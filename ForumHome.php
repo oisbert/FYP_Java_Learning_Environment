@@ -40,7 +40,7 @@
          include ("header.html");
          ?>
       <div class = "page-main">
-      <img class='AddNewPost' id = 'animatebutton' src ='images/add.png' alt='Add post' onClick="window.location.href='addPost.php'">"; 
+      <img class='AddNewPost' id = 'animatebutton' src ='images/add.png' alt='Add post' onClick="window.location.href='addPost.php'">
          <?php
             include ("serverConfig.php");
             $conn = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);

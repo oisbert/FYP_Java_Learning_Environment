@@ -12,7 +12,7 @@
 
             $userIDtoLetters = num2alpha($userID);
             $userPoly = fopen("{$userIDtoLetters}Car.java", "w+");
-            $current = file_get_contents("Car.java", "w");
+            $current = file_get_contents("Car.txt", "w");
             $userPolyEdit = fopen("{$userIDtoLetters}Car.java", "w");
             fwrite($userPolyEdit, $current);
 

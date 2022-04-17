@@ -7,7 +7,7 @@
     $userIDtoLetters = num2alpha($userID);
     //get contents from the form
     $comment = $_POST["comment-editor"];
-    //load the file into a vairbale called file
+    //load the file into a variable called file
     $file = "{$userIDtoLetters}Interfaces.java";
     //copy the contents from the text editor over to the original file
     file_put_contents($file,$comment);

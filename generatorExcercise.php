@@ -4,7 +4,7 @@
     */
     include ("randomFileGenerator.php");
     include ("IDtoLetter.php");
-    //$userID =  $_SESSION['user'];
+
     $fileAnswerholder = "temp";
 
     $userIDtoLetters = num2alpha($userID); //convert the user id to a letter

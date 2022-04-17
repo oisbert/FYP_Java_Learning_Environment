@@ -12,7 +12,7 @@
 
             $userIDtoLetters = num2alpha($userID);
             $userPoly = fopen("{$userIDtoLetters}Polymorphism.java", "w+");
-            $current = file_get_contents("Polymorphism.java", "w");
+            $current = file_get_contents("Polymorphism.txt", "w");
             $userPolyEdit = fopen("{$userIDtoLetters}Polymorphism.java", "w");
             fwrite($userPolyEdit, $current);
 

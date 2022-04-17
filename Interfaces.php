@@ -23,7 +23,7 @@
       <div class = "excution" >
          <div class = excutionOutput >
             <?php
-               //check is the file has been generated
+               //check if the file has been generated
                if (file_exists("{$userIDtoLetters}Interfaces.java")){
                   //store file in a variable called file
                    $file = "{$userIDtoLetters}Interfaces.java";
