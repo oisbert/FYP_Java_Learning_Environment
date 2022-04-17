@@ -81,7 +81,15 @@
         //we are adding micro time on front of the uploaded file name
         //this is to stop users overwriting uploads
         $temp = explode(".", $_FILES["file"]["name"]);
-        $newfilename = round(microtime(true)) . $fileName . '.' . end($temp);
+        //if file name is not null
+        if($fileName != ""){
+            //create the new file name
+            $newfilename = round(microtime(true)) . $fileName . '.' . end($temp);
+            }
+            else{
+                //else leave blank
+                $newfilename ="";
+            }
         //the target file path is uploads/file.
         $targetFilePath = $targetDir . $newfilename;
         $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);

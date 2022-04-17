@@ -38,7 +38,7 @@
             $sql = "UPDATE lessons SET description = '$description' WHERE lessonID=2";
             getLessonData(2, $description);
             if ($conn->query($sql) === TRUE ) {
-               echo "Chalkboard updated";
+               //echo "Chalkboard updated";
             } else {
                echo "Error updating Chalkboard: " . $conn->error;
             }
