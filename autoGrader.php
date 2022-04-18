@@ -165,10 +165,11 @@
       print "<h1>No file found Cant Auto-Grade</h2>";
    }
       ?>
+      <!--All test results where loaded into temporary variables. These variables are now placed in the text box for the teacher to submit-->
    <div class = "feedback">
       <form action="autoGradeSubmit.php?taskID=<?php echo $taskID ?> &userID=<?php echo $userIDtask?>" method="post" >
       <textarea rows="20" cols="55" name="content">
-      <!--All test results where loaded into temporary variables. These variables are now placed in the text box for the teacher to submit-->
+   
       <?php 
       echo $Captest; 
       echo $Captestfail;

@@ -37,10 +37,15 @@ step 12: Select "Go"
 
 Step 13: Go to a browser and enter http://localhost/fyp  
 
-***NOTE***: Registering an account == when the details are filled in make sure to click on an area of the screen before hitting the 
-	    register button to reactivate it. 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	    To create an admin account go to http://localhost/phpmyadmin/. Go to the users table and edit the user you would like to give admin permissions to.
-	    Change the admin coloumn from 0 to 1. ****An admin account is needed to approve a teacher account***
+***NOTE***: 1. Registering an account == when the details are filled in make sure to click on an area of the screen before hitting the 
+	           register button to reactivate it. 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	        2. To create an admin account go to http://localhost/phpmyadmin/. Go to the users table and edit the user you would like to give admin permissions to.
+	           Change the admin coloumn from 0 to 1. ****An admin account is needed to approve a teacher account***
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		    3. The working lessons on the lessons page in this version of the application are object/classes, polymorphism and interfaces
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
