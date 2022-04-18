@@ -17,7 +17,7 @@
             fwrite($userPolyEdit, $current); //put the contents of the base file into the user temporary file
 
             $holder = file_get_contents("{$userIDtoLetters}Car.java");
-            $replace = str_replace("Car", "{$userIDtoLetters}Car",$holder); //replace all the words interface with userIDinterface
+            $replace = str_replace("Car", "{$userIDtoLetters}Car",$holder); //replace all the words Car with userIDCar
             file_put_contents("{$userIDtoLetters}Car.java", $replace);
             fclose($userPolyEdit);
             $classPoly = fopen("{$userIDtoLetters}Car.class", "w");

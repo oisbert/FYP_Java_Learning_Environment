@@ -17,7 +17,7 @@
             fwrite($userPolyEdit, $current); //put the contents of the base file into the user temporary file
 
             $holder = file_get_contents("{$userIDtoLetters}Polymorphism.java");
-            $replace = str_replace("Polymorphism", "{$userIDtoLetters}Polymorphism",$holder); //replace all the words interface with userIDinterface
+            $replace = str_replace("Polymorphism", "{$userIDtoLetters}Polymorphism",$holder); //replace all the words Polymorphism with userIDPolymorphism
             file_put_contents("{$userIDtoLetters}Polymorphism.java", $replace);
             fclose($userPolyEdit);
             $classPoly = fopen("{$userIDtoLetters}Polymorphism.class", "w");

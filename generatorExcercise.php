@@ -21,7 +21,7 @@
     $getAnswerContents = file_get_contents("{$fileAnswer}", "w");
     
     $replace = str_replace("{$fileNameFixed}", "{$userIDtoLetters}Random",$holder); //replace all  with userIDinterface
-    file_put_contents("{$userIDtoLetters}Random.java", $replace); //replace all the public class "filename" with userIDrandom
+    file_put_contents("{$userIDtoLetters}Random.java", $replace); //replace all the public class "filename" with userIDRandom
     fclose($userPolyEdit);
     $classPoly = fopen("{$userIDtoLetters}Random.class", "w");
 ?>
