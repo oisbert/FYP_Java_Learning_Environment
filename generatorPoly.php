@@ -10,14 +10,14 @@
                 die("Connection failed:" .$conn -> connect_error);
             }
 
-            $userIDtoLetters = num2alpha($userID);
-            $userPoly = fopen("{$userIDtoLetters}Polymorphism.java", "w+");
-            $current = file_get_contents("Polymorphism.txt", "w");
-            $userPolyEdit = fopen("{$userIDtoLetters}Polymorphism.java", "w");
-            fwrite($userPolyEdit, $current);
+            $userIDtoLetters = num2alpha($userID); //convert the user id to a letter
+            $userPoly = fopen("{$userIDtoLetters}Polymorphism.java", "w+"); //open the tempory user file 
+            $current = file_get_contents("Polymorphism.txt", "w"); //get the contents of the base file
+            $userPolyEdit = fopen("{$userIDtoLetters}Polymorphism.java", "w"); //open the tempory user file make it writable
+            fwrite($userPolyEdit, $current); //put the contents of the base file into the user temporary file
 
             $holder = file_get_contents("{$userIDtoLetters}Polymorphism.java");
-            $replace = str_replace("Polymorphism", "{$userIDtoLetters}Polymorphism",$holder);
+            $replace = str_replace("Polymorphism", "{$userIDtoLetters}Polymorphism",$holder); //replace all the words interface with userIDinterface
             file_put_contents("{$userIDtoLetters}Polymorphism.java", $replace);
             fclose($userPolyEdit);
             $classPoly = fopen("{$userIDtoLetters}Polymorphism.class", "w");

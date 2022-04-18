@@ -10,14 +10,14 @@
                 die("Connection failed:" .$conn -> connect_error);
             }
 
-            $userIDtoLetters = num2alpha($userID);
-            $userPoly = fopen("{$userIDtoLetters}Car.java", "w+");
-            $current = file_get_contents("Car.txt", "w");
-            $userPolyEdit = fopen("{$userIDtoLetters}Car.java", "w");
-            fwrite($userPolyEdit, $current);
+            $userIDtoLetters = num2alpha($userID); //convert the user id to a letter
+            $userPoly = fopen("{$userIDtoLetters}Car.java", "w+"); //open the tempory user file 
+            $current = file_get_contents("Car.txt", "w"); //get the contents of the base file
+            $userPolyEdit = fopen("{$userIDtoLetters}Car.java", "w"); //open the tempory user file make it writable
+            fwrite($userPolyEdit, $current); //put the contents of the base file into the user temporary file
 
             $holder = file_get_contents("{$userIDtoLetters}Car.java");
-            $replace = str_replace("Car", "{$userIDtoLetters}Car",$holder);
+            $replace = str_replace("Car", "{$userIDtoLetters}Car",$holder); //replace all the words interface with userIDinterface
             file_put_contents("{$userIDtoLetters}Car.java", $replace);
             fclose($userPolyEdit);
             $classPoly = fopen("{$userIDtoLetters}Car.class", "w");

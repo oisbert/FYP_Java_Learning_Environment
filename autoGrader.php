@@ -22,7 +22,7 @@
       include ("checkMethodDeclaration.php");
       include ("checkOutput.php");
       include ("unlinkFile.php");
-      //$_SESSION['user'] = $userID;
+   
       $taskID = $_GET['taskID'];
       $taskTitle = $_GET['taskTitle'];
       $userIDtask = $_GET['userID'];
@@ -41,7 +41,7 @@
       $lowercaseMethod = NULL;
       $lowercaseMethodFailed = NULL;
 
-
+      //get the user file submitted to autograde and the answer file to grade against
       $targetDir = "taskUploads/{$taskTitle}/{$userIDtask}/{$userFile}";
       $new_str = str_replace(' ', '', $targetDir);
       $myfile = file_get_contents($new_str, "r");
@@ -55,6 +55,8 @@
 
       print "<div class = auto-background>";
       print "<div class = running-test-1>";
+      //test to check if the file starts with capital letter
+      //if checkcap is ture that the class name does start with capital
       if(checkCap($myfile) == true){
          $Captest = "---Test 1 passed: Class file starts with Capital letter ";
          print "<H1>$Captest</H1>";
@@ -66,19 +68,20 @@
       print "</div>";
       $lines = explode("\n", $myfile);
 
-      //echo "-------------- test 2 ----------------";
+      //"-------------- test 2 ----------------";
 
       print "<div class = running-test-2>";
+      //set counter to 0
       $count = 0;
+      //function checks if all the methods include the static keyword
+      //if they do not 1 is added to static
       foreach($lines as $word) {
-         if(checkForStatic($word) == true){
-            // 
-      }
-      else{
-         $count++;
+         if(checkForStatic($word) == false){
+            $count++;
       }
       }
-
+      //if static is 0 then all the methods are declared as static
+      //else the function found a not static method
       if($count == 0){
          $statictest = "---Test 2 passed: All methods declared as static ";
          print "<H1>$statictest</H1>";
@@ -109,6 +112,7 @@
       $FileAnswer = "Answer{$userFile}";
 
       //echo "-------------- test 3 ----------------";
+      //checks if the method name has a lowercase
       print "<div class = running-test-3>";
       if(checkMethodName($new_str,$userFile) == true){
          $lowercaseMethod = "---Test 3 passed: All methods have a lowercase ";
@@ -122,6 +126,10 @@
 
       print "</div>";
       //echo "-------------- test 4 ----------------";
+      
+      //checks the format of the file
+      //also checks if the execution is the same
+      //both answerfile and the user file are executed at the same time and compared
       print "<div class = running-test-4>";
 
       $FormatCheck = 0;
@@ -143,7 +151,7 @@
          $outputCheck = "---Test 5: Pass Answer output check ";
      }
       print "</div>";
-
+     //unlink the tempory files made by the autograder
       array_map('unlink', glob("*.class"));
       array_map('unlink', glob("Answer{$userFile}"));
       array_map('unlink', glob("{$userFile}"));
@@ -153,12 +161,14 @@
       print "</div>";
    }
    else{
+      //if the autograder cannot find a user submission it will say no file found
       print "<h1>No file found Cant Auto-Grade</h2>";
    }
       ?>
    <div class = "feedback">
       <form action="autoGradeSubmit.php?taskID=<?php echo $taskID ?> &userID=<?php echo $userIDtask?>" method="post" >
       <textarea rows="20" cols="55" name="content">
+      <!--All test results where loaded into temporary variables. These variables are now placed in the text box for the teacher to submit-->
       <?php 
       echo $Captest; 
       echo $Captestfail;
